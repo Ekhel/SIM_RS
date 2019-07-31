@@ -67,7 +67,7 @@
                     <a href="#"><img src="<?php echo base_url()?>assets/img/message/1.jpg" alt="" />
                     </a>
                     <h3>Michael</h3>
-                    <p>Front Office</p>
+                    <p>Level : Administrator</p>
                     <strong>AP+</strong>
                 </div>
                 <div class="left-custom-menu-adp-wrap">
@@ -81,40 +81,35 @@
                         <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa big-icon fa-envelope"></i> <span class="mini-dn">Data Induk</span> <span class="indicator-right-menu mini-dn"><i class="fa indicator-mn fa-angle-left"></i></span></a>
                             <div role="menu" class="dropdown-menu left-menu-dropdown animated flipInX">
                                 <a href="<?php echo base_url()?>Data_induk/agama" class="dropdown-item">Agama</a>
-                                <a href="view-mail.html" class="dropdown-item">Pegawai</a>
-                                <a href="compose-mail.html" class="dropdown-item">Perawat</a>
+                                <a href="<?php echo base_url()?>Data_induk/jabatan" class="dropdown-item">Jabatan</a>
+                                <a href="<?php echo base_url()?>Data_induk/departemen" class="dropdown-item">Departemen</a>
+                                <a href="<?php echo base_url()?>Data_induk/ruangan" class="dropdown-item">Ruangan</a>
+                                <a href="<?php echo base_url()?>Data_induk/spesialis" class="dropdown-item">Spesialis</a>
+                                <a href="<?php echo base_url()?>Data_induk/Poliklinik" class="dropdown-item">Poliklinik</a>
+                                <a href="#" class="dropdown-item">Pegawai</a>
                             </div>
                         </li>
                         <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa big-icon fa-flask"></i> <span class="mini-dn">Data Master</span> <span class="indicator-right-menu mini-dn"><i class="fa indicator-mn fa-angle-left"></i></span></a>
                             <div role="menu" class="dropdown-menu left-menu-dropdown animated flipInX">
-                                <a href="#" class="dropdown-item">Jenjang</a>
-                                <a href="#" class="dropdown-item">Jabatan</a>
+                                <a href="#" class="dropdown-item">Dokter</a>
                                 <a href="#" class="dropdown-item">Poliklinik</a>
-                                <a href="#" class="dropdown-item">Spesialis</a>
-                                <a href="#" class="dropdown-item">Department</a>
-                                <a href="#" class="dropdown-item">Bidang Pegawai</a>
-                                <a href="#" class="dropdown-item">Gedung</a>
                                 <a href="#" class="dropdown-item">Rawat Inap</a>
                             </div>
                         </li>
-                        <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa big-icon fa-pie-chart"></i> <span class="mini-dn">Miscellaneous</span> <span class="indicator-right-menu mini-dn"><i class="fa indicator-mn fa-angle-left"></i></span></a>
+                        <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa big-icon fa-pie-chart"></i> <span class="mini-dn">Registrasi</span> <span class="indicator-right-menu mini-dn"><i class="fa indicator-mn fa-angle-left"></i></span></a>
                             <div role="menu" class="dropdown-menu left-menu-dropdown animated flipInX">
-                                <a href="profile.html" class="dropdown-item">Profile</a>
-                                <a href="contact-client.html" class="dropdown-item">Contact Client</a>
-                                <a href="contact-client-v.1.html" class="dropdown-item">Contact Client v.1</a>
-                                <a href="project-list.html" class="dropdown-item">Project List</a>
+                                <a href="profile.html" class="dropdown-item">Pasien</a>
                                 <a href="project-details.html" class="dropdown-item">Project Details</a>
                             </div>
                         </li>
-                        <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa big-icon fa-bar-chart-o"></i> <span class="mini-dn">Charts</span> <span class="indicator-right-menu mini-dn"><i class="fa indicator-mn fa-angle-left"></i></span></a>
+                        <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa big-icon fa-bar-chart-o"></i> <span class="mini-dn">Apotik</span> <span class="indicator-right-menu mini-dn"><i class="fa indicator-mn fa-angle-left"></i></span></a>
                             <div role="menu" class="dropdown-menu left-menu-dropdown chart-left-menu-std animated flipInX">
-                                <a href="bar-charts.html" class="dropdown-item">Bar Charts</a>
-                                <a href="line-charts.html" class="dropdown-item">Line Charts</a>
-                                <a href="area-charts.html" class="dropdown-item">Area Charts</a>
-                                <a href="rounded-chart.html" class="dropdown-item">Rounded Charts</a>
-                                <a href="c3.html" class="dropdown-item">C3 Charts</a>
-                                <a href="sparkline.html" class="dropdown-item">Sparkline Charts</a>
-                                <a href="peity.html" class="dropdown-item">Peity Charts</a>
+                                <a href="bar-charts.html" class="dropdown-item">Jenis Obat</a>
+                                <a href="bar-charts.html" class="dropdown-item">Jenis Alkes</a>
+                                <a href="line-charts.html" class="dropdown-item">Obat & Alkes</a>
+                                <a href="area-charts.html" class="dropdown-item">Stock</a>
+                                <a href="rounded-chart.html" class="dropdown-item">Resep Dokter</a>
+                                <a href="c3.html" class="dropdown-item">Pengembalian</a>
                             </div>
                         </li>
                         <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa big-icon fa-table"></i> <span class="mini-dn">Data Tables</span> <span class="indicator-right-menu mini-dn"><i class="fa indicator-mn fa-angle-left"></i></span></a>

@@ -8,4 +8,14 @@ class M_induk extends CI_Model {
     $query = $this->db->query("SELECT * FROM tbl_agama");
     return $query->result();
   }
+  function jabatan()
+  {
+    $query = $this->db->query("SELECT * FROM tbl_jabatan");
+    return $query->result();
+  }
+  function departemen()
+  {
+    $query = $this->db->query("SELECT * FROM tbl_departemen");
+    return $query->result();
+  }
 }
