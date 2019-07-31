@@ -35,3 +35,8 @@
   - Menambahkan Libraby Grocery CRUD [Solved]
   - Menambahkan Fungsi CRUD dan Class pada controller data induk (controllers/Data_induk.php) [Solved]
   - Menambahkan CRUD untuk view (Departemen, poliklinik, spesialis, jabatan, agama) [Solved]
+
+* Kamin 1 Agustus 2019
+  - Memperbaiki Controller dan Model Pasien [Solved]
+  - Menambahkan Fungsi CRUD pada Controller dan Modul Pasien [Solved]
+  - Memperbaiki Base template utama [Solved]
