@@ -31,20 +31,22 @@
 $hari_ini = date('d-m-Y');
 foreach($hitung as $j){
   $total = $j->jumlah_pasien;
+  $sudah = $j->sudah;
 } ?>
 <div class="data-table-area mg-b-15">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-              <?php echo $this->session->flashdata('update');?>
+              <p><strong> TANGGAL : <?php echo $hari_ini ?></strong></p>
+              <?php echo $this->session->flashdata('update_status');?>
               <?php echo $this->session->flashdata('hapus');?>
                 <div class="sparkline13-list shadow-reset">
                     <div class="sparkline13-hd">
                         <div class="main-sparkline13-hd">
                             <h1>Data <span class="table-project-n"></span> Praktek Dokter</h1>
                             <div class="sparkline13-outline-icon">
-                              <span><text><strong>Tanggal : <?php echo $hari_ini ?> Jumlah </strong></text> : <label class="label label-success"> <?php echo $total ?> Orang</label></span>
-                              <span><a href="<?php echo base_url()?>Pasien/registrasi_pasien" title="Registrasi Pasien baru" class="btn btn-primary btn-sm"><i class="fa fa-plus-circle"></i></a></i></span>
+                              <span><text><strong>Jumlah Pendaftar : </strong></text> <label class="label label-primary"> <?php echo $total ?> Pasien</label></span>
+                              <span><text><strong>Sudah Diperiksa : </strong></text> <label class="label label-success"> <?php echo $sudah ?> Pasien</label></span>
                           </div>
                         </div>
                     </div>
@@ -100,7 +102,7 @@ foreach($hitung as $j){
                                         )"></i>
                                       </a>
                                       <a href="<?php echo base_url()?>Periksa/hapus_periksa/<?php echo $item->id_periksa ?>" type="button" title="Hapus" onclick="return confirm('Hapus item ini Dari Database ?')" class="btn btn-custon-three btn-danger btn-xs"><i class="fa fa-trash"></i></a>
-                                      <a href="" class="btn btn-custon-three btn-danger btn-xs" title="Ubah Status"><i class="fa fa-cogs"></i></a>
+                                      <a href="#javascript:; #updatestatus" data-toggle="modal" class="btn btn-custon-three btn-danger btn-xs" title="Ubah Status" onclick="update('<?php echo $item->id_periksa ?>')"><i class="fa fa-cogs"></i></a>
                                     </td>
                                   </tr>
                                 <?php } ?>
@@ -114,15 +116,12 @@ foreach($hitung as $j){
     </div>
 </div>
 
-<div class="modal fade" id="modaledit" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
-	<div class="modal-dialog modal-lg">
+<div class="modal fade" id="updatestatus" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+	<div class="modal-dialog">
 		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id=""><i class="fa fa-plus-circle"></i> Form Edit Data Pasien</h4>
-			</div>
-			<div class="modal-body">
 
+			<div class="modal-body">
+        <?php $this->load->view('Periksa/update_status'); ?>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
@@ -139,5 +138,8 @@ foreach($hitung as $j){
     $('#xtanggal').val(tanggal);
     $('#xid_poliklinik').val(id_poliklinik);
     $('#xstatus').val(status);
+  }
+  function update(id_periksa){
+    $('#xid_periksa').val(id_periksa);
   }
 </script>

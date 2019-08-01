@@ -1,7 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Pasien extends CI_Controller {
+require APPPATH . '/libraries/BaseController.php';
+
+class Pasien extends BaseController {
 
 	public function __construct()
 	{
@@ -10,6 +12,7 @@ class Pasien extends CI_Controller {
 			$this->load->database();
 	    $this->load->helper('url');
 			$this->load->model('M_pasien');
+			$this->cek_login();
 	}
 	public function index()
 	{
@@ -54,6 +57,7 @@ class Pasien extends CI_Controller {
 		$no_kontak = $this->input->post('no_kontak');
 
 		$data = array(
+			'id_pasien' 			=> $id_pasien,
 			'nama_pasien' 		=> $nama_pasien,
 			'jenis_kelamin' 	=> $jenis_kelamin,
 			'golongan_darah' 	=> $golongan_darah,
@@ -63,9 +67,11 @@ class Pasien extends CI_Controller {
 			'alamat'					=> $alamat,
 			'no_kontak'				=> $no_kontak
 		);
+
 		$where = array(
 			'id_pasien' 			=> $id_pasien,
 		);
+
 		$this->M_pasien->update_pasien($data,$where,'tbl_pasien');
 		$this->session->set_flashdata("update","
                 <div class='alert alert-success fade in'>

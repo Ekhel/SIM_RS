@@ -33,7 +33,7 @@ class Users extends CI_Controller {
 			  }
   			elseif ($this->session->userdata('level')=='2'){
           //helper_log("login", "Login ke applikasi");
-  		  redirect('Home');
+  		  redirect('Periksa');
   			}
 			}
 			else {
@@ -49,7 +49,7 @@ class Users extends CI_Controller {
   function cek_login($user_level = ""){
 		$status_login = $this->session->userdata('login');
 		if (!isset($status_login) || $status_login != TRUE){
-			redirect('login');
+			redirect('users');
 		}
 		else {
       $this->nama = $this->session->userdata('nama');
@@ -62,7 +62,7 @@ class Users extends CI_Controller {
 				}
 				else {
 					if ($this->session->userdata('level') != $user_level){
-						redirect('login');
+						redirect('users');
 					}
 				}
 			}

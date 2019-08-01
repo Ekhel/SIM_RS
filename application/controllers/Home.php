@@ -1,7 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+require APPPATH . '/libraries/BaseController.php';
+
+class Home extends BaseController {
 
 	public function __construct()
 	{
@@ -9,6 +11,7 @@ class Home extends CI_Controller {
 			$this->load->library('form_validation');
 			$this->load->database();
 	    $this->load->helper('url');
+			$this->cek_login();
 	}
 	public function index()
 	{

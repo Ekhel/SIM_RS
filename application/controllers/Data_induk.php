@@ -1,7 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class data_induk extends CI_Controller {
+require APPPATH . '/libraries/BaseController.php';
+
+class data_induk extends BaseController {
 
 	public function __construct()
 	{
@@ -10,6 +12,7 @@ class data_induk extends CI_Controller {
 			$this->load->database();
 	    $this->load->helper('url');
       $this->load->model('M_induk');
+			$this->cek_login();
 	}
 
   public function Agama()

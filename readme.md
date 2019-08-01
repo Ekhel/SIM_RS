@@ -49,3 +49,10 @@
   - Menambahkan Fungsi Login dan Logout pada controllers Users.php [Solved]
   - Menambahkan View menu_level.php pada view (views/menu_level.php) [Solved]
   - Meperbaiki base template MasterAdmin [Solved]
+
+* Jumat 2 Agustus 2019
+  - Menambahkan Librabry BaseController.php Untuk User Level (Libraries/BaseController.php) [Not Solved]
+  - Memperbaiki menu_level.php [Solved]
+  - Memperbaiki Fungsi pada Controller dan Model Periksa (controllers/Periksa.php)(models/M_periksa.php) [Solved]
+  - Menambahkan file update_status pada view Periksa (Periksa/update_status) [Solved]
+  - Memperbaiki base template MasterAdmin [Solved]
