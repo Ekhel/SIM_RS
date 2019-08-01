@@ -15,7 +15,7 @@ class Pasien extends CI_Controller {
 	{
 		$data['title'] = 'Admin | Pasien';
 		$data['pasien'] = $this->M_pasien->pasien();
-
+		$data['polik'] = $this->db->query("SELECT * FROM tbl_poliklinik")->result();
 		$this->template->load('MasterAdmin','pasien/data_pasien',$data);
 	}
 	public function registrasi_pasien()

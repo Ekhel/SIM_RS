@@ -36,9 +36,9 @@
                 <div class="sidebar-header">
                     <a href="#"><img src="<?php echo base_url()?>assets/img/message/1.jpg" alt="" />
                     </a>
-                    <h3>Michael</h3>
-                    <p>Level : Administrator</p>
-                    <strong>AP+</strong>
+                    <h3><?php echo $this->session->userdata('nama') ?></h3>
+                    <p><?php echo $this->session->userdata('nik') ?></p>
+                    <strong>SI+</strong>
                 </div>
                 <div class="left-custom-menu-adp-wrap">
                     <ul class="nav navbar-nav left-sidebar-menu-pro">
@@ -69,7 +69,7 @@
                         <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa big-icon fa-pie-chart"></i> <span class="mini-dn">Registrasi</span> <span class="indicator-right-menu mini-dn"><i class="fa indicator-mn fa-angle-left"></i></span></a>
                             <div role="menu" class="dropdown-menu left-menu-dropdown animated flipInX">
                                 <a href="<?php echo base_url()?>Pasien" class="dropdown-item">Pasien</a>
-                                <a href="project-details.html" class="dropdown-item">Project Details</a>
+                                <a href="<?php echo base_url()?>Periksa" class="dropdown-item">Periksa</a>
                             </div>
                         </li>
                         <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa big-icon fa-bar-chart-o"></i> <span class="mini-dn">Apotik</span> <span class="indicator-right-menu mini-dn"><i class="fa indicator-mn fa-angle-left"></i></span></a>
@@ -163,13 +163,13 @@
                                         <li class="nav-item">
                                             <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
                                                 <span class="adminpro-icon adminpro-user-rounded header-riht-inf"></span>
-                                                <span class="admin-name">Michael</span>
+                                                <span class="admin-name"><?php echo $this->session->userdata('nama') ?></span>
                                                 <span class="author-project-icon adminpro-icon adminpro-down-arrow"></span>
                                             </a>
                                             <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated flipInX">
                                                 <li><a href="#"><span class="adminpro-icon adminpro-settings author-log-ic"></span>Akun</a>
                                                 </li>
-                                                <li><a href="#"><span class="adminpro-icon adminpro-locked author-log-ic"></span>Keluar</a>
+                                                <li><a href="<?php echo base_url()?>Users/logout"><span class="adminpro-icon adminpro-locked author-log-ic"></span>Keluar</a>
                                                 </li>
                                             </ul>
                                         </li>
@@ -187,7 +187,7 @@
             </div>
             <!-- Header top area end-->
             <!-- Breadcome start-->
-        
+
             <!-- Breadcome End-->
             <!-- Mobile Menu start -->
             <div class="mobile-menu-area">
