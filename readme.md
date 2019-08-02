@@ -56,3 +56,8 @@
   - Memperbaiki Fungsi pada Controller dan Model Periksa (controllers/Periksa.php)(models/M_periksa.php) [Solved]
   - Menambahkan file update_status pada view Periksa (Periksa/update_status) [Solved]
   - Memperbaiki base template MasterAdmin [Solved]
+
+* Sabtu 3 Agustus 2019
+  - Menambahkan Controller dan Model dokter.php [Solved]
+  - Menambahkan Function CRUD Dokter.php [Not Solved]
+  - Memperbaiki menu_level.php [Solved] 

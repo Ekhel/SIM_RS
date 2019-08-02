@@ -21,7 +21,7 @@
         </li>
         <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa big-icon fa-bar-chart-o"></i> <span class="mini-dn">Data Master</span> <span class="indicator-right-menu mini-dn"><i class="fa indicator-mn fa-angle-left"></i></span></a>
             <div role="menu" class="dropdown-menu left-menu-dropdown animated flipInX">
-                <a href="#" class="dropdown-item">Dokter</a>
+                <a href="<?php echo base_url()?>Dokter" class="dropdown-item">Dokter</a>
                 <a href="#" class="dropdown-item">Poliklinik</a>
                 <a href="#" class="dropdown-item">Rawat Inap</a>
             </div>
