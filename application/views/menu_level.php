@@ -13,17 +13,15 @@
                 <a href="<?php echo base_url()?>Data_induk/agama" class="dropdown-item">Agama</a>
                 <a href="<?php echo base_url()?>Data_induk/jabatan" class="dropdown-item">Jabatan</a>
                 <a href="<?php echo base_url()?>Data_induk/departemen" class="dropdown-item">Departemen</a>
-                <a href="<?php echo base_url()?>Data_induk/ruangan" class="dropdown-item">Ruangan</a>
-                <a href="<?php echo base_url()?>Data_induk/spesialis" class="dropdown-item">Spesialis</a>
+                <a href="<?php echo base_url()?>Data_induk/Spesialis" class="dropdown-item">Spesialis</a>
                 <a href="<?php echo base_url()?>Data_induk/Poliklinik" class="dropdown-item">Poliklinik</a>
-                <a href="#" class="dropdown-item">Pegawai</a>
+                <a href="<?php echo base_url()?>Data_induk/Pegawai" class="dropdown-item">Pegawai</a>
             </div>
         </li>
         <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa big-icon fa-bar-chart-o"></i> <span class="mini-dn">Data Master</span> <span class="indicator-right-menu mini-dn"><i class="fa indicator-mn fa-angle-left"></i></span></a>
             <div role="menu" class="dropdown-menu left-menu-dropdown animated flipInX">
                 <a href="<?php echo base_url()?>Dokter" class="dropdown-item">Dokter</a>
-                <a href="#" class="dropdown-item">Poliklinik</a>
-                <a href="#" class="dropdown-item">Rawat Inap</a>
+                <a href="<?php echo base_url()?>Jadwal" class="dropdown-item">Jadwal Praktek</a>
             </div>
         </li>
         <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa big-icon fa-pie-chart"></i> <span class="mini-dn">Registrasi</span> <span class="indicator-right-menu mini-dn"><i class="fa indicator-mn fa-angle-left"></i></span></a>

@@ -36,6 +36,8 @@ class Pasien extends BaseController {
 		$data['nama_ibu'] 			= $this->input->post('nama_ibu');
 		$data['alamat'] 				= $this->input->post('alamat');
 		$data['no_kontak'] 			= $this->input->post('no_kontak');
+		$data['petugas'] 				= $this->input->post('petugas');
+		$data['date_created'] 	= $this->input->post('date_created');
 		$this->M_pasien->simpan_pasien($data);
 		$this->session->set_flashdata("registrasi","
                 <div class='alert alert-success fade in'>
@@ -55,6 +57,8 @@ class Pasien extends BaseController {
 		$nama_ibu = $this->input->post('nama_ibu');
 		$alamat = $this->input->post('alamat');
 		$no_kontak = $this->input->post('no_kontak');
+		$petugas = $this->input->post('petugas');
+		$date_created = $this->input->post('date_created');
 
 		$data = array(
 			'id_pasien' 			=> $id_pasien,
@@ -65,14 +69,16 @@ class Pasien extends BaseController {
 			'tanggal_lahir'		=> $tanggal_lahir,
 			'nama_ibu'				=> $nama_ibu,
 			'alamat'					=> $alamat,
-			'no_kontak'				=> $no_kontak
+			'no_kontak'				=> $no_kontak,
+			'petugas'					=> $petugas,
+			'date_created'		=> $date_created,
 		);
 
 		$where = array(
 			'id_pasien' 			=> $id_pasien,
 		);
 
-		$this->M_pasien->update_pasien($data,$where,'tbl_pasien');
+		$this->M_pasien->update_pasien($where,$data,'tbl_pasien');
 		$this->session->set_flashdata("update","
                 <div class='alert alert-success fade in'>
                     <a href='#' class='close' data-dismiss='alert'>&times;</a>

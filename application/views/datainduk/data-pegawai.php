@@ -14,9 +14,9 @@
                         </div>
                         <div class="col-lg-6">
                             <ul class="breadcome-menu">
-                                <li><a href="#">Data Master</a> <span class="bread-slash">/</span>
+                                <li><a href="#">Data induk</a> <span class="bread-slash">/</span>
                                 </li>
-                                <li><span class="bread-blod">Dokter</span>
+                                <li><span class="bread-blod">Pegawai</span>
                                 </li>
                             </ul>
                         </div>
@@ -36,9 +36,9 @@
                 <div class="sparkline13-list shadow-reset">
                     <div class="sparkline13-hd">
                         <div class="main-sparkline13-hd">
-                            <h1>Data <span class="table-project-n"></span> Dokter</h1>
+                            <h1>Data <span class="table-project-n"></span> Pegawai</h1>
                             <div class="sparkline13-outline-icon">
-                              <span><a href="<?php echo base_url()?>Dokter/tambah_dokter" title="Registrasi Pasien baru" class="btn btn-primary btn-sm"><i class="fa fa-plus-circle"></i></a></i></span>
+                              <span><a href="<?php echo base_url()?>Data_induk/tambah_pegawai" title="Tambah Pegawai Baru" class="btn btn-primary btn-sm"><i class="fa fa-plus-circle"></i></a></i></span>
                           </div>
                         </div>
                     </div>
@@ -55,45 +55,43 @@
                                 <thead>
                                     <tr>
                                         <th data-field="no">No</th>
+                                        <th data-field="nik">NIK</th>
                                         <th data-field="nama">Nama</th>
                                         <th data-field="jekel">Jekel</th>
-                                        <th data-field="tmp">Tmp & Tgl Lahir</th>
-                                        <th data-field="alamat">Alamat</th>
-                                        <th data-field="kotak">No Kontak</th>
-                                        <th data-field="spesialis">Spesialis</th>
-                                        <th data-field="izin">Izin Praktek</th>
-                                        <th></th>
+                                        <th data-field="pend">Pend. Terahir</th>
+                                        <th data-field="npwp">NPWP</th>
+                                        <th data-field="tmp">tmp & tgl lahir</th>
+                                        <th data-field="jabatan">Jabatan</th>
+                                        <th data-field="aksi">aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                   <?php
                                   $no = 1;
-                                  foreach($dokter as $item){
+                                  foreach($pegawai as $item){
                                   ?>
                                   <tr>
                                     <td><?php echo $no++ ?></td>
-                                    <td><?php echo $item->nama_dokter ?></td>
+                                    <td><?php echo $item->nik ?></td>
+                                    <td><?php echo $item->nama_pegawai ?></td>
                                     <td><?php echo $item->jekel ?></td>
+                                    <td><?php echo $item->pend_terahir ?></td>
+                                    <td><?php echo $item->npwp ?></td>
                                     <td><?php echo $item->tmp_lahir ?> / <?php echo $item->tgl_lahir ?></td>
-                                    <td><?php echo $item->alamat ?></td>
-                                    <td><?php echo $item->no_kontak_dokter ?></td>
-                                    <td><?php echo $item->spesialis ?></td>
-                                    <td><?php echo $item->no_izin_praktek ?></td>
+                                    <td><?php echo $item->nama_jabatan ?></td>
                                     <td>
-                                      <a href="#javascript:; #modal_edit" data-toggle="modal" type="button" title="edit" class="btn btn-custon-three btn-primary btn-xs"><i class="fa fa-edit" onclick="edit_dokter(
-                                          '<?php echo $item->id_dokter ?>',
-                                          '<?php echo $item->nama_dokter ?>',
+                                      <a href="#javascript:; #modaledit" data-toggle="modal" type="button" title="edit" class="btn btn-custon-three btn-primary btn-xs"><i class="fa fa-edit" onclick="edit(
+                                          '<?php echo $item->nik ?>',
+                                          '<?php echo $item->nama_pegawai ?>',
                                           '<?php echo $item->jekel ?>',
+                                          '<?php echo $item->pend_terahir ?>',
+                                          '<?php echo $item->npwp ?>',
                                           '<?php echo $item->tmp_lahir ?>',
                                           '<?php echo $item->tgl_lahir ?>',
-                                          '<?php echo $item->id_agama ?>',
-                                          '<?php echo $item->alamat ?>',
-                                          '<?php echo $item->no_kontak_dokter ?>',
-                                          '<?php echo $item->id_spesialis ?>',
-                                          '<?php echo $item->no_izin_praktek ?>',
+                                          '<?php echo $item->id_jabatan ?>',
                                         )"></i>
                                       </a>
-                                      <a href="<?php echo base_url()?>Dokter/hapus_dokter/<?php echo $item->id_dokter ?>" type="button" title="Hapus" onclick="return confirm('Hapus item ini Dari Database ?')" class="btn btn-custon-three btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+                                      <a href="<?php echo base_url()?>Data_induk/hapus_pegawai/<?php echo $item->nik ?>" type="button" title="Hapus" onclick="return confirm('Hapus item ini Dari Database ?')" class="btn btn-custon-three btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                                     </td>
                                   </tr>
                                 <?php } ?>
@@ -106,37 +104,3 @@
         </div>
     </div>
 </div>
-
-
-<div class="modal fade" id="modal_edit" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
-	<div class="modal-dialog modal-lg">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id=""><i class="fa fa-edit"></i> Form Edit Data Dokter</h4>
-			</div>
-			<div class="modal-body">
-        <?php $this->load->view('Dokter/edit_dokter'); ?>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-			</div>
-		</div>
-	</div>
-</div>
-
-
-<script type="text/javascript">
-  function edit_dokter(id_dokter,nama,jekel,lahir,tgl,agama,alamat,kontak,spesialis,no_praktek){
-    $('#xid_dokter').val(id_dokter);
-    $('#xnama').val(nama);
-    $('#xjekel').val(jekel);
-    $('#xlahir').val(lahir);
-    $('#xtgl').val(tgl);
-    $('#xagama').val(agama);
-    $('#xalamat').val(alamat);
-    $('#xkontak').val(kontak);
-    $('#xspesialis').val(spesialis);
-    $('#xno_praktek').val(no_praktek);
-  }
-</script>

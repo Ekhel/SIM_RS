@@ -20,7 +20,7 @@ class M_pasien extends CI_Model {
     $this->db->where($where);
     $this->db->update($table,$data);
   }
-  function hapus_pasien()
+  function hapus_pasien($id_pasien = 0)
   {
     $nelayan = $this->getpasien($param);
     $this->db->delete('tbl_pasien', array('id_pasien' => $param));

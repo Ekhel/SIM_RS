@@ -16,7 +16,7 @@
                             <ul class="breadcome-menu">
                                 <li><a href="#">Data Master</a> <span class="bread-slash">/</span>
                                 </li>
-                                <li><span class="bread-blod">Dokter</span>
+                                <li><span class="bread-blod">Jadwal Praktek</span>
                                 </li>
                             </ul>
                         </div>
@@ -36,9 +36,9 @@
                 <div class="sparkline13-list shadow-reset">
                     <div class="sparkline13-hd">
                         <div class="main-sparkline13-hd">
-                            <h1>Data <span class="table-project-n"></span> Dokter</h1>
+                            <h1>Data <span class="table-project-n"></span> Jadwal Praktek</h1>
                             <div class="sparkline13-outline-icon">
-                              <span><a href="<?php echo base_url()?>Dokter/tambah_dokter" title="Registrasi Pasien baru" class="btn btn-primary btn-sm"><i class="fa fa-plus-circle"></i></a></i></span>
+                              <span><a href="<?php echo base_url()?>Jadwal/tambah_jadwal" title="Registrasi Pasien baru" class="btn btn-primary btn-sm"><i class="fa fa-plus-circle"></i></a></i></span>
                           </div>
                         </div>
                     </div>
@@ -56,44 +56,36 @@
                                     <tr>
                                         <th data-field="no">No</th>
                                         <th data-field="nama">Nama</th>
-                                        <th data-field="jekel">Jekel</th>
-                                        <th data-field="tmp">Tmp & Tgl Lahir</th>
-                                        <th data-field="alamat">Alamat</th>
-                                        <th data-field="kotak">No Kontak</th>
-                                        <th data-field="spesialis">Spesialis</th>
-                                        <th data-field="izin">Izin Praktek</th>
+                                        <th data-field="jekel">Spesialis</th>
+                                        <th data-field="tmp">Jadwal</th>
+                                        <th data-field="alamat">Jam</th>
+                                        <th data-field="kotak">Polik</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                   <?php
                                   $no = 1;
-                                  foreach($dokter as $item){
+                                  foreach($jadwal as $item){
                                   ?>
                                   <tr>
                                     <td><?php echo $no++ ?></td>
                                     <td><?php echo $item->nama_dokter ?></td>
-                                    <td><?php echo $item->jekel ?></td>
-                                    <td><?php echo $item->tmp_lahir ?> / <?php echo $item->tgl_lahir ?></td>
-                                    <td><?php echo $item->alamat ?></td>
-                                    <td><?php echo $item->no_kontak_dokter ?></td>
                                     <td><?php echo $item->spesialis ?></td>
-                                    <td><?php echo $item->no_izin_praktek ?></td>
+                                    <td><?php echo $item->jadwal ?></td>
+                                    <td><?php echo $item->jam ?></td>
+                                    <td><?php echo $item->nama_poliklinik ?></td>
                                     <td>
-                                      <a href="#javascript:; #modal_edit" data-toggle="modal" type="button" title="edit" class="btn btn-custon-three btn-primary btn-xs"><i class="fa fa-edit" onclick="edit_dokter(
+                                      <a href="#javascript:; #modal_edit" data-toggle="modal" type="button" title="edit" class="btn btn-custon-three btn-primary btn-xs"><i class="fa fa-edit" onclick="edit_jadwal(
+                                          '<?php echo $item->id_jadwal ?>',
                                           '<?php echo $item->id_dokter ?>',
-                                          '<?php echo $item->nama_dokter ?>',
-                                          '<?php echo $item->jekel ?>',
-                                          '<?php echo $item->tmp_lahir ?>',
-                                          '<?php echo $item->tgl_lahir ?>',
-                                          '<?php echo $item->id_agama ?>',
-                                          '<?php echo $item->alamat ?>',
-                                          '<?php echo $item->no_kontak_dokter ?>',
-                                          '<?php echo $item->id_spesialis ?>',
-                                          '<?php echo $item->no_izin_praktek ?>',
+                                          '<?php echo $item->id_poliklinik ?>',
+                                          '<?php echo $item->jadwal ?>',
+                                          '<?php echo $item->jam ?>',
+                                          '<?php echo $item->is_active ?>'
                                         )"></i>
                                       </a>
-                                      <a href="<?php echo base_url()?>Dokter/hapus_dokter/<?php echo $item->id_dokter ?>" type="button" title="Hapus" onclick="return confirm('Hapus item ini Dari Database ?')" class="btn btn-custon-three btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+                                      <a href="<?php echo base_url()?>Jadwal/hapus_jadwal/<?php echo $item->id_jadwal ?>" type="button" title="Hapus" onclick="return confirm('Hapus item ini Dari Database ?')" class="btn btn-custon-three btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                                     </td>
                                   </tr>
                                 <?php } ?>
@@ -107,16 +99,15 @@
     </div>
 </div>
 
-
 <div class="modal fade" id="modal_edit" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id=""><i class="fa fa-edit"></i> Form Edit Data Dokter</h4>
+				<h4 class="modal-title" id=""><i class="fa fa-edit"></i> Form Edit Data Jadwal</h4>
 			</div>
 			<div class="modal-body">
-        <?php $this->load->view('Dokter/edit_dokter'); ?>
+        <?php $this->load->view('Jadwal/edit_jadwal'); ?>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
@@ -125,18 +116,13 @@
 	</div>
 </div>
 
-
 <script type="text/javascript">
-  function edit_dokter(id_dokter,nama,jekel,lahir,tgl,agama,alamat,kontak,spesialis,no_praktek){
+  function edit_jadwal(id_jadwal,id_dokter,id_poliklinik,jadwal,jam,is_active){
+    $('#xid_jadwal').val(id_jadwal);
     $('#xid_dokter').val(id_dokter);
-    $('#xnama').val(nama);
-    $('#xjekel').val(jekel);
-    $('#xlahir').val(lahir);
-    $('#xtgl').val(tgl);
-    $('#xagama').val(agama);
-    $('#xalamat').val(alamat);
-    $('#xkontak').val(kontak);
-    $('#xspesialis').val(spesialis);
-    $('#xno_praktek').val(no_praktek);
+    $('#xid_poliklinik').val(id_poliklinik);
+    $('#xjadwal').val(jadwal);
+    $('#xjam').val(jam);
+    $('#xis_active').val(is_active);
   }
 </script>

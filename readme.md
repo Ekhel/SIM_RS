@@ -10,17 +10,19 @@
   - CodeIgniter 3
 
 * Database :
-  - Mysql
+  - Mysql (phpmyadmin)
 
 * Library :
-  - Grocery CRUD
-  - Indo Tanggal
+  - Indo Tanggal (Tanggal Indonesia)
+  - BaseController (Authentikasi USER)
+  - Template (UI Applikasi)
 
 * Template :
   - Admin Pro + (Gradient Design)
+
 ----------------------------------------------------
 
-## Pembuatan & Pengembangan
+## Progres Pembuatan & Pengembangan
 
 ### Michael :
 * Minggu 28 Juli 2019
@@ -51,7 +53,7 @@
   - Meperbaiki base template MasterAdmin [Solved]
 
 * Jumat 2 Agustus 2019
-  - Menambahkan Librabry BaseController.php Untuk User Level (Libraries/BaseController.php) [Not Solved]
+  - Menambahkan Librabry BaseController.php Untuk User Level (Libraries/BaseController.php) [Solved]
   - Memperbaiki menu_level.php [Solved]
   - Memperbaiki Fungsi pada Controller dan Model Periksa (controllers/Periksa.php)(models/M_periksa.php) [Solved]
   - Menambahkan file update_status pada view Periksa (Periksa/update_status) [Solved]
@@ -59,5 +61,14 @@
 
 * Sabtu 3 Agustus 2019
   - Menambahkan Controller dan Model dokter.php [Solved]
-  - Menambahkan Function CRUD Dokter.php [Not Solved]
-  - Memperbaiki menu_level.php [Solved] 
+  - Menambahkan Function CRUD Dokter.php [Solved]
+  - Memperbaiki menu_level.php [Solved]
+  - Memperbaiki CRUD Controller dan Modul dokter.php [Solved]
+  - Memperbaiki CRUD Controller dan Modul Pasien [Solved]
+
+* Minggu 4 Agustus 2019
+  - Menambahkan Function CRUD Pegwai pada controller data_induk.php [NotSolved]
+  - Membuat Folder edit dan tambah pada folder datainduk (views/datainduk/edit)(views/datainduk/tambah) [Solved]
+  - Menambahkan Function CRUD Pegawai pada model M_induk.php [Not Solved]
+  - Meperbaiki dan Menambahkan Function tanggal dan waktu controller Periksa.php [Solved]
+  - Memperbaiki dan Menambahkan view data-periksa.php (tanggal dan waktu) [Solved]

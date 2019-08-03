@@ -8,14 +8,15 @@ class Dokter extends BaseController {
   {
       parent::__construct();
       $this->load->library('form_validation');
-      $this->load->database();
-      $this->load->helper('url');
+      $this->load->helper('form');
       $this->load->model('M_dokter');
       $this->cek_login();
   }
   public function index()
   {
     $data['title'] = 'Admin | Dokter';
+    $data['agama'] = $this->db->query("SELECT * FROM tbl_agama")->result();
+    $data['spesialis'] = $this->db->query("SELECT * FROM tbl_spesialis")->result();
     $data['dokter'] = $this->M_dokter->dokter();
 
     $this->template->load('MasterAdmin','Dokter/data-dokter',$data);
@@ -47,38 +48,37 @@ class Dokter extends BaseController {
                 </div>");
       redirect('Dokter');
 	}
-	public function edit_dokter_proses()
+	function edit_dokter_proses()
 	{
 		$id_dokter = $this->input->post('id_dokter');
 		$nama_dokter = $this->input->post('nama_dokter');
 		$jekel = $this->input->post('jekel');
 		$tmp_lahir = $this->input->post('tmp_lahir');
 		$tgl_lahir = $this->input->post('tgl_lahir');
-		$tanggal_lahir = $this->input->post('tanggal_lahir');
 		$id_agama = $this->input->post('id_agama');
 		$alamat = $this->input->post('alamat');
 		$no_kontak_dokter = $this->input->post('no_kontak_dokter');
     $id_spesialis = $this->input->post('id_spesialis');
-    $no_izin_prakter = $this->input->post('no_izin_praktek');
-    $alamat = $this->input->post('alamat');
+    $no_izin_praktek = $this->input->post('no_izin_praktek');
 
 		$data = array(
-			'id_dokter' 			=> $id_dokter,
-			'nama_dokter' 		=> $nama_dokter,
-			'jekel' 	        => $jekel,
-			'tmp_lahir' 	  => $tmp_lahir,
-			'tgl_lahir'		=> $tgl_lahir,
-			'id_agama'		=> $id_agama,
-			'alamat'				=> $alamat,
-			'no_kontak_dokter'					=> $no_kontak_dokter,
-			'id_spesialis'				=> $id_spesialis
+      'id_dokter'         => $id_dokter,
+			'nama_dokter' 		  => $nama_dokter,
+			'jekel' 	          => $jekel,
+			'tmp_lahir' 	      => $tmp_lahir,
+			'tgl_lahir'		      => $tgl_lahir,
+			'id_agama'		      => $id_agama,
+			'alamat'				    => $alamat,
+			'no_kontak_dokter'	=> $no_kontak_dokter,
+			'id_spesialis'			=> $id_spesialis,
+      'no_izin_praktek'   => $no_izin_praktek,
 		);
 
 		$where = array(
-			'id_dokter' 			=> $id_dokter,
+			'id_dokter' 			=> $id_dokter
 		);
 
-		$this->M_dokter->update_dokter($data,$where,'tbl_dokter');
+		$this->M_dokter->update_dokter($where,$data,'tbl_dokter');
 		$this->session->set_flashdata("update","
                 <div class='alert alert-success fade in'>
                     <a href='#' class='close' data-dismiss='alert'>&times;</a>

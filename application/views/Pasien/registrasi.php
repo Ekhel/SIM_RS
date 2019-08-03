@@ -136,6 +136,8 @@
                                   </div>
                                   <div class="col-lg-9">
                                       <textarea name="alamat" rows="8" cols="80" class="form-control"></textarea>
+                                      <input name="petugas" type="hidden" class="form-control" value="<?php echo $this->session->userdata('nama') ?>" readonly="true" />
+                                      <input name="date_created" type="hidden" class="form-control" value="<?php echo date('Y-m-d') ?>" readonly="true" />
                                   </div>
                               </div>
                             </div>

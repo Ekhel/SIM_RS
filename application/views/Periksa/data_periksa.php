@@ -37,21 +37,25 @@ foreach($hitung as $j){
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-              <p><strong> TANGGAL : <?php echo $hari_ini ?></strong></p>
+
               <?php echo $this->session->flashdata('update_status');?>
               <?php echo $this->session->flashdata('hapus');?>
                 <div class="sparkline13-list shadow-reset">
                     <div class="sparkline13-hd">
                         <div class="main-sparkline13-hd">
                             <h1>Data <span class="table-project-n"></span> Praktek Dokter</h1>
-                            <div class="sparkline13-outline-icon">
+                            <div class="sparkline13-outline-icon" onload="waktu()">
+                              <span><p class="label label-primary"><strong> TANGGAL : <?php echo $hari_ini ?></strong></p></span>
                               <span><text><strong>Jumlah Pendaftar : </strong></text> <label class="label label-primary"> <?php echo $total ?> Pasien</label></span>
                               <span><text><strong>Sudah Diperiksa : </strong></text> <label class="label label-success"> <?php echo $sudah ?> Pasien</label></span>
-                          </div>
+                              <span><i class="fa fa-clock"></i><text id="jam"></text> : <text id="menit"></text> : <text id="detik"></text></span>
+
+                            </div>
                         </div>
                     </div>
                     <div class="sparkline13-graph">
                         <div class="datatable-dashv1-list custom-datatable-overright">
+
                             <div id="toolbar">
                                 <select class="form-control">
                                     <option value="">Export Basic</option>
@@ -93,14 +97,6 @@ foreach($hitung as $j){
                                      ?>
                                    </td>
                                     <td>
-                                      <a href="#javascript:; #modaledit" data-toggle="modal" type="button" title="edit" class="btn btn-custon-three btn-primary btn-xs"><i class="fa fa-edit" onclick="edit(
-                                          '<?php echo $item->id_periksa ?>',
-                                          '<?php echo $item->id_pasien ?>',
-                                          '<?php echo $item->tanggal ?>',
-                                          '<?php echo $item->id_poliklinik ?>',
-                                          '<?php echo $item->status ?>'
-                                        )"></i>
-                                      </a>
                                       <a href="<?php echo base_url()?>Periksa/hapus_periksa/<?php echo $item->id_periksa ?>" type="button" title="Hapus" onclick="return confirm('Hapus item ini Dari Database ?')" class="btn btn-custon-three btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                                       <a href="#javascript:; #updatestatus" data-toggle="modal" class="btn btn-custon-three btn-danger btn-xs" title="Ubah Status" onclick="update('<?php echo $item->id_periksa ?>')"><i class="fa fa-cogs"></i></a>
                                     </td>
@@ -142,4 +138,13 @@ foreach($hitung as $j){
   function update(id_periksa){
     $('#xid_periksa').val(id_periksa);
   }
+
+  window.setTimeout("waktu()",1000);
+    function waktu() {
+        var tanggal = new Date();
+        setTimeout("waktu()",1000);
+        document.getElementById("jam").innerHTML = tanggal.getHours();
+        document.getElementById("menit").innerHTML = tanggal.getMinutes();
+        document.getElementById("detik").innerHTML = tanggal.getSeconds();
+    }
 </script>

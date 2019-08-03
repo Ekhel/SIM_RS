@@ -22,4 +22,9 @@ class M_dokter extends CI_Model {
     $this->db->where($where);
     $this->db->update($table,$data);
   }
+  function hapus_dokter($param = 0)
+  {
+    $dokter = $this->getdokter($param);
+    $this->db->delete('tbl_dokter', array('id_dokter' => $param));
+  }
 }
