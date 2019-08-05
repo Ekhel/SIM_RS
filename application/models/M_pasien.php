@@ -4,7 +4,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class M_pasien extends CI_Model {
   function pasien()
   {
-    $query = $this->db->query("SELECT * FROM tbl_pasien");
+    $query = $this->db->query("SELECT
+    tbl_pasien.id_pasien as id_pasien,
+    tbl_pasien.nama_pasien as nama_pasien,
+    tbl_pasien.jenis_kelamin as jenis_kelamin,
+    tbl_pasien.golongan_darah as golongan_darah,
+    tbl_pasien.tempat_lahir as tempat_lahir,
+    tbl_pasien.tanggal_lahir as tanggal_lahir,
+    tbl_pasien.nama_ibu as nama_ibu,
+    tbl_pasien.alamat as alamat,
+    tbl_pasien.no_kontak as no_kontak,
+    tbl_pasien.date_created as date_created,
+    tbl_pasien.petugas as petugas,
+    jumlah_periksa
+    FROM tbl_pasien
+    LEFT JOIN(SELECT id_pasien, COUNT(Distinct CASE WHEN status = 'sudah' THEN id_periksa END) as jumlah_periksa
+              FROM tbl_periksa
+              GROUP BY id_pasien) a using (id_pasien)
+    WHERE id_pasien");
     return $query->result();
   }
   function simpan_pasien($data)

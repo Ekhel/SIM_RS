@@ -37,11 +37,30 @@ class M_induk extends CI_Model {
 
     return $query->result();
   }
+
   //-------------------------------------------------------------------------------------------------------- //
-  // fungsi Simpan data induk
+  // fungsi Simpan
 
   function simpan_pegawai($data)
   {
     $this->db->insert('tbl_pegawai',$data);
+  }
+
+  //-------------------------------------------------------------------------------------------------------- //
+  // fungsi Edit
+
+  function getpegawai($param = 0)
+	{
+		return $this->db->get_where('tbl_pegawai', array('nik' => $param))->row();
+	}
+  function update_pegawai($where,$data,$table)
+  {
+    $this->db->where($where);
+    $this->db->update($table,$data);
+  }
+  function hapus_pegawai($param = 0)
+  {
+    $dokter = $this->getpegawai($param);
+    $this->db->delete('tbl_pegawai', array('nik' => $param));
   }
 }

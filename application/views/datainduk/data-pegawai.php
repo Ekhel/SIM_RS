@@ -59,7 +59,6 @@
                                         <th data-field="nama">Nama</th>
                                         <th data-field="jekel">Jekel</th>
                                         <th data-field="pend">Pend. Terahir</th>
-                                        <th data-field="npwp">NPWP</th>
                                         <th data-field="tmp">tmp & tgl lahir</th>
                                         <th data-field="jabatan">Jabatan</th>
                                         <th data-field="aksi">aksi</th>
@@ -76,11 +75,10 @@
                                     <td><?php echo $item->nama_pegawai ?></td>
                                     <td><?php echo $item->jekel ?></td>
                                     <td><?php echo $item->pend_terahir ?></td>
-                                    <td><?php echo $item->npwp ?></td>
                                     <td><?php echo $item->tmp_lahir ?> / <?php echo $item->tgl_lahir ?></td>
                                     <td><?php echo $item->nama_jabatan ?></td>
                                     <td>
-                                      <a href="#javascript:; #modaledit" data-toggle="modal" type="button" title="edit" class="btn btn-custon-three btn-primary btn-xs"><i class="fa fa-edit" onclick="edit(
+                                      <a href="#javascript:; #modal_edit" data-toggle="modal" type="button" title="edit" class="btn btn-custon-three btn-primary btn-xs"><i class="fa fa-edit" onclick="edit_pegawai(
                                           '<?php echo $item->nik ?>',
                                           '<?php echo $item->nama_pegawai ?>',
                                           '<?php echo $item->jekel ?>',
@@ -104,3 +102,35 @@
         </div>
     </div>
 </div>
+
+
+<div class="modal fade" id="modal_edit" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id=""><i class="fa fa-edit"></i> Form Edit Data Pegawai</h4>
+			</div>
+			<div class="modal-body">
+        <?php $this->load->view('datainduk/edit/pegawai'); ?>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+  function edit_pegawai(nik,nama,jekel,pend_terahir,npwp,lahir,tgl,id_jabatan){
+    $('#xnik').val(nik);
+    $('#xnama').val(nama);
+    $('#xjekel').val(jekel);
+    $('#xpend_terahir').val(pend_terahir);
+    $('#xnpwp').val(npwp);
+    $('#xlahir').val(lahir);
+    $('#xtgl').val(tgl);
+    $('#xid_jabatan').val(id_jabatan);
+  }
+</script>

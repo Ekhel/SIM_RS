@@ -50,7 +50,7 @@ class data_induk extends BaseController {
 	{
 		$data['title'] = 'Admin | Data Pegawai';
 		$data['pegawai'] = $this->M_induk->pegawai();
-
+		$data['jabatan'] = $this->db->query("SELECT * FROM tbl_jabatan")->result();
 		$this->template->load('MasterAdmin','datainduk/data-pegawai',$data);
 	}
 
@@ -61,7 +61,6 @@ class data_induk extends BaseController {
 	{
 		$data['title'] = 'Admin | Tambah Pegawai';
 		$data['jabatan'] = $this->db->query("SELECT * FROM tbl_jabatan")->result();
-
 		$this->template->load('MasterAdmin','datainduk/tambah/pegawai',$data);
 	}
 	public function tambah_pegawai_proses()
@@ -81,5 +80,58 @@ class data_induk extends BaseController {
                     <strong>Success !</strong> Berhasil Menyimpan Data!
                 </div>");
       redirect('Data_induk/Pegawai');
+	}
+
+
+	//-----------------------------------------------------------------------------------------------//
+	// Fungsi Edit
+
+	function edit_pegawai_proses()
+	{
+		$nik = $this->input->post('nik');
+		$nama_pegawai = $this->input->post('nama_pegawai');
+		$jekel = $this->input->post('jekel');
+		$pend_terahir = $this->input->post('pend_terahir');
+		$npwp = $this->input->post('npwp');
+		$tmp_lahir = $this->input->post('tmp_lahir');
+		$tgl_lahir = $this->input->post('tgl_lahir');
+		$id_jabatan = $this->input->post('id_jabatan');
+
+		$data = array(
+      'nik'         	=> $nik,
+			'nama_pegawai' 	=> $nama_pegawai,
+			'jekel' 	      => $jekel,
+			'pend_terahir' 	=> $pend_terahir,
+			'npwp' 	        => $npwp,
+			'tmp_lahir' 	  => $tmp_lahir,
+			'tgl_lahir'		  => $tgl_lahir,
+			'id_jabatan'		=> $id_jabatan,
+		);
+
+		$where = array(
+			'nik' 			=> $nik
+		);
+
+		$this->M_induk->update_pegawai($where,$data,'tbl_pegawai');
+		$this->session->set_flashdata("update","
+                <div class='alert alert-success fade in'>
+                    <a href='#' class='close' data-dismiss='alert'>&times;</a>
+                    <strong>Success !</strong> Berhasil Mengupdate Data!
+                </div>");
+      redirect('Data_induk/Pegawai');
+	}
+
+	//-----------------------------------------------------------------------------------------------//
+	// Fungsi Hapus
+
+	function hapus_pegawai($param = 0)
+	{
+		$this->M_induk->hapus_pegawai($param);
+    $this->session->set_flashdata("hapus","
+							<div class='alert alert-success fade in'>
+									<a href='#' class='close' data-dismiss='alert'>&times;</a>
+									<strong>Success !</strong> Item sudah di Hapus!
+							</div>");
+    redirect('Data_induk/Pegawai');
 	}
 }

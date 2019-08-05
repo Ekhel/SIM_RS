@@ -57,4 +57,25 @@ class Periksa extends BaseController {
                 </div>");
       redirect('Periksa');
 	}
+	public function update_diagnosa()
+	{
+		$id_periksa = $this->input->post('id_periksa');
+		$diagnosa = $this->input->post('status');
+
+		$data = array(
+			'id_periksa'		=> $id_periksa,
+			'diagnosa'			=> $diagnosa,
+		);
+
+		$where = array(
+			'id_periksa'  => $id_periksa
+		);
+		$this->M_periksa->update_diagnosa($where,$data,'tbl_periksa');
+		$this->session->set_flashdata("update_status","
+                <div class='alert alert-success fade in'>
+                    <a href='#' class='close' data-dismiss='alert'>&times;</a>
+                    <strong>Success !</strong> Berhasil Mengupdate !!
+                </div>");
+      redirect('Periksa');
+	}
 }

@@ -61,4 +61,9 @@ class M_periksa extends CI_Model {
     $this->db->where($where);
     $this->db->update($table,$data);
   }
+  function update_diagnosa($where,$data,$table)
+  {
+    $this->db->where($where);
+    $this->db->update($table,$data);
+  }
 }

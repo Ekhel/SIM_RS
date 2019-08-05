@@ -72,3 +72,10 @@
   - Menambahkan Function CRUD Pegawai pada model M_induk.php [Not Solved]
   - Meperbaiki dan Menambahkan Function tanggal dan waktu controller Periksa.php [Solved]
   - Memperbaiki dan Menambahkan view data-periksa.php (tanggal dan waktu) [Solved]
+
+* Senin 5 Agustus 2019
+  - Menambahkan Field diagnosa pada tbl_periksa [Solved]
+  - Memeperbaiki query pasien pada Model pasien.php [Solved]
+  - Memperbaiki View data-pasien.php [Solved]
+  - Memperbaiki View data-periksa.php [Solved]
+  - Menambahkan Function update_diagnosa_proses pada controller periksa.php untuk Field Diagnosa [Not Solved]

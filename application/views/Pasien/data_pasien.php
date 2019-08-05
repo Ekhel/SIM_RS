@@ -62,6 +62,7 @@
                                         <th data-field="Goldarah">Gol Darah</th>
                                         <th data-field="alamat">Alamat</th>
                                         <th data-field="kontak">Kontak</th>
+                                        <th data-field="riwayat">Riwayat</th>
                                         <th data-field="aksi">aksi</th>
                                     </tr>
                                 </thead>
@@ -77,6 +78,7 @@
                                     <td><?php echo $item->golongan_darah ?></td>
                                     <td><?php echo $item->alamat ?></td>
                                     <td><?php echo $item->no_kontak ?></td>
+                                    <td><label class="label label-primary"><?php echo $item->jumlah_periksa ?> Berobat</label></td>
                                     <td>
                                       <a href="#javascript:; #modaledit" data-toggle="modal" type="button" title="edit" class="btn btn-custon-three btn-primary btn-xs"><i class="fa fa-edit" onclick="edit(
                                           '<?php echo $item->id_pasien ?>',
@@ -91,7 +93,7 @@
                                         )"></i>
                                       </a>
                                       <a href="<?php echo base_url()?>Pasien/hapus_pasien/<?php echo $item->id_pasien ?>" type="button" title="Hapus" onclick="return confirm('Hapus item ini Dari Database ?')" class="btn btn-custon-three btn-danger btn-xs"><i class="fa fa-trash"></i></a>
-                                      <a href="#javascript:; #modaltambahperiksa" data-toggle="modal" class="btn btn-custon-three btn-success btn-xs" title="Tambah Pasien Praktek"><i class="fa fa-users" onclick="tambah_periksa('<?php echo $item->id_pasien ?>')"></i></a>
+                                      <a href="#javascript:; #modaltambahperiksa" data-toggle="modal" class="btn btn-custon-three btn-success btn-xs" title="Tambah Pasien Praktek"><i class="fa fa-users" onclick="tambah_periksa('<?php echo $item->id_pasien ?>','<?php echo $item->nama_pasien ?>')"></i></a>
                                     </td>
                                   </tr>
                                 <?php } ?>
@@ -151,7 +153,8 @@
     $('#xalamat').val(alamat);
     $('#xkontak').val(kontak);
   }
-  function tambah_periksa(id_pasien){
+  function tambah_periksa(id_pasien,nama){
     $('#id_pasien').val(id_pasien);
+    $('#xnama').val(nama);
   }
 </script>

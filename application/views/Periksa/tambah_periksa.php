@@ -23,6 +23,16 @@
                        </div>
                    </div>
                  </div>
+                 <div class="form-group-inner">
+                  <div class="row">
+                      <div class="col-lg-2">
+                          <label class="login2 pull-right pull-right-pro">Nama</label>
+                      </div>
+                      <div class="col-lg-9">
+                          <input name="nama" type="text" id="xnama" readonly="true" class="form-control" />
+                      </div>
+                  </div>
+                </div>
               <div class="form-group-inner">
                <div class="row">
                    <div class="col-lg-2">
