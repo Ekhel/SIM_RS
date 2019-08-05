@@ -6,7 +6,7 @@
                   <br/>
                   <div class="col-md-12">
                     <div class="row">
-                      <input name="id_periksa" id="xid_periksa" type="hidden" class="form-control" />
+                      <input name="id_periksa" id="xid_periksa" type="text" class="form-control" />
                       <input name="status" type="hidden" class="form-control" value="sudah" />
                       <h4>Ubah Status Periksa Menjadi Sudah Diperiksa ??</h4>
                       <br/>

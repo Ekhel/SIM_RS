@@ -85,12 +85,12 @@ foreach($hitung as $j){
                                     <td><?php echo $item->nama_poliklinik ?></td>
                                     <td><?php echo $item->golongan_darah ?></td>
                                     <td><?php if($item->status == 'belum'){
-                                        echo "<label class='label label-primary'>";
+                                        echo "<label class='label label-primary' title='Belum Di periksa dokter'>";
                                         echo $item->status;
                                         echo "</label>";
                                       }
                                         else{
-                                        echo "<label class='label label-success'>";
+                                        echo "<label class='label label-success' title='sudah diperiksa oleh dokter'>";
                                         echo $item->status;
                                         echo "</label>";
                                         }

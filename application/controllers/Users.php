@@ -13,6 +13,10 @@ class Users extends CI_Controller {
   {
     $this->load->view('login');
   }
+  public function login1()
+  {
+    $this->load->view('login1');
+  }
   function login_proses()
   {
 		$nip = $this->input->post('nik');

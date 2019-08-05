@@ -88,21 +88,21 @@
                 <br>
             </td>
             <td width="250" class="right">
-                <div style="font-size: 35px; line-height: 20px">Mulai App</div>
-
+                <div style="font-size: 35px; line-height: 20px">Let's Start</div>
+                <div style="font-size: 13px; margin: 30px 0 10px 0">
+                    MASUK<br> SIM
+                </div>
                 <div style="border-bottom: 1px solid #ccc; margin: 15px 0px"></div>
-								<?php echo validation_errors('<div class="alert alert-danger">', '</div>'); ?>
-        				<?php echo form_open('Users/login_proses'); ?>
-                <form>
-                    <input type="text" name="nik" value="" placeholder="NIK">
-                    <input type="password" name="sandi" value="" placeholder="Password">
+                <form action="https://qualita-indonesia.net/index.php/_main/setLogin" method="post">
+                    <input type="text" name="username" value="" placeholder="NIK">
+                    <input type="password" name="password" value="" placeholder="Password">
                     <input type="submit" name="commit" value="Login" class="btn">
                     <div style="font-size: 13px; text-align: center">
                         <input type="checkbox" name="remember_me" id="remember_me" style="width: 20px;">Ingat Saya <br>
                         LOGIN PENGGUNA
                     </div>
+
                 </form>
-								<?php echo form_close();?>
             </td>
         </tr>
     </table>
