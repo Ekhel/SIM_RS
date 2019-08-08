@@ -89,3 +89,7 @@
   - Menambahkan Function CRUD pada Controller dan Model Apotik [Solved]
   - Memperbaiki View MasterAdmin.php [Solved]
   - Menambahkan Function kode otomatis pada Model Apotik [Solved]
+
+* Jumat 9 Agustus 2019
+  - Menambahkan Function CRUD satuan pada Controller dan Model Apotik [Solved]
+  - Memperbaiki view menu_level.php [Solved]

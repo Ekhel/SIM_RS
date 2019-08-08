@@ -35,4 +35,42 @@ class M_apotik extends CI_Model {
     $this->db->where($where);
     $this->db->update($table,$data);
   }
+  function getobatalkes($param = 0)
+	{
+		return $this->db->get_where('tbl_obatalkes', array('id_barang' => $param))->row();
+	}
+  function hapus_obatalkes($param = 0)
+  {
+    $dokter = $this->getobatalkes($param);
+    $this->db->delete('tbl_obatalkes', array('id_barang' => $param));
+  }
+
+  // End CRUD Obat & Alat Kesehatan
+
+  // Start CRUD Satuan
+
+  function satuan()
+  {
+    $query = $this->db->query("SELECT * FROM tbl_satuan");
+    return $query->result();
+  }
+  function tambah_satuan($data)
+  {
+    $this->db->insert('tbl_satuan',$data);
+  }
+  function update_satuan($where,$data,$table)
+  {
+    $this->db->where($where);
+    $this->db->update($table,$data);
+  }
+  function getsatuan($param = 0)
+	{
+		return $this->db->get_where('tbl_satuan', array('id_satuan' => $param))->row();
+	}
+  function hapus_satuan($param = 0)
+  {
+    $dokter = $this->getsatuan($param);
+    $this->db->delete('tbl_satuan', array('id_satuan' => $param));
+  }
+  // End CRUD Satuan
 }

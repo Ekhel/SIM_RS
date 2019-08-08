@@ -16,7 +16,7 @@
                             <ul class="breadcome-menu">
                                 <li><a href="#">Apotik</a> <span class="bread-slash">/</span>
                                 </li>
-                                <li><span class="bread-blod">Obat & Alkes</span>
+                                <li><span class="bread-blod">Satuan</span>
                                 </li>
                             </ul>
                         </div>
@@ -26,6 +26,7 @@
         </div>
     </div>
 </div>
+
 <div class="data-table-area mg-b-15">
     <div class="container-fluid">
         <div class="row">
@@ -36,9 +37,9 @@
                 <div class="sparkline13-list shadow-reset">
                     <div class="sparkline13-hd">
                         <div class="main-sparkline13-hd">
-                            <h1>Data <span class="table-project-n"></span> Obat dan Alat Kesehatan</h1>
+                            <h1>Data <span class="table-project-n"></span> Satuan</h1>
                             <div class="sparkline13-outline-icon">
-                              <span><a href="<?php echo base_url()?>Apotik/tambah_obatalkes" title="Tambah Item Obat & Alkes" class="btn btn-primary btn-sm"><i class="fa fa-plus-circle"></i></a></i></span>
+                              <span><a href="<?php echo base_url()?>Apotik/tambah_satuan" title="Tambah Item Satuan" class="btn btn-primary btn-sm"><i class="fa fa-plus-circle"></i></a></i></span>
                           </div>
                         </div>
                     </div>
@@ -54,35 +55,26 @@
                             <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true" data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
                                 <thead>
                                     <tr>
-                                        <th data-field="kode">KODE</th>
-                                        <th data-field="kategori">Kategori</th>
-                                        <th data-field="nama">Nama Obat/Alkes</th>
+                                        <th data-field="no">No</th>
                                         <th data-field="satuan">Satuan</th>
-                                        <th data-field="harga">Harga</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                   <?php
-                                  foreach($apotik as $item){
+                                  $no = 1;
+                                  foreach($satuan as $item){
                                   ?>
                                   <tr>
-                                    <td><?php echo $item->kode_barang ?></td>
-                                    <td><?php echo $item->kategori ?></td>
-                                    <td><?php echo $item->nama_barang ?></td>
+                                    <td><?php echo $no++ ?></td>
                                     <td><?php echo $item->satuan ?></td>
-                                    <td><?php echo number_format($item->harga) ?></td>
                                     <td>
-                                      <a href="#javascript:; #modal_edit" data-toggle="modal" type="button" title="edit" class="btn btn-custon-three btn-primary btn-xs"><i class="fa fa-edit" onclick="edit_obatalkes(
-                                          '<?php echo $item->id_barang ?>',
-                                          '<?php echo $item->kode_barang ?>',
-                                          '<?php echo $item->nama_barang ?>',
-                                          '<?php echo $item->kategori ?>',
+                                      <a href="#javascript:; #modal_edit" data-toggle="modal" type="button" title="edit" class="btn btn-custon-three btn-primary btn-xs"><i class="fa fa-edit" onclick="edit_satuan(
                                           '<?php echo $item->id_satuan ?>',
-                                          '<?php echo $item->harga ?>',
+                                          '<?php echo $item->satuan ?>',
                                         )"></i>
                                       </a>
-                                      <a href="<?php echo base_url()?>Apotik/hapus_obatalkes/<?php echo $item->id_barang ?>" type="button" title="Hapus" onclick="return confirm('Hapus item ini Dari Database ?')" class="btn btn-custon-three btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+                                      <a href="<?php echo base_url()?>Apotik/hapus_satuan/<?php echo $item->id_satuan ?>" type="button" title="Hapus" onclick="return confirm('Hapus item ini Dari Database ?')" class="btn btn-custon-three btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                                     </td>
                                   </tr>
                                 <?php } ?>
@@ -101,10 +93,10 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id=""><i class="fa fa-edit"></i> Form Edit Data Obat & Alat Kesehatan</h4>
+				<h4 class="modal-title" id=""><i class="fa fa-edit"></i> Form Edit Data Satuan</h4>
 			</div>
 			<div class="modal-body">
-        <?php $this->load->view('Apotik/edit_obatalkes'); ?>
+        <?php $this->load->view('Apotik/Satuan/edit_satuan'); ?>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
@@ -113,14 +105,9 @@
 	</div>
 </div>
 
-
 <script type="text/javascript">
-  function edit_obatalkes(id_barang,kode,nama,kategori,id_satuan,harga){
-    $('#xid_barang').val(id_barang);
-    $('#xkode').val(kode);
-    $('#xnama').val(nama);
-    $('#xkategori').val(kategori);
+  function edit_satuan(id_satuan,satuan){
     $('#xid_satuan').val(id_satuan);
-    $('#xharga').val(harga);
+    $('#xsatuan').val(satuan);
   }
 </script>
