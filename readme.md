@@ -79,3 +79,13 @@
   - Memperbaiki View data-pasien.php [Solved]
   - Memperbaiki View data-periksa.php [Solved]
   - Menambahkan Function update_diagnosa_proses pada controller periksa.php untuk Field Diagnosa [Not Solved]
+
+* Selasa 6 Agustus 2019
+  - Memperbaiki View Login.php (views/login.php) [Solved]
+  - Menambahkan View diagnosa.php (dokter/diagnosa.php) [Not Solved]
+
+* Kamis 8 Agustus 2019
+  - Menambahkan Controller dan Model Apotik (controllers/Apotik.php)(models/M_apotik.php) [Solved]
+  - Menambahkan Function CRUD pada Controller dan Model Apotik [Solved]
+  - Memperbaiki View MasterAdmin.php [Solved]
+  - Menambahkan Function kode otomatis pada Model Apotik [Solved]

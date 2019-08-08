@@ -34,11 +34,10 @@
         </li>
         <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa big-icon fa-flask"></i> <span class="mini-dn">Apotik</span> <span class="indicator-right-menu mini-dn"><i class="fa indicator-mn fa-angle-left"></i></span></a>
             <div role="menu" class="dropdown-menu left-menu-dropdown animated flipInX">
-                <a href="bar-charts.html" class="dropdown-item">Jenis Obat</a>
-                <a href="bar-charts.html" class="dropdown-item">Jenis Alkes</a>
-                <a href="line-charts.html" class="dropdown-item">Obat & Alkes</a>
+                <a href="bar-charts.html" class="dropdown-item">Satuan</a>
+                <a href="<?php echo base_url()?>Apotik" class="dropdown-item">Obat & Alkes</a>
                 <a href="area-charts.html" class="dropdown-item">Stock</a>
-                <a href="rounded-chart.html" class="dropdown-item">Resep Dokter</a>
+                <a href="rounded-chart.html" class="dropdown-item">Gudang</a>
                 <a href="c3.html" class="dropdown-item">Pengembalian</a>
             </div>
         </li>
