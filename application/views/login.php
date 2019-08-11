@@ -92,7 +92,7 @@
 
                 <div style="border-bottom: 1px solid #ccc; margin: 15px 0px"></div>
 								<?php echo validation_errors('<div class="alert alert-danger">', '</div>'); ?>
-        				<?php echo form_open('Users/login_proses'); ?>
+        				<?php echo form_open('Auth/login_proses'); ?>
                 <form>
                     <input type="text" name="nik" value="" placeholder="NIK">
                     <input type="password" name="sandi" value="" placeholder="Password">

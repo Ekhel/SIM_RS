@@ -93,3 +93,12 @@
 * Jumat 9 Agustus 2019
   - Menambahkan Function CRUD satuan pada Controller dan Model Apotik [Solved]
   - Memperbaiki view menu_level.php [Solved]
+
+* Minggu 12 Agustus 2019
+  - Menambahkan Controller dan Model Lab (controller/lab.php)(model/M_lab.php) [Solved]
+  - Menambahkan Fungsi CRUD jenis pemeriksaan pada Controller dan Model lab [Solved]
+  - Menambahkan View CRUD jenis pemeriksaan untuk controller dan model lab [Solved]
+  - Menambahkan Controller dan Model users (controller/users.php)(model/M_user.php) [Solved]
+  - Memperbaiki Controller dan Model auth [Solved]
+  - Memperbaiki view menu_level.php [Solved]
+  - Menghapus Library Grocery CRUD [Solved]

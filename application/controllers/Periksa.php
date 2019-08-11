@@ -57,10 +57,10 @@ class Periksa extends BaseController {
                 </div>");
       redirect('Periksa');
 	}
-	public function update_diagnosa()
+	public function update_diagnosa_proses()
 	{
 		$id_periksa = $this->input->post('id_periksa');
-		$diagnosa = $this->input->post('status');
+		$diagnosa = $this->input->post('diagnosa');
 
 		$data = array(
 			'id_periksa'		=> $id_periksa,
