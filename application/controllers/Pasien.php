@@ -19,6 +19,7 @@ class Pasien extends BaseController {
 		$data['title'] = 'Admin | Pasien';
 		$data['pasien'] = $this->M_pasien->pasien();
 		$data['polik'] = $this->db->query("SELECT * FROM tbl_poliklinik")->result();
+		$data['lab'] = $this->db->query("SELECT * FROM tbl_jenisperiksa")->result();
 		$this->template->load('MasterAdmin','pasien/data_pasien',$data);
 	}
 	public function registrasi_pasien()

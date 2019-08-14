@@ -16,16 +16,18 @@ class Periksa extends BaseController {
 	}
   public function index()
   {
-    $data['title'] = 'Admin | Daftar Pasien Control';
-    $data['periksa'] = $this->M_periksa->periksa();
-		$data['status'] = $this->M_periksa->sudah_periksa();
-		$data['hitung'] = $this->M_periksa->hitung_pasien_hariini();
+    $data['title'] 		= 'Admin | Daftar Pasien Control';
+    $data['periksa'] 	= $this->M_periksa->periksa();
+		$data['status'] 	= $this->M_periksa->sudah_periksa();
+		$data['hitung'] 	= $this->M_periksa->hitung_pasien_hariini();
+
     $this->template->load('MasterAdmin','periksa/data_periksa',$data);
   }
 	public function tambah_periksa_proses()
 	{
 		$data['id_pasien'] 		= $this->input->post('id_pasien');
 		$data['id_poliklinik'] 	= $this->input->post('id_poliklinik');
+		$data['pd'] 	= $this->input->post('pd');
 		$data['tanggal'] = $this->input->post('tanggal');
 		$data['status'] 	= $this->input->post('status');
 		$this->M_periksa->simpan_periksa($data);
@@ -43,11 +45,11 @@ class Periksa extends BaseController {
 
 		$data = array(
 			'id_periksa'		=> $id_periksa,
-			'status'			=> $status,
+			'status'				=> $status,
 		);
 
 		$where = array(
-			'id_periksa'  => $id_periksa
+			'id_periksa'  	=> $id_periksa
 		);
 		$this->M_periksa->update_status($where,$data,'tbl_periksa');
 		$this->session->set_flashdata("update_status","

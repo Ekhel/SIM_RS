@@ -8,7 +8,7 @@ class data_induk extends BaseController {
 	public function __construct()
 	{
 			parent::__construct();
-			$this->load->library(array('form_validation','grocery_CRUD'));
+			$this->load->library('form_validation');
 			$this->load->database();
 	    $this->load->helper('url');
       $this->load->model('M_induk');

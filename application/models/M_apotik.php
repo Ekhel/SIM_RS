@@ -73,4 +73,31 @@ class M_apotik extends CI_Model {
     $this->db->delete('tbl_satuan', array('id_satuan' => $param));
   }
   // End CRUD Satuan
+
+  // Start CRUD Supllier
+
+  function supplier()
+  {
+    $query = $this->db->query("SELECT * FROM tbl_supplier");
+    return $query->result();
+  }
+  function tambah_supplier($data)
+  {
+    $this->db->insert('tbl_supplier',$data);
+  }
+  function edit_supplier($where,$data,$table)
+  {
+    $this->db->where($where);
+    $this->db->update($table,$data);
+  }
+  function getsupplier($param = 0)
+	{
+		return $this->db->get_where('tbl_supplier', array('kode_supplier' => $param))->row();
+	}
+  function hapus_supplier($param = 0)
+  {
+    $supplier = $this->getsupplier($param);
+    $this->db->delete('tbl_supplier', array('kode_supplier' => $param));
+  }
+  //end Supplier CRUD
 }

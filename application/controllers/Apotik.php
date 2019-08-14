@@ -83,6 +83,9 @@ class Apotik extends BaseController {
               </div>");
     redirect('Apotik');
   }
+  // End Function CRUD Obat & Alkes
+
+  // Start Function CRUD Satuan
   public function satuan()
   {
     $data['title'] = 'Admin | Satuan';
@@ -136,4 +139,68 @@ class Apotik extends BaseController {
               </div>");
     redirect('Apotik/satuan');
   }
+  // End Function CRUD Satuan
+
+  // Start Function CRUD Supplier
+  public function supplier()
+  {
+    $data['title'] = 'Admin | Supplier';
+    $data['supplier'] = $this->M_apotik->supplier();
+    $this->template->load('MasterAdmin','Apotik/supplier/data-supplier',$data);
+  }
+  public function tambah_supplier()
+  {
+    $data['title'] = 'Admin | Tambah Supplier';
+    $this->template->load('MasterAdmin','Apotik/supplier/tambah_supplier');
+  }
+  function tambah_supplier_proses()
+  {
+    $data['kode_supplier'] = $this->input->post('kode_supplier');
+    $data['nama_supplier'] = $this->input->post('nama_supplier');
+    $data['alamat'] = $this->input->post('alamat');
+    $data['no_telpon'] = $this->input->post('no_telpon');
+
+    $this->M_apotik->tambah_supplier($data);
+    $this->session->set_flashdata("simpan","
+                <div class='alert alert-success fade in'>
+                    <a href='#' class='close' data-dismiss='alert'>&times;</a>
+                    <strong>Success !</strong> Berhasil Menyimpan Data!
+                </div>");
+      redirect('Apotik/supplier');
+  }
+  function edit_supplier_proses()
+  {
+    $kode_supplier = $this->input->post('kode_supplier');
+    $nama_supplier = $this->input->post('nama_supplier');
+    $alamat = $this->input->post('alamat');
+    $no_telpon = $this->input->post('no_telpon');
+
+    $data = array(
+      'kode_supplier'     => $kode_supplier,
+      'nama_supplier'     => $nama_supplier,
+      'alamat'            => $alamat,
+      'no_telpon'         => $no_telpon,
+    );
+    $where = array(
+      'kode_supplier'     => $kode_supplier,
+    );
+    $this->M_apotik->edit_supplier($where,$data,'tbl_supplier');
+    $this->session->set_flashdata("update","
+                <div class='alert alert-success fade in'>
+                    <a href='#' class='close' data-dismiss='alert'>&times;</a>
+                    <strong>Success !</strong> Berhasil Mengupdate Data!
+                </div>");
+      redirect('Apotik/supplier');
+  }
+  function hapus_supplier($param = 0)
+  {
+    $this->M_apotik->hapus_supplier($param);
+    $this->session->set_flashdata("hapus","
+              <div class='alert alert-success fade in'>
+                  <a href='#' class='close' data-dismiss='alert'>&times;</a>
+                  <strong>Success !</strong> Item sudah di Hapus!
+              </div>");
+    redirect('Apotik/supplier');
+  }
+  // End Function CRUD Supplier
 }

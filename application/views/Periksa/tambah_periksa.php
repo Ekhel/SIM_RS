@@ -6,6 +6,16 @@
                   <div class="form-group-inner">
                    <div class="row">
                        <div class="col-lg-2">
+                           <label class="login2 pull-right pull-right-pro">Nama</label>
+                       </div>
+                       <div class="col-lg-9">
+                           <input name="nama" type="text" id="xnama" readonly="true" class="form-control" />
+                       </div>
+                   </div>
+                 </div>
+                  <div class="form-group-inner">
+                   <div class="row">
+                       <div class="col-lg-2">
                            <label class="login2 pull-right pull-right-pro">Polik</label>
                        </div>
                        <div class="col-lg-9">
@@ -23,24 +33,27 @@
                        </div>
                    </div>
                  </div>
-                 <div class="form-group-inner">
-                  <div class="row">
-                      <div class="col-lg-2">
-                          <label class="login2 pull-right pull-right-pro">Nama</label>
-                      </div>
-                      <div class="col-lg-9">
-                          <input name="nama" type="text" id="xnama" readonly="true" class="form-control" />
-                      </div>
-                  </div>
-                </div>
+                <div class="form-group-inner">
+                 <div class="row">
+                     <div class="col-lg-2">
+                         <label class="login2 pull-right pull-right-pro">Periksa Darah</label>
+                     </div>
+                     <div class="col-lg-2">
+                         <input type="radio" value="ya" name="pd"> <i></i>Ya</label>
+                     </div>
+                     <div class="col-lg-2">
+                         <input type="radio" value="tidak" name="pd"> <i></i>Tidak</label>
+                     </div>
+                 </div>
+               </div>
               <div class="form-group-inner">
                <div class="row">
                    <div class="col-lg-2">
                        <label class="login2 pull-right pull-right-pro">Tanggal</label>
                    </div>
                    <div class="col-lg-9">
-                        <?php $tanggal = date('Y-m-d') ?>
-                       <input name="tanggal" type="text" value="<?php echo $tanggal ?>" readonly="true" class="form-control" />
+                      <?php $tanggal = date('Y-m-d') ?>
+                      <input name="tanggal" type="text" value="<?php echo $tanggal ?>" readonly="true" class="form-control" />
                    </div>
                </div>
              </div>

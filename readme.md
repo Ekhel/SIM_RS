@@ -102,3 +102,11 @@
   - Memperbaiki Controller dan Model auth [Solved]
   - Memperbaiki view menu_level.php [Solved]
   - Menghapus Library Grocery CRUD [Solved]
+
+* Rabu 14 Agustus 2019
+  - Menambahkan Function CRUD Periksa Lab pada Controller dan Model lab [Solved]
+  - Menambahkan Function CRUD Hasil Pemeksaan Lab pada Controller dan Model Lab [Solved]
+  - Menambahkan Function detail Hasil Pemekriksaan Lab [Solved]
+  - Memperbaiki Controller dan Model Lab [Solved]
+  - Memperbaiki Layout Menu_level [Solved]
+  - Memperbaiki Layout MasterAdmin ['Solved']
