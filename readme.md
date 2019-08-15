@@ -109,4 +109,8 @@
   - Menambahkan Function detail Hasil Pemekriksaan Lab [Solved]
   - Memperbaiki Controller dan Model Lab [Solved]
   - Memperbaiki Layout Menu_level [Solved]
-  - Memperbaiki Layout MasterAdmin ['Solved']
+  - Memperbaiki Layout MasterAdmin [Solved]
+
+* Kamis 15 Agustus 2019
+  - Menambahkan Function Cetak Detail Hasil Lab [Solved]
+  - Menambahkan View cetak_detial (lab/pasien/cetak_detial.php) [Solved]

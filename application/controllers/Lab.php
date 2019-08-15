@@ -104,4 +104,19 @@ class Lab extends BaseController {
                 </div>");
     redirect('Lab/pasien_periksa_lab');
   }
+  public function detail_hasil_pemeriksaan($id_periksa = 0)
+  {
+    $data['periksa'] = $this->M_lab->detail_periksa($this->uri->segment(3));
+    $data['hasil'] = $this->M_lab->detail_hasil_lab($this->uri->segment(3));
+
+    $this->load->view('lab/pasien/detail_hasil',$data);
+  }
+  public function cetak_detail()
+  {
+    $data['title'] = 'Cetak | Detail Pemeriksaan';
+    $data['periksa'] = $this->M_lab->detail_periksa($this->uri->segment(3));
+    $data['hasil'] = $this->M_lab->detail_hasil_lab($this->uri->segment(3));
+
+    $this->load->view('lab/pasien/cetak_detail',$data);
+  }
 }

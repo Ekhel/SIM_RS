@@ -49,7 +49,7 @@ class M_lab extends CI_Model {
   {
     $this->db->insert('tbl_hasil_lab',$data);
   }
-  function detail_periksa($id_periksa = 0)
+  function detail_periksa($id_periksa)
   {
     $query = $this->db->query("SELECT * FROM tbl_periksa
     LEFT JOIN tbl_pasien on tbl_periksa.id_pasien = tbl_pasien.id_pasien
@@ -57,13 +57,10 @@ class M_lab extends CI_Model {
     WHERE tbl_periksa.id_periksa = '$id_periksa' ");
     return $query->result();
   }
-  function detail_hasil_lab($id_periksa = 0)
+  function detail_hasil_lab($id_periksa)
   {
     $query = $this->db->query("SELECT * FROM tbl_hasil_lab
-    LEFT JOIN tbl_periksa ON tbl_hasil_lab.id_periksa = tbl_periksa.id_periksa
-    LEFT JOIN tbl_pasien ON tbl_periksa.id_pasien = tbl_pasien.id_pasien
-    LEFT JOIN tbl_jenisperiksa ON tbl_hasil_lab.id_jenisperiksa = tbl_jenisperiksa.id_jenisperiksa
-    LEFT JOIN tbl_sub_jenis_periksa ON tbl_jenisperiksa.id_jenisperiksa = tbl_sub_jenis_periksa.id_jenisperiksa
+    LEFT JOIN tbl_sub_jenis_periksa ON tbl_hasil_lab.id_sub_jenis = tbl_sub_jenis_periksa.id_sub_jenis
     WHERE tbl_hasil_lab.id_periksa = '$id_periksa'");
 
     return $query->result();

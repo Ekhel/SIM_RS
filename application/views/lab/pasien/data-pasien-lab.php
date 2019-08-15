@@ -102,6 +102,7 @@ foreach($hitung as $j){
                                         '<?php echo $item->id_periksa ?>',
                                         '<?php echo $item->nama_pasien ?>'
                                         )"><i class="fa fa-plus-circle"></i></a>
+                                      <a href="#javascript:; #detailhasil" data-toggle="modal" class="btn btn-custon-three btn-primary btn-xs" title="Detail Hasil Pemeriksaan" data-id="<?php echo $item->id_periksa ?>"><i class="fa fa-list"></i></a>
                                     </td>
                                   </tr>
                                 <?php } ?>
@@ -124,6 +125,21 @@ foreach($hitung as $j){
 			</div>
 			<div class="modal-body">
         <?php $this->load->view('lab/pasien/tambah_hasil_lab'); ?>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="detailhasil" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-body">
+        <div class="detail-hasil">
+
+        </div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
@@ -158,6 +174,20 @@ foreach($hitung as $j){
     }else{
         $('select[name="id_sub_jenis"]').empty();
     }
+  });
+
+  $(document).ready(function(){
+  	$('#detailhasil').on('show.bs.modal', function (e) {
+  			var idperiksa = $(e.relatedTarget).data('id');
+  			$.ajax({
+  					type : 'POST',
+  					url : '<?php echo base_url();?>Lab/detail_hasil_pemeriksaan/'+idperiksa,
+  					data :  'idperiksa='+ idperiksa,
+  					success : function(data){
+  					$('.detail-hasil').html(data);
+  					}
+  			  });
+  	   });
   });
 
   window.setTimeout("waktu()",1000);
