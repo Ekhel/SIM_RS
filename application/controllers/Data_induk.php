@@ -39,6 +39,8 @@ class data_induk extends BaseController {
 		$data['spesialis'] = $this->M_induk->spesialis();
 		$this->template->load('MasterAdmin','datainduk/data-spesialis',$data);
 	}
+
+	// CRUD POLIKLINIK
 	public function Poliklinik()
 	{
 		$data['title'] = 'Admin | Poliklinik';
@@ -46,6 +48,54 @@ class data_induk extends BaseController {
 
 		$this->template->load('MasterAdmin','datainduk/data-poliklinik',$data);
 	}
+	public function tambah_poliklinik_proses()
+	{
+		$data['id_poliklinik'] = $this->input->post('id_poliklinik');
+		$data['nama_poliklinik'] = $this->input->post('nama_poliklinik');
+
+		$this->M_induk->simpan_poliklinik($data);
+		$this->session->set_flashdata("simpan","
+                <div class='alert alert-success fade in'>
+                    <a href='#' class='close' data-dismiss='alert'>&times;</a>
+                    <strong>Success !</strong> Berhasil Manambah Data!
+                </div>");
+      redirect('Data_induk/Poliklinik');
+	}
+	public function edit_poliklinik_proses()
+	{
+		$id_poliklinik = $this->input->post('id_poliklinik');
+		$nama_poliklinik = $this->input->post('nama_poliklinik');
+
+		$data = array(
+			'id_poliklinik'		=> $id_poliklinik,
+			'nama_poliklinik' => $nama_poliklinik,
+		);
+
+		$where = array(
+			'id_poliklinik'		=> $id_poliklinik
+		);
+		$this->M_induk->update_poliklinik($where,$data,'tbl_poliklinik');
+		$this->session->set_flashdata("update","
+                <div class='alert alert-success fade in'>
+                    <a href='#' class='close' data-dismiss='alert'>&times;</a>
+                    <strong>Success !</strong> Berhasil Mengedit Data!
+                </div>");
+      redirect('Data_induk/Poliklinik');
+	}
+	function hapus_polik($param = 0)
+	{
+		$this->M_induk->hapus_poliklinik($param);
+    $this->session->set_flashdata("hapus","
+							<div class='alert alert-success fade in'>
+									<a href='#' class='close' data-dismiss='alert'>&times;</a>
+									<strong>Success !</strong> Item sudah di Hapus!
+							</div>");
+    redirect('Data_induk/Poliklinik');
+	}
+
+	// END CRUD Poliklinik
+	//-------------------------------------------------------------------------------//
+	// Start CRUD Pegawai
 	public function Pegawai()
 	{
 		$data['title'] = 'Admin | Data Pegawai';
@@ -55,7 +105,7 @@ class data_induk extends BaseController {
 	}
 
 	//-----------------------------------------------------------------------------------------------//
-	// Fungsi Tambah
+	// Fungsi Tambah pegawai
 
 	public function tambah_pegawai()
 	{

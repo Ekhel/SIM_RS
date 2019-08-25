@@ -68,12 +68,12 @@
                                     <td><?php echo $no++ ?></td>
                                     <td><?php echo $item->nama_poliklinik ?></td>
                                     <td>
-                                      <a href="#javascript:; #modal_edit" data-toggle="modal" type="button" title="edit" class="btn btn-custon-three btn-primary btn-xs"><i class="fa fa-edit" onclick="edit_spesialis(
+                                      <a href="#javascript:; #modal_edit" data-toggle="modal" type="button" title="edit" class="btn btn-custon-three btn-primary btn-xs"><i class="fa fa-edit" onclick="edit_polik(
                                           '<?php echo $item->id_poliklinik ?>',
                                           '<?php echo $item->nama_poliklinik ?>'
                                         )"></i>
                                       </a>
-                                      <a href="<?php echo base_url()?>Data_induk/hapus_poliklinik/<?php echo $item->id_poliklinik ?>" type="button" title="Hapus" onclick="return confirm('Hapus item ini Dari Database ?')" class="btn btn-custon-three btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+                                      <a href="<?php echo base_url()?>Data_induk/hapus_polik/<?php echo $item->id_poliklinik ?>" type="button" title="Hapus" onclick="return confirm('Hapus item ini Dari Database ?')" class="btn btn-custon-three btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                                     </td>
                                   </tr>
                                 <?php } ?>
@@ -86,3 +86,45 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="modal_tambah" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id=""><i class="fa fa-edit"></i> Form Edit Data Poliklinik</h4>
+			</div>
+			<div class="modal-body">
+        <?php $this->load->view('datainduk/tambah/poliklinik'); ?>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="modal_edit" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id=""><i class="fa fa-edit"></i> Form Edit Data Poliklinik</h4>
+			</div>
+			<div class="modal-body">
+        <?php $this->load->view('datainduk/edit/poliklinik'); ?>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+  function edit_polik(id_poliklinik,nama_poliklinik){
+    $('#xid_poliklinik').val(id_poliklinik);
+    $('#xnama_polik').val(nama_poliklinik);
+  }
+</script>

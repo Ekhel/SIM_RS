@@ -76,8 +76,8 @@
 
                 <p style="font-size: 13px; color: #ccc">
                     <b>Address: </b><br>
-                    Samofa <br>
-                    Jl. Kapten Patimura - Biak Timur<br>
+                    XXX <br>
+                    Jl. XXXX - XXX<br>
                     Biak 195532 Indonesia.<br>
 
                     Tel. +62 21 8269 3000<br>

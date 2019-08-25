@@ -122,6 +122,7 @@
 </div>
 
 
+
 <script type="text/javascript">
   function edit_pegawai(nik,nama,jekel,pend_terahir,npwp,lahir,tgl,id_jabatan){
     $('#xnik').val(nik);

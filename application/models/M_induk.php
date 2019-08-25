@@ -45,6 +45,10 @@ class M_induk extends CI_Model {
   {
     $this->db->insert('tbl_pegawai',$data);
   }
+  function simpan_poliklinik($data)
+  {
+    $this->db->insert('tbl_poliklinik',$data);
+  }
 
   //-------------------------------------------------------------------------------------------------------- //
   // fungsi Edit
@@ -53,14 +57,30 @@ class M_induk extends CI_Model {
 	{
 		return $this->db->get_where('tbl_pegawai', array('nik' => $param))->row();
 	}
+  function getpoliklinik($param = 0)
+	{
+		return $this->db->get_where('tbl_poliklinik', array('id_poliklinik' => $param))->row();
+	}
   function update_pegawai($where,$data,$table)
   {
     $this->db->where($where);
     $this->db->update($table,$data);
   }
+  function update_poliklinik($where,$data,$table)
+  {
+    $this->db->where($where);
+    $this->db->update($table,$data);
+  }
+
+  // Fungsi Hapus
   function hapus_pegawai($param = 0)
   {
     $dokter = $this->getpegawai($param);
     $this->db->delete('tbl_pegawai', array('nik' => $param));
+  }
+  function hapus_poliklinik($param = 0)
+  {
+    $dokter = $this->getpoliklinik($param);
+    $this->db->delete('tbl_poliklinik', array('id_poliklinik' => $param));
   }
 }
