@@ -3,10 +3,7 @@
 <div class="left-custom-menu-adp-wrap">
     <ul class="nav navbar-nav left-sidebar-menu-pro">
         <li class="nav-item">
-            <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa big-icon fa-home"></i> <span class="mini-dn">Home</span> <span class="indicator-right-menu mini-dn"><i class="fa indicator-mn fa-angle-left"></i></span></a>
-            <div role="menu" class="dropdown-menu left-menu-dropdown animated flipInX">
-                <a href="dashboard.html" class="dropdown-item">Dashboard</a>
-            </div>
+            <a href="<?php echo base_url()?>Home/beranda/1" role="button" aria-expanded="false" class="nav-link"><i class="fa big-icon fa-home"></i> <span class="mini-dn">Beranda</span> <span class="indicator-right-menu mini-dn"><i class="fa indicator-mn"></i></span></a>
         </li>
         <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa big-icon fa-database"></i> <span class="mini-dn">Data Induk</span> <span class="indicator-right-menu mini-dn"><i class="fa indicator-mn fa-angle-left"></i></span></a>
             <div role="menu" class="dropdown-menu left-menu-dropdown animated flipInX">
@@ -22,8 +19,8 @@
             <div role="menu" class="dropdown-menu left-menu-dropdown animated flipInX">
                 <a href="<?php echo base_url()?>Dokter" class="dropdown-item">Dokter</a>
                 <a href="<?php echo base_url()?>Jadwal" class="dropdown-item">Jadwal Praktek</a>
-                <a href="<?php echo base_url()?>Dokter" class="dropdown-item">Tindakan</a>
-                <a href="<?php echo base_url()?>Dokter" class="dropdown-item">Rekam Medis</a>
+                <!--<a href="<?php echo base_url()?>Dokter" class="dropdown-item">Tindakan</a>
+                <a href="<?php echo base_url()?>Dokter" class="dropdown-item">Rekam Medis</a>!-->
             </div>
         </li>
         <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa big-icon fa-pie-chart"></i> <span class="mini-dn">Registrasi</span> <span class="indicator-right-menu mini-dn"><i class="fa indicator-mn fa-angle-left"></i></span></a>
@@ -32,7 +29,7 @@
                 <a href="<?php echo base_url()?>Periksa" class="dropdown-item">Periksa</a>
             </div>
         </li>
-        <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa big-icon fa-flask"></i> <span class="mini-dn">Apotik</span> <span class="indicator-right-menu mini-dn"><i class="fa indicator-mn fa-angle-left"></i></span></a>
+        <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa big-icon fa-flask"></i> <span class="mini-dn">Instalasi Obat</span> <span class="indicator-right-menu mini-dn"><i class="fa indicator-mn fa-angle-left"></i></span></a>
             <div role="menu" class="dropdown-menu left-menu-dropdown animated flipInX">
                 <a href="<?php echo base_url()?>Apotik/Satuan" class="dropdown-item">Satuan</a>
                 <a href="<?php echo base_url()?>Apotik" class="dropdown-item">Obat & Alkes</a>
@@ -44,7 +41,6 @@
             <div role="menu" class="dropdown-menu left-menu-dropdown animated flipInX">
                 <a href="<?php echo base_url()?>Lab" class="dropdown-item">Jenis Pemeriksaan</a>
                 <a href="<?php echo base_url()?>Lab/pasien_periksa_lab" class="dropdown-item">Periksa Lab</a>
-                <a href="#" class="dropdown-item">Hasil Pemeriksaan</a>
             </div>
         </li>
         <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa big-icon fa-folder"></i> <span class="mini-dn">Laporan</span> <span class="indicator-right-menu mini-dn"><i class="fa indicator-mn fa-angle-left"></i></span></a>
@@ -61,8 +57,8 @@
         </li>
         <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa big-icon fa-cogs"></i> <span class="mini-dn">Pengaturan</span> <span class="indicator-right-menu mini-dn"><i class="fa indicator-mn fa-angle-left"></i></span></a>
             <div role="menu" class="dropdown-menu left-menu-dropdown animated flipInX">
-                <a href="bar-charts.html" class="dropdown-item">Level Akses</a>
-                <a href="bar-charts.html" class="dropdown-item">Pengguna</a>
+                <a href="<?php echo base_url()?>Settings/update/1" class="dropdown-item">Profil</a>
+                <a href="bar-charts.html" class="dropdown-item">--</a>
             </div>
         </li>
 

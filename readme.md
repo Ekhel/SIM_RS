@@ -114,3 +114,10 @@
 * Kamis 15 Agustus 2019
   - Menambahkan Function Cetak Detail Hasil Lab [Solved]
   - Menambahkan View cetak_detial (lab/pasien/cetak_detial.php) [Solved]
+
+* Minggu 25 Agustus 2019
+  - Menanbahkan Function CRUD Poliklinik
+
+* Selasa 27 Agustus 2019
+  - Merubah Pattern MVC menajd HMVC [Solved]
+  - Merubah Modul Lab [Solved]

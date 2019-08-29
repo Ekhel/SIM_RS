@@ -34,9 +34,9 @@
         <div class="left-sidebar-pro">
             <nav id="sidebar">
                 <div class="sidebar-header">
-                    <a href="#"><img src="<?php echo base_url()?>assets/img/message/1.jpg" alt="" />
+                    <a href="<?php echo base_url()?>Home/beranda/1"><img src="<?php echo base_url()?>assets/img/message/1.png" alt="" />
                     </a>
-                    <h3><?php echo $this->session->userdata('nama') ?></h3>
+                    <!--<h3><?php echo $this->session->userdata('nama') ?></h3>!-->
                     <p><?php echo $this->session->userdata('nik') ?></p>
                     <strong>SI+</strong>
                 </div>
@@ -267,7 +267,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="footer-copy-right">
-                        <p>Copyright &#169; 2018 Colorlib All rights reserved.</a>.</p>
+                        <p>Copyright &#169; 2019 Poliklinik RSUD BIAK</a></p>
                     </div>
                 </div>
             </div>
