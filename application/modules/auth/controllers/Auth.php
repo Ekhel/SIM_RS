@@ -35,6 +35,10 @@ class Auth extends MX_Controller{
           //helper_log("login", "Login ke applikasi");
   		  redirect('Home/beranda/1');
   			}
+        elseif ($this->session->userdata('level')=='4'){
+          //helper_log("login", "Login ke applikasi");
+  		  redirect('Home/beranda/1');
+  			}
 			}
 			else {
 				$this->session->set_flashdata('message', 'Nama dan sandi anda salah');

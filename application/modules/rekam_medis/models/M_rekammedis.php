@@ -10,4 +10,19 @@ class M_rekammedis extends CI_Model {
     WHERE id_pasien = '$id_pasien'");
     return $query->result();
   }
+  function riwayat_periksa_lab($id_pasien)
+  {
+    $query = $this->db->query("SELECT * FROM tbl_periksa_lab
+    WHERE id_pasien = '$id_pasien'");
+
+    return $query->result();
+  }
+  function riwayat_jenisperiksalab()
+  {
+    $query = $this->db->query("SELECT * FROM tbl_jenisperiksalab
+    LEFT JOIN tbl_jenisperiksa ON tbl_jenisperiksalab.id_jenisperiksa = tbl_jenisperiksalab.id_jenisperiksa
+    WHERE id_pasien = '$id_pasien'");
+
+    return $query->result();
+  }
 }

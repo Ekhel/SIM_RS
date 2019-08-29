@@ -36,7 +36,7 @@
                 <div class="sidebar-header">
                     <a href="<?php echo base_url()?>Home/beranda/1"><img src="<?php echo base_url()?>assets/img/message/1.png" alt="" />
                     </a>
-                    <!--<h3><?php echo $this->session->userdata('nama') ?></h3>!-->
+                    <h3 class="uppercase">SIM POLIKLINIK </h3>
                     <p><?php echo $this->session->userdata('nik') ?></p>
                     <strong>SI+</strong>
                 </div>
