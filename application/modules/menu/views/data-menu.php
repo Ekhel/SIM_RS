@@ -9,9 +9,9 @@
                         </div>
                         <div class="col-lg-6">
                             <ul class="breadcome-menu">
-                                <li><a href="#">Laboratorium</a> <span class="bread-slash">/</span>
+                                <li><a href="#">Setting</a> <span class="bread-slash">/</span>
                                 </li>
-                                <li><span class="bread-blod">Jenis Pemeriksaan</span>
+                                <li><span class="bread-blod">Menu</span>
                                 </li>
                             </ul>
                         </div>
@@ -32,9 +32,9 @@
                 <div class="sparkline13-list shadow-reset">
                     <div class="sparkline13-hd">
                         <div class="main-sparkline13-hd">
-                            <h1>Data <span class="table-project-n"></span> Jenis Pemeriksaan</h1>
+                            <h1>Data <span class="table-project-n"></span> Menu Appplikasi</h1>
                             <div class="sparkline13-outline-icon">
-                              <span><a href="<?php echo base_url()?>Lab/tambah_jenispemeriksaan" title="Tambah Item" class="btn btn-primary btn-sm"><i class="fa fa-plus-circle"></i></a></i></span>
+                              <span><a href="<?php echo base_url()?>Menu/tambah_menu" title="Registrasi Pasien baru" class="btn btn-primary btn-sm"><i class="fa fa-plus-circle"></i></a></i></span>
                           </div>
                         </div>
                     </div>
@@ -50,29 +50,31 @@
                             <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true" data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
                                 <thead>
                                     <tr>
-                                        <th data-field="no">No</th>
-                                        <th data-field="nama">Jenis Pemeriksaan</th>
-                                        <th data-field="Harga">Harga</th>
+                                        <th data-field="kode">KODE</th>
+                                        <th data-field="menu">Nama Menu</th>
+                                        <th data-field="icon">icon</th>
+                                        <th data-field="status">Status</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                   <?php
                                   $no = 1;
-                                  foreach($periksa as $item){
+                                  foreach($menu as $item){
                                   ?>
                                   <tr>
-                                    <td><?php echo $no++ ?></td>
-                                    <td><?php echo $item->nama_periksa ?></td>
-                                    <td><?php echo number_format($item->harga_jenis) ?></td>
+                                    <td><?php echo $item->kode_menu ?></td>
+                                    <td><?php echo $item->menu ?></td>
+                                    <td><i class="<?php echo $item->icon ?>"></i></td>
+                                    <td><?php if($item->status_menu=='aktif'){
+                                      echo "<i class='fa fa-eye'></i> ";
+                                    }
+                                    else{
+                                      echo "<i class='fa fa-eye-slash'></i>";
+                                    }?></td>
                                     <td>
-                                      <a href="#javascript:; #modal_edit" data-toggle="modal" type="button" title="edit" class="btn btn-custon-three btn-primary btn-xs"><i class="fa fa-edit" onclick="edit_jenisperiksa(
-                                          '<?php echo $item->id_jenisperiksa ?>',
-                                          '<?php echo $item->nama_periksa ?>',
-                                          '<?php echo $item->harga_jenis ?>',
-                                        )"></i>
-                                      </a>
-                                      <a href="<?php echo base_url()?>Lab/hapus_jenis/<?php echo $item->id_jenisperiksa ?>" type="button" title="Hapus" onclick="return confirm('Hapus item ini Dari Database ?')" class="btn btn-custon-three btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+                                      <a href="<?php echo base_url()?>Menu/edit_menu/<?php echo $item->id_menu ?>" type="button" class="btn btn-custon-three btn-primary btn-xs" ><i class="fa fa-edit"></i></a>
+                                      <a href="<?php echo base_url()?>Menu/hapus_menu/<?php echo $item->id_menu ?>" type="button" title="Hapus" onclick="return confirm('Hapus item ini Dari Database ?')" class="btn btn-custon-three btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                                     </td>
                                   </tr>
                                 <?php } ?>
@@ -85,28 +87,3 @@
         </div>
     </div>
 </div>
-
-<div class="modal fade" id="modal_edit" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
-	<div class="modal-dialog modal-lg">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id=""><i class="fa fa-edit"></i> Form Edit Jenis Pemeriksaan</h4>
-			</div>
-			<div class="modal-body">
-        <?php $this->load->view('lab/jenispemeriksaan/edit_pemeriksaan'); ?>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-			</div>
-		</div>
-	</div>
-</div>
-
-<script type="text/javascript">
-  function edit_jenisperiksa(id_jenisperiksa,nama_periksa,harga){
-    $('#xid_jenisperiksa').val(id_jenisperiksa);
-    $('#xnama_periksa').val(nama_periksa);
-    $('#xharga').val(harga);
-  }
-</script>

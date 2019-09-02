@@ -14,7 +14,10 @@ class Rekam_medis extends MX_Controller{
   public function rekdis($id_pasien)
   {
     $data['title'] = 'Riwayat Rekam Medis';
+    $data['detail'] = $this->M_rekammedis->detail_pasien($id_pasien);
     $data['periksa'] = $this->M_rekammedis->riwayat_periksa($id_pasien);
-
+    $data['periksa_lab'] = $this->M_rekammedis->riwayat_periksa_lab($id_pasien);
+    $data['lab'] = $this->M_rekammedis->riwayat_jenisperiksalab($id_pasien);
+    $this->template->load('MasterAdmin','data-riwayat',$data);
   }
 }

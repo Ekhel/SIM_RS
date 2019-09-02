@@ -7,12 +7,7 @@
                 <div class="breadcome-list map-mg-t-40-gl shadow-reset">
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="breadcome-heading">
-                                <form role="search" class="">
-                                  <input type="text" placeholder="Search..." class="form-control">
-                                  <a href=""><i class="fa fa-search"></i></a>
-                                </form>
-                            </div>
+                            
                         </div>
                         <div class="col-lg-6">
                             <ul class="breadcome-menu">

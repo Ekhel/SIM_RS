@@ -6,7 +6,7 @@
                    <div class="form-group-inner">
                     <div class="row">
                         <div class="col-lg-2">
-                            <label class="login2 pull-right pull-right-pro">Nama Pemeriksaan</label>
+                            <label class="login2 pull-right pull-right-pro">Jenis Periksa</label>
                         </div>
                         <div class="col-lg-9">
                             <input name="id_jenisperiksa" id="xid_jenisperiksa" type="hidden"  class="form-control" />
@@ -14,6 +14,16 @@
                         </div>
                     </div>
                   </div>
+                  <div class="form-group-inner">
+                   <div class="row">
+                       <div class="col-lg-2">
+                           <label class="login2 pull-right pull-right-pro">Harga</label>
+                       </div>
+                       <div class="col-lg-9">
+                           <input name="harga_jenis" type="text" id="xharga"  class="form-control" />
+                       </div>
+                   </div>
+                 </div>
                 <div class="form-group-inner">
                  <div class="row">
                    <div class="col-lg-2">

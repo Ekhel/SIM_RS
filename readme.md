@@ -121,3 +121,11 @@
 * Selasa 27 Agustus 2019
   - Merubah Pattern MVC menajd HMVC [Solved]
   - Merubah Modul Lab [Solved]
+
+* Senin 2 September 2019
+  - Menambahkan Modul api [Solved]
+  - Merubah Menu_level.php [Solved]
+  - Menambahkan tbl_menu, tbl_sub_menu [Solved]
+  - Menambahkan Library Indo_tanggal.php [Solved]
+  - Merubah Alur Pemeriksaan Lab dari Pasien ke Pasien Periksa Dokter (Polik) [Solved]
+  - Merubah Cetak Hasil Laboratorium [Solved]

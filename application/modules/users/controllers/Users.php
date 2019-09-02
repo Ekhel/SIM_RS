@@ -37,6 +37,27 @@ class Users extends MX_Controller{
                 </div>");
       redirect('Users/level_user');
   }
+  function edit_level_proses()
+  {
+    $id_level = $this->input->post('id_level');
+    $level = $this->input->post('level');
+
+    $data = array(
+      'id_level'    => $id_level,
+      'level'       => $level
+    );
+    $where = array(
+      'id_level'    => $id_level
+    );
+    $this->M_users->edit_level($where,$data,'tb_user_level');
+    $this->session->set_flashdata("update","
+                <div class='alert alert-success fade in'>
+                    <a href='#' class='close' data-dismiss='alert'>&times;</a>
+                    <strong>Success !</strong> Berhasil Mengedit Data!
+                </div>");
+    redirect('Users/level_user');
+  }
+
   function hapus_level($param = 0)
   {
     $this->M_users->hapus_level($param);

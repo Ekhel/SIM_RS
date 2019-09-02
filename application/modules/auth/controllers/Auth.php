@@ -18,7 +18,6 @@ class Auth extends MX_Controller{
 		$nip = $this->input->post('nik');
 		$sandi = md5($this->input->post('sandi'));
 		if (isset($nip, $sandi)) {
-			//cek user dan sandi di database
 			if($this->M_auth->cek($nip, $sandi) == TRUE){
 				$admin = $this->M_auth->getAdmin($nip, $sandi);
 				$data['nik'] = $nik;
@@ -59,8 +58,8 @@ class Auth extends MX_Controller{
       $this->nama = $this->session->userdata('nama');
       $this->global ['nama'] = $this->nama;
 			if ($user_level) {
-				if (is_array($user_level)) { //cek apakah $user_level merupakan jenis array
-					if (!in_array($this->session->userdata('level'), $user_level)) {//cek apakah user_level yg login masuk dalam array $user_level
+				if (is_array($user_level)) {
+					if (!in_array($this->session->userdata('level'), $user_level)) {
 						redirect('home');
 					}
 				}

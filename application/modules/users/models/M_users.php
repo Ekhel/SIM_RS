@@ -28,6 +28,11 @@ class M_users extends CI_Model {
 	{
 		return $this->db->get_where('tb_user_level', array('id_level' => $param))->row();
 	}
+  function edit_level($where,$data,$table)
+  {
+    $this->db->where($where);
+    $this->db->update($table,$data);
+  }
   function hapus_level($param = 0)
   {
     $jadwal = $this->getlevel($param);

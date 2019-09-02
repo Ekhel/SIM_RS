@@ -38,10 +38,11 @@ class Lab extends MX_Controller{
   {
     $id_jenisperiksa = $this->input->post('id_jenisperiksa');
     $nama_periksa = $this->input->post('nama_periksa');
-
+    $harga = $this->input->post('harga_jenis');
     $data = array(
       'id_jenisperiksa'     => $id_jenisperiksa,
       'nama_periksa'        => $nama_periksa,
+      'harga_jenis'         => $harga
     );
     $where = array(
       'id_jenisperiksa'     => $id_jenisperiksa
@@ -121,6 +122,7 @@ class Lab extends MX_Controller{
   {
     $data['id_periksa_lab'] = $this->input->post('id_periksa_lab');
     $data['id_pasien'] = $this->input->post('id_pasien');
+    $data['id_poliklinik'] = $this->input->post('id_poliklinik');
     $data['kode_pemeriksaan'] = $this->input->post('kode_pemeriksaan');
     $data['tanggal_periksa'] = $this->input->post('tanggal_periksa');
 
@@ -158,10 +160,72 @@ class Lab extends MX_Controller{
   }
   public function cetak_hasil_periksalab($id_periksa_lab,$id_jenisperiksa)
   {
+    $this->load->library('Indo_tanggal');
+
     $data['title'] = 'CETAK HASIL LAB';
     $data['periksa'] = $this->M_lab->get_periksa_lab($this->uri->segment(3));
     $data['hasil'] = $this->M_lab->cetak_hasil_pemeriksaan($id_periksa_lab,$id_jenisperiksa);
-
+    $data['jenis'] = $this->M_lab->jenis_periksa_lab($id_periksa_lab);
     $this->load->view('pasien/cetak_hasil',$data);
   }
+  public function sub_periksa_lab()
+  {
+    $data['title'] = 'Sub Jenis Pemeriksaan Lab';
+    $data['jenis'] = $this->db->query("SELECT * FROM tbl_jenisperiksa")->result();
+    $data['sub'] = $this->M_lab->sub_periksa_lab();
+
+    $this->template->load('MasterAdmin','lab/jenispemeriksaan/sub-pemeriksaan',$data);
+  }
+  function tambah_sub_periksa_proses()
+  {
+    $data['id_sub_jenis'] = $this->input->post('id_sub_jenis');
+    $data['nama_jenis'] = $this->input->post('nama_jenis');
+    $data['id_jenisperiksa'] = $this->input->post('id_jenisperiksa');
+    $data['satuan'] = $this->input->post('satuan');
+    $data['keterangan'] = $this->input->post('keterangan');
+
+    $this->M_lab->simpan_sub_jenis($data);
+    $this->session->set_flashdata("simpan","
+                <div class='alert alert-success fade in'>
+                    <a href='#' class='close' data-dismiss='alert'>&times;</a>
+                    <strong>Success !</strong> Berhasil Menyimpan Data!
+                </div>");
+    redirect('Lab/sub_periksa_lab');
+  }
+  function edit_sub_periksa_proses()
+  {
+    $id_sub_jenis = $this->input->post('id_sub_jenis');
+    $id_jenisperiksa = $this->input->post('id_jenisperiksa');
+    $nama_jenis = $this->input->post('nama_jenis');
+    $satuan = $this->input->post('satuan');
+    $keterangan = $this->input->post('keterangan');
+
+    $data = array(
+      'id_sub_jenis'    => $id_sub_jenis,
+      'id_jenisperiksa' => $id_jenisperiksa,
+      'nama_jenis'      => $nama_jenis,
+      'satuan'          => $satuan,
+      'keterangan'      => $keterangan
+    );
+    $where = array(
+      'id_sub_jenis'    => $id_sub_jenis
+    );
+    $this->M_lab->edit_sub_jenis($where,$data,'tbl_sub_jenis_periksa');
+    $this->session->set_flashdata("update","
+                <div class='alert alert-success fade in'>
+                    <a href='#' class='close' data-dismiss='alert'>&times;</a>
+                    <strong>Success !</strong> Berhasil Mengedit Data!
+                </div>");
+    redirect('Lab/sub_periksa_lab');
+  }
+  function hapus_subjenis($param = 0)
+	{
+		$this->M_lab->hapus_sub_jenis($param);
+    $this->session->set_flashdata("hapus","
+							<div class='alert alert-success fade in'>
+									<a href='#' class='close' data-dismiss='alert'>&times;</a>
+									<strong>Success !</strong> Item sudah di Hapus!
+							</div>");
+    redirect('Lab/sub_periksa_lab');
+	}
 }

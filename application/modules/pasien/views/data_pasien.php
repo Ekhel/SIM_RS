@@ -5,7 +5,7 @@
                 <div class="breadcome-list map-mg-t-40-gl shadow-reset">
                     <div class="row">
                         <div class="col-lg-6">
-                            
+
                         </div>
                         <div class="col-lg-6">
                             <ul class="breadcome-menu">
@@ -89,8 +89,7 @@
                                       </a>
                                       <a href="<?php echo base_url()?>Pasien/hapus_pasien/<?php echo $item->id_pasien ?>" type="button" title="Hapus" onclick="return confirm('Hapus item ini Dari Database ?')" class="btn btn-custon-three btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                                       <a href="#javascript:; #modaltambahperiksa" data-toggle="modal" class="btn btn-custon-three btn-success btn-xs" title="Tambah Pasien Praktek"><i class="fa fa-users" onclick="tambah_periksa('<?php echo $item->id_pasien ?>','<?php echo $item->nama_pasien ?>')"></i></a>
-                                      <a href="#javascript:; #modaltambahlab" data-toggle="modal" class="btn btn-custon-three btn-success btn-xs" title="Tambah Pasien Lab"><i class="fa fa-flask" onclick="tambah_lab('<?php echo $item->id_pasien ?>','<?php echo $item->nama_pasien ?>')"></i></a>
-
+                                      <a href="<?php echo base_url()?>Rekam_medis/rekdis/<?php echo $item->id_pasien ?>" class="btn btn-custon-three btn-default btn-xs" title="Rekam Medis"><i class="fa fa-list"></i></a>
                                     </td>
                                   </tr>
                                 <?php } ?>

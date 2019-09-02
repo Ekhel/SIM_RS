@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 25, 2019 at 02:29 PM
+-- Generation Time: Sep 02, 2019 at 09:14 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -175,17 +175,61 @@ INSERT INTO `tbl_jabatan` (`id_jabatan`, `nama_jabatan`) VALUES
 
 CREATE TABLE `tbl_jenisperiksa` (
   `id_jenisperiksa` int(10) NOT NULL,
-  `nama_periksa` varchar(50) NOT NULL
+  `nama_periksa` varchar(50) NOT NULL,
+  `harga_jenis` decimal(10,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_jenisperiksa`
 --
 
-INSERT INTO `tbl_jenisperiksa` (`id_jenisperiksa`, `nama_periksa`) VALUES
-(1, 'Periksa Darah'),
-(2, 'Periksa Darah Lengkap'),
-(3, 'Periksa Gula');
+INSERT INTO `tbl_jenisperiksa` (`id_jenisperiksa`, `nama_periksa`, `harga_jenis`) VALUES
+(1, 'Periksa Darah', '15200'),
+(2, 'Periksa Darah Lengkap', '45000'),
+(3, 'Periksa Gula', '50000'),
+(4, 'Golongan Darah', '80000');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_jenis_periksalab`
+--
+
+CREATE TABLE `tbl_jenis_periksalab` (
+  `id_jenis_pasien` int(10) NOT NULL,
+  `id_periksa_lab` int(10) NOT NULL,
+  `id_pasien` int(10) NOT NULL,
+  `id_jenisperiksa` int(10) NOT NULL,
+  `id_sub_jenis` int(10) NOT NULL,
+  `hasil` varchar(50) NOT NULL,
+  `nilai_rujukan` varchar(50) NOT NULL,
+  `tanggal` date NOT NULL,
+  `hasil_ket` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_jenis_periksalab`
+--
+
+INSERT INTO `tbl_jenis_periksalab` (`id_jenis_pasien`, `id_periksa_lab`, `id_pasien`, `id_jenisperiksa`, `id_sub_jenis`, `hasil`, `nilai_rujukan`, `tanggal`, `hasil_ket`) VALUES
+(2, 1, 5, 2, 1, '117 - 15.5', '35 - 47', '2019-08-28', '-'),
+(3, 1, 5, 2, 2, '14.5', '117 - 15.5', '2019-08-28', '-'),
+(4, 1, 5, 2, 3, '40.59', '112 - 13.5', '2019-08-28', '-'),
+(5, 1, 5, 3, 11, '14.5', '35 - 47', '2019-08-28', '-'),
+(6, 1, 5, 3, 12, '117', '112 - 13.5', '2019-08-28', '-'),
+(7, 1, 5, 2, 4, '14.5', '35 - 47', '2019-08-29', '-'),
+(8, 1, 5, 2, 5, '14.5', '112 - 13.5', '2019-08-29', '-'),
+(9, 2, 3, 2, 1, '117 - 15.5', '35 - 47', '2019-08-30', '-'),
+(10, 2, 3, 2, 2, '14.5', '35 - 47', '2019-08-30', '-'),
+(11, 2, 3, 2, 4, '14.5', '117 - 15.5', '2019-08-30', '-'),
+(12, 2, 3, 2, 5, '44.78', '35 - 47', '2019-08-30', '-'),
+(13, 2, 3, 2, 6, '40.59', '35 - 47', '2019-08-30', '-'),
+(14, 2, 3, 2, 7, '117 - 15.5', '112 - 13.5', '2019-08-30', '-'),
+(15, 2, 3, 2, 8, '117 - 15.5', '112 - 13.5', '2019-08-30', '-'),
+(16, 2, 3, 2, 9, '44.78', '112 - 13.5', '2019-08-30', '-'),
+(17, 2, 3, 2, 10, '117', '35 - 47', '2019-08-30', '-'),
+(18, 3, 2, 3, 11, '14.5', '35 - 47', '2019-08-31', '-'),
+(19, 3, 2, 3, 11, '40.59', '112 - 13.5', '2019-08-31', '-');
 
 -- --------------------------------------------------------
 
@@ -231,6 +275,34 @@ INSERT INTO `tbl_jenjang_pendidikan` (`id_jenjang_pendidikan`, `jenjang_pendidik
 (5, 'D4'),
 (6, 'S1'),
 (7, 'S2');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_menu`
+--
+
+CREATE TABLE `tbl_menu` (
+  `id_menu` int(10) NOT NULL,
+  `menu` varchar(50) NOT NULL,
+  `kode_menu` varchar(10) NOT NULL,
+  `status_menu` enum('aktif','nonaktif') NOT NULL,
+  `icon` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_menu`
+--
+
+INSERT INTO `tbl_menu` (`id_menu`, `menu`, `kode_menu`, `status_menu`, `icon`) VALUES
+(1, 'Data Induk', '01', 'aktif', 'fa big-icon fa-desktop'),
+(2, 'Data Master', '02', 'aktif', 'fa big-icon fa-book'),
+(3, 'Registrasi', '03', 'aktif', 'fa big-icon fa-check-square-o'),
+(4, 'Instalasi Farmasi', '04', 'aktif', 'fa big-icon fa-flask'),
+(5, 'Laboratorium', '05', 'aktif', 'fa big-icon fa-bar-chart-o'),
+(6, 'Pengguna', '06', 'aktif', 'fa big-icon fa-users'),
+(7, 'Pengaturan', '07', 'aktif', 'fa big-icon fa-cogs'),
+(8, 'Laporan', '08', 'nonaktif', 'fa big-icon fa-calendar');
 
 -- --------------------------------------------------------
 
@@ -285,7 +357,8 @@ INSERT INTO `tbl_pasien` (`id_pasien`, `nama_pasien`, `jenis_kelamin`, `golongan
 (2, 'DAN CALVIN KARAFIR', 'L', 'O', 'Jayapura', '1997-12-04', 'Fransina Monim', 'Waena Perumnas III', '082199537593', '0000-00-00', 'Michael'),
 (3, 'YANIKE ', 'P', 'B', 'Sorong', '0000-00-00', 'Yomima', 'Polimak III', '082199537595', '0000-00-00', 'Michael'),
 (4, 'MARGARETHA FONATABA', 'P', 'A', 'Serui', '1971-09-05', '-', 'Kamp. Waibron', '081344567890', '2019-08-05', 'Michael'),
-(5, 'YOHANIS FENENTRUMA', 'L', 'A', 'Sorong', '1995-02-14', '-', 'Jl.XXX Coba', '082199537595', '2019-08-25', 'Michael');
+(5, 'YOHANIS FENENTRUMA', 'L', 'A', 'Sorong', '1995-02-14', '-', 'Jl.XXX Cobaa', '082199537595', '0000-00-00', ''),
+(6, 'WILLY BRODUS WALLY', 'L', 'AB', 'Sentani', '1991-02-26', 'Dorkas', 'Distrik Waibu Sentani', '082244821098', '2019-09-02', 'Michael');
 
 -- --------------------------------------------------------
 
@@ -389,8 +462,39 @@ INSERT INTO `tbl_periksa` (`id_periksa`, `id_pasien`, `tanggal`, `id_poliklinik`
 (11, 1, '2019-08-14', 1, 'tidak', 'sudah', ''),
 (12, 4, '2019-08-14', 4, 'ya', 'belum', ''),
 (13, 4, '2019-08-15', 3, 'ya', 'sudah', ''),
-(14, 4, '2019-08-23', 4, 'ya', 'belum', ''),
-(15, 5, '2019-08-25', 0, 'ya', 'belum', '');
+(14, 4, '2019-08-26', 4, 'ya', 'belum', ''),
+(15, 5, '2019-08-26', 0, 'ya', 'belum', ''),
+(16, 5, '2019-08-28', 6, '', 'sudah', ''),
+(17, 2, '2019-08-29', 1, '', 'sudah', ''),
+(18, 4, '2019-08-29', 1, '', 'belum', ''),
+(19, 3, '2019-08-30', 1, '', 'belum', ''),
+(20, 2, '2019-08-31', 5, '', 'sudah', ''),
+(21, 5, '2019-09-01', 4, '', 'belum', ''),
+(22, 6, '2019-09-02', 4, '', 'sudah', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_periksa_lab`
+--
+
+CREATE TABLE `tbl_periksa_lab` (
+  `id_periksa_lab` int(10) NOT NULL,
+  `id_pasien` int(10) NOT NULL,
+  `id_poliklinik` int(10) NOT NULL,
+  `kode_pemeriksaan` varchar(50) NOT NULL,
+  `tanggal_periksa` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_periksa_lab`
+--
+
+INSERT INTO `tbl_periksa_lab` (`id_periksa_lab`, `id_pasien`, `id_poliklinik`, `kode_pemeriksaan`, `tanggal_periksa`) VALUES
+(1, 5, 6, 'LAB527082019001', '2019-08-29'),
+(2, 3, 3, 'LAB530082019002', '2019-09-01'),
+(3, 2, 4, 'LAB531082019003', '2019-09-01'),
+(4, 6, 4, 'LAB502092019004', '2019-09-02');
 
 -- --------------------------------------------------------
 
@@ -443,25 +547,26 @@ INSERT INTO `tbl_praktek` (`id_jadwal`, `id_dokter`, `id_poliklinik`, `jadwal`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_profil_rumah_sakit`
+-- Table structure for table `tbl_profil`
 --
 
-CREATE TABLE `tbl_profil_rumah_sakit` (
-  `id` int(11) NOT NULL,
-  `nama_rumah_sakit` varchar(50) NOT NULL,
-  `alamat` text NOT NULL,
-  `propinsi` varchar(30) NOT NULL,
-  `kabupaten` varchar(30) NOT NULL,
-  `no_telpon` varchar(13) NOT NULL,
-  `logo` text NOT NULL
+CREATE TABLE `tbl_profil` (
+  `id_org` int(10) NOT NULL,
+  `nama_org` varchar(128) NOT NULL,
+  `alamat` varchar(100) NOT NULL,
+  `provinsi` varchar(50) NOT NULL,
+  `kabupaten` varchar(50) NOT NULL,
+  `no_telfon` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `logo` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbl_profil_rumah_sakit`
+-- Dumping data for table `tbl_profil`
 --
 
-INSERT INTO `tbl_profil_rumah_sakit` (`id`, `nama_rumah_sakit`, `alamat`, `propinsi`, `kabupaten`, `no_telpon`, `logo`) VALUES
-(1, 'RS CUT MEUTIA LANGSA', 'JL LANGSA KOTA NO 13 KOTA LANGSA', 'ACEH', 'LANGSA', '021-32432323', 'logo-rs1.jpg');
+INSERT INTO `tbl_profil` (`id_org`, `nama_org`, `alamat`, `provinsi`, `kabupaten`, `no_telfon`, `email`, `logo`) VALUES
+(1, 'Poliklinik RSUD Biak', 'Jl.xxx.xxx', 'Papua', 'Biak', '-', '-', 'biak.png');
 
 -- --------------------------------------------------------
 
@@ -532,7 +637,53 @@ INSERT INTO `tbl_sub_jenis_periksa` (`id_sub_jenis`, `id_jenisperiksa`, `nama_je
 (7, 2, 'RDW-CV', '%', '-'),
 (8, 2, 'Trombosit', '10^3uL', '-'),
 (9, 2, 'Leukosit', '10^3uL', '-'),
-(10, 2, 'LED', 'mm/jam', '-');
+(10, 2, 'LED', 'mm/jam', '-'),
+(11, 3, 'Gula Darah', '%', '-'),
+(12, 3, 'Gula Normal', '%', '-');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_sub_menu`
+--
+
+CREATE TABLE `tbl_sub_menu` (
+  `id_sub_menu` int(10) NOT NULL,
+  `id_menu` int(10) NOT NULL,
+  `sub_menu` varchar(100) NOT NULL,
+  `modul` varchar(100) NOT NULL,
+  `function` varchar(100) DEFAULT NULL,
+  `kode_sub_menu` varchar(100) NOT NULL,
+  `status_sub` enum('aktif','nonaktif') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_sub_menu`
+--
+
+INSERT INTO `tbl_sub_menu` (`id_sub_menu`, `id_menu`, `sub_menu`, `modul`, `function`, `kode_sub_menu`, `status_sub`) VALUES
+(1, 1, 'Agama', 'Data_induk', 'Agama', '01', 'aktif'),
+(2, 1, 'Jabatan', 'Data_induk', 'jabatan', '02', 'aktif'),
+(3, 1, 'Departemen', 'Data_induk', 'departemen', '03', 'nonaktif'),
+(4, 1, 'Spesialis', 'Data_induk', 'spesialis', '04', 'aktif'),
+(5, 2, 'Dokter', 'Dokter', '', '05', 'aktif'),
+(6, 2, 'Jadwal Praktek', 'Jadwal', '', '06', 'aktif'),
+(7, 3, 'Pasien', 'Pasien', '', '07', 'aktif'),
+(8, 3, 'Periksa', 'Periksa', '', '08', 'aktif'),
+(9, 4, 'Satuan', 'Apotik', 'Satuan', '09', 'aktif'),
+(10, 4, 'Obat & Alkes', 'Apotik', '', '10', 'aktif'),
+(11, 4, 'Supplier', 'Apotik', 'supplier', '11', 'aktif'),
+(12, 4, 'Pengembalian', 'Apotik', '', '12', 'nonaktif'),
+(13, 5, 'Pemeriksaan', 'Lab', '', '13', 'aktif'),
+(15, 6, 'Level Akses', 'Users', 'level_user', '15', 'aktif'),
+(16, 6, 'Pengguna', 'Users', '', '16', 'aktif'),
+(17, 7, 'Profil', 'Settings', 'update/1', '17', 'aktif'),
+(18, 7, 'Menu', 'Menu', '', '18', 'aktif'),
+(19, 7, 'Sub Menu', 'Menu', 'Sub_menu', '19', 'aktif'),
+(20, 1, 'Poliklinik', 'Data_induk', 'Poliklinik', '20', 'aktif'),
+(21, 1, 'Pegawai', 'Data_induk', 'Pegawai', '21', 'aktif'),
+(22, 5, 'Sub Pemeriksaan', 'Lab', 'sub_periksa_lab', '22', 'aktif'),
+(23, 5, 'Pasien Lab', 'Lab', 'pasien_periksa_lab', '14', 'aktif');
 
 -- --------------------------------------------------------
 
@@ -578,7 +729,8 @@ CREATE TABLE `tb_user` (
 INSERT INTO `tb_user` (`id_user`, `status`, `nama`, `nik`, `sandi`, `sandi_deskripsi`, `level`, `email`) VALUES
 (1, 'aktif', 'Michael', 1129002944, '82bc8f5141a48dd57bb43d91a5faae88', 'ekhel123', 1, 'blackmanskill@gmail.com'),
 (2, 'aktif', 'ekhel', 1129002945, '82bc8f5141a48dd57bb43d91a5faae88', 'ekhel123', 2, 'michaelkarafir@gmail.com'),
-(3, 'aktif', 'oktovianus', 1129002946, '25d55ad283aa400af464c76d713c07ad', '12345678', 3, '-');
+(3, 'aktif', 'oktovianus', 1129002946, '25d55ad283aa400af464c76d713c07ad', '12345678', 3, '-'),
+(4, 'aktif', 'laboratorium', 1129002947, '081c49b8c66a69aad79f4bca8334e0ef', 'lab123', 4, '-');
 
 -- --------------------------------------------------------
 
@@ -598,7 +750,8 @@ CREATE TABLE `tb_user_level` (
 INSERT INTO `tb_user_level` (`id_level`, `level`) VALUES
 (1, 'Administrator'),
 (2, 'Super Users'),
-(3, 'POLIK');
+(3, 'Polik'),
+(4, 'Laboratorium');
 
 --
 -- Indexes for dumped tables
@@ -647,6 +800,12 @@ ALTER TABLE `tbl_jenisperiksa`
   ADD PRIMARY KEY (`id_jenisperiksa`);
 
 --
+-- Indexes for table `tbl_jenis_periksalab`
+--
+ALTER TABLE `tbl_jenis_periksalab`
+  ADD PRIMARY KEY (`id_jenis_pasien`);
+
+--
 -- Indexes for table `tbl_jenjang`
 --
 ALTER TABLE `tbl_jenjang`
@@ -657,6 +816,12 @@ ALTER TABLE `tbl_jenjang`
 --
 ALTER TABLE `tbl_jenjang_pendidikan`
   ADD PRIMARY KEY (`id_jenjang_pendidikan`);
+
+--
+-- Indexes for table `tbl_menu`
+--
+ALTER TABLE `tbl_menu`
+  ADD PRIMARY KEY (`id_menu`);
 
 --
 -- Indexes for table `tbl_obatalkes`
@@ -689,6 +854,12 @@ ALTER TABLE `tbl_periksa`
   ADD PRIMARY KEY (`id_periksa`);
 
 --
+-- Indexes for table `tbl_periksa_lab`
+--
+ALTER TABLE `tbl_periksa_lab`
+  ADD PRIMARY KEY (`id_periksa_lab`);
+
+--
 -- Indexes for table `tbl_poliklinik`
 --
 ALTER TABLE `tbl_poliklinik`
@@ -701,10 +872,10 @@ ALTER TABLE `tbl_praktek`
   ADD PRIMARY KEY (`id_jadwal`);
 
 --
--- Indexes for table `tbl_profil_rumah_sakit`
+-- Indexes for table `tbl_profil`
 --
-ALTER TABLE `tbl_profil_rumah_sakit`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `tbl_profil`
+  ADD PRIMARY KEY (`id_org`);
 
 --
 -- Indexes for table `tbl_satuan`
@@ -723,6 +894,12 @@ ALTER TABLE `tbl_spesialis`
 --
 ALTER TABLE `tbl_sub_jenis_periksa`
   ADD PRIMARY KEY (`id_sub_jenis`);
+
+--
+-- Indexes for table `tbl_sub_menu`
+--
+ALTER TABLE `tbl_sub_menu`
+  ADD PRIMARY KEY (`id_sub_menu`);
 
 --
 -- Indexes for table `tbl_supplier`
@@ -780,12 +957,22 @@ ALTER TABLE `tbl_jabatan`
 -- AUTO_INCREMENT for table `tbl_jenisperiksa`
 --
 ALTER TABLE `tbl_jenisperiksa`
-  MODIFY `id_jenisperiksa` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_jenisperiksa` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `tbl_jenis_periksalab`
+--
+ALTER TABLE `tbl_jenis_periksalab`
+  MODIFY `id_jenis_pasien` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `tbl_jenjang_pendidikan`
 --
 ALTER TABLE `tbl_jenjang_pendidikan`
   MODIFY `id_jenjang_pendidikan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `tbl_menu`
+--
+ALTER TABLE `tbl_menu`
+  MODIFY `id_menu` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `tbl_obatalkes`
 --
@@ -795,12 +982,17 @@ ALTER TABLE `tbl_obatalkes`
 -- AUTO_INCREMENT for table `tbl_pasien`
 --
 ALTER TABLE `tbl_pasien`
-  MODIFY `id_pasien` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_pasien` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `tbl_periksa`
 --
 ALTER TABLE `tbl_periksa`
-  MODIFY `id_periksa` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_periksa` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+--
+-- AUTO_INCREMENT for table `tbl_periksa_lab`
+--
+ALTER TABLE `tbl_periksa_lab`
+  MODIFY `id_periksa_lab` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tbl_poliklinik`
 --
@@ -825,17 +1017,22 @@ ALTER TABLE `tbl_spesialis`
 -- AUTO_INCREMENT for table `tbl_sub_jenis_periksa`
 --
 ALTER TABLE `tbl_sub_jenis_periksa`
-  MODIFY `id_sub_jenis` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_sub_jenis` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT for table `tbl_sub_menu`
+--
+ALTER TABLE `tbl_sub_menu`
+  MODIFY `id_sub_menu` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id_user` int(14) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_user` int(14) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tb_user_level`
 --
 ALTER TABLE `tb_user_level`
-  MODIFY `id_level` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;COMMIT;
+  MODIFY `id_level` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

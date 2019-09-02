@@ -5,7 +5,7 @@
                 <div class="breadcome-list map-mg-t-40-gl shadow-reset">
                     <div class="row">
                         <div class="col-lg-6">
-                            
+
                         </div>
                         <div class="col-lg-6">
                             <ul class="breadcome-menu">
@@ -91,11 +91,13 @@ foreach($hitung as $j){
                                      ?>
                                    </td>
                                     <td>
-                                      <a href="<?php echo base_url()?>Periksa/hapus_periksa/<?php echo $item->id_periksa ?>" type="button" title="Hapus" onclick="return confirm('Hapus item ini Dari Database ?')" class="btn btn-custon-three btn-danger btn-xs"><i class="fa fa-trash"></i></a>
-                                      <a href="#javascript:; #updatestatus" data-toggle="modal" class="btn btn-custon-three btn-danger btn-xs" title="Ubah Status" onclick="update('<?php echo $item->id_periksa ?>')"><i class="fa fa-cogs"></i></a>
+                                      <a href="<?php echo base_url()?>Periksa/hapus_periksa/<?php echo $item->id_periksa ?>" type="button" title="Hapus" onclick="return confirm('Hapus item ini Dari Database ?')" class="btn btn-custon-three btn-primary btn-xs"><i class="fa fa-trash"></i></a>
+                                      <a href="#javascript:; #updatestatus" data-toggle="modal" class="btn btn-custon-three btn-primary btn-xs" title="Ubah Status" onclick="update('<?php echo $item->id_periksa ?>')"><i class="fa fa-cogs"></i></a>
                                       <?php if($item->status == 'sudah'){?>
-                                        <a href="#javascript:; #catatandiagnosa" data-toggle="modal" class="btn btn-custon-three btn-danger btn-xs" title="Tambah Catatan Diagnosa" onclick="update_diagnosa('<?php echo $item->id_periksa ?>','<?php echo $item->nama_pasien ?>','<?php echo $item->diagnosa ?>')"><i class="fa fa-pencil-square-o"></i></a>
+                                        <a href="#javascript:; #catatandiagnosa" data-toggle="modal" class="btn btn-custon-three btn-primary btn-xs" title="Tambah Catatan Diagnosa" onclick="update_diagnosa('<?php echo $item->id_periksa ?>','<?php echo $item->nama_pasien ?>','<?php echo $item->diagnosa ?>')"><i class="fa fa-pencil-square-o"></i></a>
+                                        <a href="#javascript:; #modaltambahresep" data-toggle="modal" class="btn btn-custon-three btn-warning btn-xs" title="Tulis e - Resep" onclick="tambah_resep('<?php echo $item->id_periksa ?>','<?php echo $item->nama_pasien ?>')"><i class="fa fa-file"></i></a>
                                       <?php } ?>
+                                      <a href="#javascript:; #modaltambahlab" data-toggle="modal" class="btn btn-custon-three btn-success btn-xs" title="Tambah Pasien Lab"><i class="fa fa-flask" onclick="tambah_lab('<?php echo $item->id_pasien ?>','<?php echo $item->id_poliklinik ?>','<?php echo $item->nama_pasien ?>')"></i></a>
                                     </td>
                                   </tr>
                                 <?php } ?>
@@ -140,6 +142,23 @@ foreach($hitung as $j){
 	</div>
 </div>
 
+<div class="modal fade" id="modaltambahlab" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id=""><i class="fa fa-plus-circle"></i> Form Tambah Data Periksa</h4>
+			</div>
+			<div class="modal-body">
+        <?php $this->load->view('lab/pasien/tambah_lab'); ?>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 
 <script type="text/javascript">
   function edit(id_periksa,id_pasien,tanggal,id_poliklinik,status){
@@ -157,6 +176,12 @@ foreach($hitung as $j){
     $('#xxid_periksa').val(id_periksa);
     $('#xxnama').val(nama);
     $('#xdiagnosa').val(diagnosa);
+  }
+
+  function tambah_lab(id_pasien,id_poliklinik,nama){
+    $('#idpasien').val(id_pasien);
+    $('#idpolik').val(id_poliklinik);
+    $('#nama').val(nama);
   }
 
   window.setTimeout("waktu()",1000);

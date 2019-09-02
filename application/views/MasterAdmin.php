@@ -50,7 +50,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-lg-1 col-md-6 col-sm-6 col-xs-12">
-                                <button type="button" id="sidebarCollapse" class="btn bar-button-pro header-drl-controller-btn btn-info navbar-btn">
+                                <button type="button" id="sidebarCollapse" class="btn bar-button-pro header-drl-controller-btn btn-success navbar-btn">
                                     <i class="fa fa-bars"></i>
                                 </button>
                                 <div class="admin-logo logo-wrap-pro">
@@ -61,17 +61,29 @@
                             <div class="col-lg-6 col-md-1 col-sm-1 col-xs-12">
                                 <div class="header-top-menu tabl-d-n">
                                     <ul class="nav navbar-nav mai-top-nav">
-                                        <li class="nav-item"><a href="#" class="nav-link">Web Services</a>
-                                        </li>
                                         <li class="nav-item dropdown">
                                             <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">API <span class="angle-down-topmenu"><i class="fa fa-angle-down"></i></span></a>
                                             <div role="menu" class="dropdown-menu animated flipInX">
-                                                <a href="#" class="dropdown-item">Dokter</a>
-                                                <a href="#" class="dropdown-item">Pasien</a>
-                                                <a href="#" class="dropdown-item">Apotik</a>
+                                                <a href="<?php echo base_url()?>Api/Dokumentasi" class="dropdown-item">Dokumentasi API </a>
+                                                <a href="<?php echo base_url()?>Api/pasien" target="_blank" class="dropdown-item">Pasien</a>
+                                                <a href="<?php echo base_url()?>Api/dokter" target="_blank" class="dropdown-item">Dokter</a>
                                             </div>
                                         </li>
+                                        <li class="nav-item dropdown">
+                                            <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">GraphQL <span class="angle-down-topmenu"><i class="fa fa-angle-down"></i></span></a>
+                                            <div role="menu" class="dropdown-menu animated flipInX">
+                                                <a href="#" class="dropdown-item">Dokumentasi GraphQL </a>
+                                                <a href="#" class="dropdown-item">Dokter</a>
+                                                <a href="#" class="dropdown-item">Pasien</a>
 
+                                            </div>
+                                        </li>
+                                        <li class="nav-item dropdown">
+                                            <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">Bridge <span class="angle-down-topmenu"><i class="fa fa-angle-down"></i></span></a>
+                                            <div role="menu" class="dropdown-menu animated flipInX">
+                                                <a href="#" class="dropdown-item">BPJS</a>
+                                            </div>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>

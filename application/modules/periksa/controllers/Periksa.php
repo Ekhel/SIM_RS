@@ -9,7 +9,7 @@ class Periksa extends MX_Controller{
 			$this->load->library('form_validation');
 	    $this->load->helper('url');
 			$this->load->database();
-      $this->load->model('M_periksa');
+      $this->load->model(array('M_periksa','lab/M_lab'));
 			Modules::run('Auth/cek_login');
 	}
   public function index()
@@ -18,7 +18,7 @@ class Periksa extends MX_Controller{
     $data['periksa'] 	= $this->M_periksa->periksa();
 		$data['status'] 	= $this->M_periksa->sudah_periksa();
 		$data['hitung'] 	= $this->M_periksa->hitung_pasien_hariini();
-
+		$data['kode'] = $this->M_lab->kode_lab();
     $this->template->load('MasterAdmin','periksa/data_periksa',$data);
   }
 	public function tambah_periksa_proses()

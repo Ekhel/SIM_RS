@@ -162,7 +162,9 @@
 	  </table>
     <hr/>
     <table width="100%">
-      <tr><td colspan='2' align='center'>DETAIL HASIL PEMERIKSAAN LABORATORIUM</td></tr>
+			<?php foreach($jenis as $j){?>
+      <tr><td colspan='2' align='center'>HASIL PEMERIKSAAN LABORATORIUM ( <?php echo $j->nama_periksa ?> )</td></tr>
+		<?php } ?>
     </table>
   </div>
 	</br>
@@ -177,7 +179,12 @@
         <tr>
           <td>Jekel</td>
           <td>:</td>
-          <td><?php echo $item->jenis_kelamin ?></td>
+          <td><?php if($item->jenis_kelamin=='P'){
+						echo "PEREMPUAN";
+					}
+					else{
+						echo "LAKI-LAKI";
+					}?></td>
         </tr>
         <tr>
           <td>Gol Darah</td>
@@ -196,16 +203,25 @@
         </tr>
       </table>
       <table width="50%" align="right" class="normal-text">
-
         <tr>
-          <td>KODE LAB</td>
+          <td>Kode Periksa Lab</td>
           <td>:</td>
           <td><?php echo $item->kode_pemeriksaan ?></td>
         </tr>
-        <tr>
-          <td>Tanggal Periksa</td>
+				<tr>
+          <td>POLIK</td>
           <td>:</td>
-          <td><?php echo $item->tanggal_periksa ?> </td>
+          <td><?php echo $item->nama_poliklinik ?></td>
+        </tr>
+				<tr>
+          <td>Dokter Pengirim</td>
+          <td>:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Hari, Tanggal</td>
+          <td>:</td>
+          <td><?php echo $this->indo_tanggal->getHari($item->tanggal_periksa) ?>, <?php echo $this->indo_tanggal->tgl_indo($item->tanggal_periksa) ?></td>
         </tr>
       </table>
     </div>

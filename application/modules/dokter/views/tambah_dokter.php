@@ -5,7 +5,7 @@
                 <div class="breadcome-list map-mg-t-40-gl shadow-reset">
                     <div class="row">
                         <div class="col-lg-6">
-                            
+
                         </div>
                         <div class="col-lg-6">
                             <ul class="breadcome-menu">
@@ -31,7 +31,7 @@
         <div class="sparkline12-list shadow-reset mg-t-30">
             <div class="sparkline12-hd">
                 <div class="main-sparkline12-hd">
-                    <h1>Form Registrasi Pasien Baru</h1>
+                    <h1>Form Tambah  data dokter</h1>
                     <div class="sparkline12-outline-icon">
                         <span class="sparkline12-collapse-link"><i class="fa fa-chevron-up"></i></span>
                         <span><i class="fa fa-wrench"></i></span>

@@ -9,8 +9,9 @@
                            <label class="login2 pull-right pull-right-pro">Nama</label>
                        </div>
                        <div class="col-lg-9">
-                           <input name="id_pasien" type="hidden" id="xxid_pasien" readonly="true" class="form-control" />
-                           <input name="nama" type="text" id="xxnama" readonly="true" class="form-control" />
+                           <input name="id_pasien" type="hidden" id="idpasien" readonly="true" class="form-control" />
+                           <input name="id_poliklinik" type="hidden" id="idpolik" readonly="true" class="form-control" />
+                           <input name="nama" type="text" id="nama" readonly="true" class="form-control" />
                        </div>
                    </div>
                  </div>

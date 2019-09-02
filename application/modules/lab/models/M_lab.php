@@ -97,6 +97,7 @@ class M_lab extends CI_Model {
       tbl_jenis_periksalab.id_jenisperiksa as id_jenisperiksa,
       tbl_jenis_periksalab.id_pasien as id_pasien,
       tbl_jenisperiksa.nama_periksa as nama_periksa,
+      tbl_jenisperiksa.harga_jenis as harga_jenis,
       COUNT(tbl_sub_jenis_periksa.id_sub_jenis) as jumlah_sub
       FROM tbl_jenis_periksalab
       LEFT JOIN tbl_jenisperiksa ON tbl_jenis_periksalab.id_jenisperiksa = tbl_jenisperiksa.id_jenisperiksa
@@ -109,6 +110,7 @@ class M_lab extends CI_Model {
   {
     $query = $this->db->query("SELECT * FROM tbl_periksa_lab
     LEFT JOIN tbl_pasien ON tbl_periksa_lab.id_pasien = tbl_pasien.id_pasien
+    LEFT JOIN tbl_poliklinik ON tbl_periksa_lab.id_poliklinik = tbl_poliklinik.id_poliklinik
     WHERE tbl_periksa_lab.id_periksa_lab = '$id_periksa_lab' ");
 
     return $query->result();
@@ -119,5 +121,31 @@ class M_lab extends CI_Model {
       LEFT JOIN tbl_sub_jenis_periksa ON tbl_jenis_periksalab.id_sub_jenis = tbl_sub_jenis_periksa.id_sub_jenis
       WHERE tbl_jenis_periksalab.id_periksa_lab = '$id_periksa_lab' AND tbl_jenis_periksalab.id_jenisperiksa = '$id_jenisperiksa' ");
     return $query->result();
+  }
+  function sub_periksa_lab()
+  {
+    $query = $this->db->query("SELECT * FROM tbl_sub_jenis_periksa
+    LEFT JOIN tbl_jenisperiksa ON tbl_sub_jenis_periksa.id_jenisperiksa = tbl_jenisperiksa.id_jenisperiksa");
+
+    return $query->result();
+  }
+
+  function simpan_sub_jenis($data)
+  {
+    $this->db->insert('tbl_sub_jenis_periksa',$data);
+  }
+  function edit_sub_jenis($where,$data,$table)
+  {
+    $this->db->where($where);
+    $this->db->update($table,$data);
+  }
+  function getsubjenis($param = 0)
+	{
+		return $this->db->get_where('tbl_sub_jenis_periksa', array('id_sub_jenis' => $param))->row();
+	}
+  function hapus_sub_jenis($param = 0)
+  {
+    $sub = $this->getsubjenis($param);
+    $this->db->delete('tbl_sub_jenis_periksa', array('id_sub_jenis' => $param));
   }
 }
