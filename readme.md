@@ -14,8 +14,8 @@
 
 * Library :
   - Indo Tanggal (Tanggal Indonesia)
-  - BaseController (Authentikasi USER)
   - Template (UI Applikasi)
+  - REST Controller (API)
 
 * Template :
   - Admin Pro + (Gradient Design)
