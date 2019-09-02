@@ -20,6 +20,10 @@
 * Template :
   - Admin Pro + (Gradient Design)
 
+* Services :
+  - Docker
+  - docker-compose
+
 ----------------------------------------------------
 
 ## Progres Pembuatan & Pengembangan
