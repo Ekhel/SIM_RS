@@ -32,7 +32,7 @@ foreach($hitung as $j){
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-
+              <?php echo $this->session->flashdata('simpan_resep');?>
               <?php echo $this->session->flashdata('update_status');?>
               <?php echo $this->session->flashdata('hapus');?>
                 <div class="sparkline13-list shadow-reset">
@@ -91,7 +91,7 @@ foreach($hitung as $j){
                                      ?>
                                    </td>
                                     <td>
-                                      <a href="<?php echo base_url()?>Periksa/hapus_periksa/<?php echo $item->id_periksa ?>" type="button" title="Hapus" onclick="return confirm('Hapus item ini Dari Database ?')" class="btn btn-custon-three btn-primary btn-xs"><i class="fa fa-trash"></i></a>
+                                      <!--<a href="<?php echo base_url()?>Periksa/hapus_periksa/<?php echo $item->id_periksa ?>" type="button" title="Hapus" onclick="return confirm('Hapus item ini Dari Database ?')" class="btn btn-custon-three btn-primary btn-xs"><i class="fa fa-trash"></i></a>!-->
                                       <a href="#javascript:; #updatestatus" data-toggle="modal" class="btn btn-custon-three btn-primary btn-xs" title="Ubah Status" onclick="update('<?php echo $item->id_periksa ?>')"><i class="fa fa-cogs"></i></a>
                                       <?php if($item->status == 'sudah'){?>
                                         <a href="#javascript:; #catatandiagnosa" data-toggle="modal" class="btn btn-custon-three btn-primary btn-xs" title="Tambah Catatan Diagnosa" onclick="update_diagnosa('<?php echo $item->id_periksa ?>','<?php echo $item->nama_pasien ?>','<?php echo $item->diagnosa ?>')"><i class="fa fa-pencil-square-o"></i></a>
@@ -159,6 +159,23 @@ foreach($hitung as $j){
 	</div>
 </div>
 
+<div class="modal fade" id="modaltambahresep" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id=""><i class="fa fa-plus-circle"></i> Form Tambah Data Periksa</h4>
+			</div>
+			<div class="modal-body">
+        <?php $this->load->view('resep/tambah_resep'); ?>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 
 <script type="text/javascript">
   function edit(id_periksa,id_pasien,tanggal,id_poliklinik,status){
@@ -182,6 +199,10 @@ foreach($hitung as $j){
     $('#idpasien').val(id_pasien);
     $('#idpolik').val(id_poliklinik);
     $('#nama').val(nama);
+  }
+  function tambah_resep(id_periksa,nama){
+    $('#idperiksa').val(id_periksa);
+    $('#nama_pasien').val(nama);
   }
 
   window.setTimeout("waktu()",1000);

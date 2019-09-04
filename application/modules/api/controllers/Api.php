@@ -31,6 +31,7 @@ class Api extends REST_Controller{
 
     $response['status'] = 200;
     $response['error'] = false;
+    $response['message'] = 'Data Ditemukan';
     $response['pasien'] = $posts;
 
     $this->response($response);
@@ -59,6 +60,7 @@ class Api extends REST_Controller{
 
     $response['status'] = 200;
     $response['error'] = false;
+    $response['message'] = 'Data Ditemukan';
     $response['dokter'] = $posts;
 
     $this->response($response);

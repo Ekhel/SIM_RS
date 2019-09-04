@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 02, 2019 at 09:14 AM
+-- Generation Time: Sep 03, 2019 at 09:55 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -229,7 +229,10 @@ INSERT INTO `tbl_jenis_periksalab` (`id_jenis_pasien`, `id_periksa_lab`, `id_pas
 (16, 2, 3, 2, 9, '44.78', '112 - 13.5', '2019-08-30', '-'),
 (17, 2, 3, 2, 10, '117', '35 - 47', '2019-08-30', '-'),
 (18, 3, 2, 3, 11, '14.5', '35 - 47', '2019-08-31', '-'),
-(19, 3, 2, 3, 11, '40.59', '112 - 13.5', '2019-08-31', '-');
+(19, 3, 2, 3, 11, '40.59', '112 - 13.5', '2019-08-31', '-'),
+(20, 4, 6, 2, 1, '117 - 15.5', '35 - 47', '2019-09-02', '-'),
+(21, 4, 6, 2, 2, '40.59', '35 - 47', '2019-09-02', '-'),
+(22, 4, 6, 2, 3, '44.78', '117 - 15.5', '2019-09-02', '');
 
 -- --------------------------------------------------------
 
@@ -307,6 +310,18 @@ INSERT INTO `tbl_menu` (`id_menu`, `menu`, `kode_menu`, `status_menu`, `icon`) V
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_menu_level`
+--
+
+CREATE TABLE `tbl_menu_level` (
+  `id_menulevel` int(10) NOT NULL,
+  `id_level` int(10) NOT NULL,
+  `id_sub_menu` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_obatalkes`
 --
 
@@ -326,7 +341,9 @@ CREATE TABLE `tbl_obatalkes` (
 INSERT INTO `tbl_obatalkes` (`id_barang`, `kode_barang`, `nama_barang`, `kategori`, `id_satuan`, `harga`) VALUES
 (2, 'BR508082019001', 'Betadin', 'obat', 1, '17000'),
 (3, 'BR508082019002', 'Amoxilin Tablet', 'obat', 3, '9000'),
-(4, 'BR514082019003', 'Ampicilin', 'obat', 1, '13500');
+(4, 'BR514082019003', 'Ampicilin', 'obat', 1, '13500'),
+(5, 'BR503092019004', 'Cefadroxin', 'obat', 4, '8700'),
+(6, 'BR503092019005', 'daxer', 'obat', 4, '21300');
 
 -- --------------------------------------------------------
 
@@ -470,7 +487,8 @@ INSERT INTO `tbl_periksa` (`id_periksa`, `id_pasien`, `tanggal`, `id_poliklinik`
 (19, 3, '2019-08-30', 1, '', 'belum', ''),
 (20, 2, '2019-08-31', 5, '', 'sudah', ''),
 (21, 5, '2019-09-01', 4, '', 'belum', ''),
-(22, 6, '2019-09-02', 4, '', 'sudah', '');
+(22, 6, '2019-09-03', 4, '', 'sudah', ''),
+(23, 3, '2019-09-03', 2, '', 'sudah', 'Gangguan Pernapasan disebabkan karna Batuk berdahak');
 
 -- --------------------------------------------------------
 
@@ -571,6 +589,32 @@ INSERT INTO `tbl_profil` (`id_org`, `nama_org`, `alamat`, `provinsi`, `kabupaten
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_resep`
+--
+
+CREATE TABLE `tbl_resep` (
+  `id_resep` int(10) NOT NULL,
+  `id_periksa` int(10) NOT NULL,
+  `id_barang` int(10) NOT NULL,
+  `eticket` varchar(150) NOT NULL,
+  `waktu_minum` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_resep`
+--
+
+INSERT INTO `tbl_resep` (`id_resep`, `id_periksa`, `id_barang`, `eticket`, `waktu_minum`) VALUES
+(1, 22, 4, '3 X 1 / Hari', 'pagi,siang,malam'),
+(2, 22, 3, '2 x 2 / Hari', 'siang,malam'),
+(3, 23, 4, '3 X 1 / hari', 'pagi,siang,malam'),
+(4, 23, 2, '2 X 1 / Hari', 'siang,malam'),
+(5, 23, 5, '1 x 1 / Hari', ''),
+(6, 23, 6, '3 x 1 / Hari', '');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_satuan`
 --
 
@@ -586,7 +630,8 @@ CREATE TABLE `tbl_satuan` (
 INSERT INTO `tbl_satuan` (`id_satuan`, `satuan`) VALUES
 (1, 'Botoll'),
 (2, 'Pak'),
-(3, 'Plastik');
+(3, 'Plastik'),
+(4, 'papan');
 
 -- --------------------------------------------------------
 
@@ -683,7 +728,8 @@ INSERT INTO `tbl_sub_menu` (`id_sub_menu`, `id_menu`, `sub_menu`, `modul`, `func
 (20, 1, 'Poliklinik', 'Data_induk', 'Poliklinik', '20', 'aktif'),
 (21, 1, 'Pegawai', 'Data_induk', 'Pegawai', '21', 'aktif'),
 (22, 5, 'Sub Pemeriksaan', 'Lab', 'sub_periksa_lab', '22', 'aktif'),
-(23, 5, 'Pasien Lab', 'Lab', 'pasien_periksa_lab', '14', 'aktif');
+(23, 5, 'Pasien Lab', 'Lab', 'pasien_periksa_lab', '14', 'aktif'),
+(24, 4, 'e - Resep', 'Resep', '', '23', 'aktif');
 
 -- --------------------------------------------------------
 
@@ -824,6 +870,12 @@ ALTER TABLE `tbl_menu`
   ADD PRIMARY KEY (`id_menu`);
 
 --
+-- Indexes for table `tbl_menu_level`
+--
+ALTER TABLE `tbl_menu_level`
+  ADD PRIMARY KEY (`id_menulevel`);
+
+--
 -- Indexes for table `tbl_obatalkes`
 --
 ALTER TABLE `tbl_obatalkes`
@@ -876,6 +928,12 @@ ALTER TABLE `tbl_praktek`
 --
 ALTER TABLE `tbl_profil`
   ADD PRIMARY KEY (`id_org`);
+
+--
+-- Indexes for table `tbl_resep`
+--
+ALTER TABLE `tbl_resep`
+  ADD PRIMARY KEY (`id_resep`);
 
 --
 -- Indexes for table `tbl_satuan`
@@ -962,7 +1020,7 @@ ALTER TABLE `tbl_jenisperiksa`
 -- AUTO_INCREMENT for table `tbl_jenis_periksalab`
 --
 ALTER TABLE `tbl_jenis_periksalab`
-  MODIFY `id_jenis_pasien` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_jenis_pasien` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `tbl_jenjang_pendidikan`
 --
@@ -974,10 +1032,15 @@ ALTER TABLE `tbl_jenjang_pendidikan`
 ALTER TABLE `tbl_menu`
   MODIFY `id_menu` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
+-- AUTO_INCREMENT for table `tbl_menu_level`
+--
+ALTER TABLE `tbl_menu_level`
+  MODIFY `id_menulevel` int(10) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `tbl_obatalkes`
 --
 ALTER TABLE `tbl_obatalkes`
-  MODIFY `id_barang` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_barang` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `tbl_pasien`
 --
@@ -987,7 +1050,7 @@ ALTER TABLE `tbl_pasien`
 -- AUTO_INCREMENT for table `tbl_periksa`
 --
 ALTER TABLE `tbl_periksa`
-  MODIFY `id_periksa` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_periksa` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `tbl_periksa_lab`
 --
@@ -1004,10 +1067,15 @@ ALTER TABLE `tbl_poliklinik`
 ALTER TABLE `tbl_praktek`
   MODIFY `id_jadwal` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT for table `tbl_resep`
+--
+ALTER TABLE `tbl_resep`
+  MODIFY `id_resep` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
 -- AUTO_INCREMENT for table `tbl_satuan`
 --
 ALTER TABLE `tbl_satuan`
-  MODIFY `id_satuan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_satuan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tbl_spesialis`
 --
@@ -1022,7 +1090,7 @@ ALTER TABLE `tbl_sub_jenis_periksa`
 -- AUTO_INCREMENT for table `tbl_sub_menu`
 --
 ALTER TABLE `tbl_sub_menu`
-  MODIFY `id_sub_menu` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_sub_menu` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `tb_user`
 --

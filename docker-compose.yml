@@ -1,6 +1,5 @@
 version: "3.1"
 services:
-
     mariadb:
       image: mariadb:10.1
       container_name: sim-poliklinik-mariadb

@@ -1,4 +1,4 @@
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="<?php echo base_url()?>assets/js/jquery-1.11.3.min.js"></script>
 <link rel="stylesheet" href="<?php echo base_url()?>assets/css/select2/select2.min.css">
 <link rel="stylesheet" href="<?php echo base_url()?>assets/css/chosen/bootstrap-chosen.css">
 
@@ -9,7 +9,7 @@
                 <div class="breadcome-list map-mg-t-40-gl shadow-reset">
                     <div class="row">
                         <div class="col-lg-6">
-                            
+
                         </div>
                         <div class="col-lg-6">
                             <ul class="breadcome-menu">

@@ -3,14 +3,14 @@
 
 ## System Requirements :
 * Bahasa Utama :
-  - php
-  - Version 7
+  - PHP v 1.7
 
 * Framework :
   - CodeIgniter 3
 
 * Database :
   - Mysql (phpmyadmin)
+  - MariaDB
 
 * Library :
   - Indo Tanggal (Tanggal Indonesia)
@@ -21,7 +21,7 @@
   - Admin Pro + (Gradient Design)
 
 * Services :
-  - Docker
+  - docker
   - docker-compose
 
 ----------------------------------------------------
@@ -133,3 +133,11 @@
   - Menambahkan Library Indo_tanggal.php [Solved]
   - Merubah Alur Pemeriksaan Lab dari Pasien ke Pasien Periksa Dokter (Polik) [Solved]
   - Merubah Cetak Hasil Laboratorium [Solved]
+
+* Selasa 3 September 2019
+  - Menabahkan Modul e - resep [Solved]
+  - Menambahkan tbl_resep [Solved]
+  - Menambahkan Cetak e - ticket untuk Modul e - Resep [Not Solved]
+  - Menambahkan Function CRUD Resep [Not Solved]
+  - Menambahkan Function Create Role Level Menu [Not Solved]
+  - Menambahkan Modul BPJS [Not Solved]
