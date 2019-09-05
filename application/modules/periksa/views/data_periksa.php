@@ -32,6 +32,8 @@ foreach($hitung as $j){
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
+              <?php echo $this->session->flashdata('validate_lab');?>
+              <?php echo $this->session->flashdata('simpan_lab');?>
               <?php echo $this->session->flashdata('simpan_resep');?>
               <?php echo $this->session->flashdata('update_status');?>
               <?php echo $this->session->flashdata('hapus');?>

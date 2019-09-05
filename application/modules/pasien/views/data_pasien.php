@@ -26,7 +26,10 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
+              <?php echo $this->session->flashdata('validate_periksa');?>
+
               <?php echo $this->session->flashdata('simpan_periksa');?>
+
               <?php echo $this->session->flashdata('registrasi');?>
               <?php echo $this->session->flashdata('update');?>
               <?php echo $this->session->flashdata('hapus');?>

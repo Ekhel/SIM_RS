@@ -141,3 +141,8 @@
   - Menambahkan Function CRUD Resep [Not Solved]
   - Menambahkan Function Create Role Level Menu [Not Solved]
   - Menambahkan Modul BPJS [Not Solved]
+
+* Kamis 5 September 2019
+  - Manambahkan Function Validasi Double Input pada Modul Periksa Dokter [Not Solved]
+  - Menambahkan Function Validasi Double Input pada Modul Periksa Lab [Solved]
+  - Memperbaiki CSS Halaman Cetak e - ticket pada modul e - resep [Solved]

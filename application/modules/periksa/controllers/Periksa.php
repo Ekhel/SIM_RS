@@ -24,20 +24,38 @@ class Periksa extends MX_Controller{
   }
 	public function tambah_periksa_proses()
 	{
-		$this->cek_data_hari_ini();
+		$id_pasien = $this->input->post('id_pasien');
+		$id_poliklinik = $this->input->post('id_poliklinik');
+		$tanggal = $this->input->post('tanggal');
+		$status = $this->input->post('status');
 
-		$data['id_pasien'] 		= $this->input->post('id_pasien');
-		$data['id_poliklinik'] 	= $this->input->post('id_poliklinik');
-		//$data['pd'] 	= $this->input->post('pd');
-		$data['tanggal'] = $this->input->post('tanggal');
-		$data['status'] 	= $this->input->post('status');
-		$this->M_periksa->simpan_periksa($data);
-		$this->session->set_flashdata("simpan_periksa","
-                <div class='alert alert-success fade in'>
-                    <a href='#' class='close' data-dismiss='alert'>&times;</a>
-                    <strong>Success !</strong> Berhasil Menyimpan Data! Silahkan Cek pada Table Periksa.
-                </div>");
-      redirect('Pasien');
+		$tanggal_hari_ini = date('Y-m-d');
+		$cek = $this->db->query("SELECT id_pasien FROM tbl_periksa WHERE tanggal = '$tanggal_hari_ini' ")->result();
+
+		if(count($cek) >= 1){
+			$this->session->set_flashdata("validate_periksa","
+					<div class='alert alert-danger fade in'>
+					<a href='#' class='close' data-dismiss='alert'>&times;</a>
+					<strong>Gagal !</strong> Data Yang anda Input sudah tersedia Silahkan Cek pada Menu Periksa
+					</div>");
+				redirect('Pasien');
+		}
+		else{
+			$data = array(
+				'id_pasien'			=> $id_pasien,
+				'id_poliklinik'	=> $id_poliklinik,
+				'tanggal'				=> $tanggal,
+				'status'				=> $status
+			);
+
+			$this->M_periksa->simpan_periksa($data);
+			$this->session->set_flashdata("simpan_periksa","
+	                <div class='alert alert-success fade in'>
+	                    <a href='#' class='close' data-dismiss='alert'>&times;</a>
+	                    <strong>Berhasil !</strong> Berhasil Menyimpan Data! Silahkan Cek pada Menu Periksa.
+	                </div>");
+	      redirect('Pasien');
+		}
 	}
 	public function edit_status_proses()
 	{
@@ -83,19 +101,6 @@ class Periksa extends MX_Controller{
 	}
 	function cek_data_hari_ini()
 	{
-		$this->form_validation->set_rules('id_pasien', 'id_pasien', 'is_unique[tbl_periksa.id_pasien]');
-		$this->form_validation->set_rules('tanggal', 'tanggal', 'is_unique[tbl_periksa.tanggal]');
-		if ($this->form_validation->run() == FALSE){
-			$this->session->set_flashdata("msg","
-							<div class='alert alert-warning fade in'>
-									<a href='#' class='close' data-dismiss='alert'>&times;</a>
-									<strong>Gagal !</strong></br>
-									 Data Pasien ini Sudah ditambahkan untuk Hari ini. Konfirmasi Pada Polik terkait !!
-							</div>");
-			header('location:'.base_url().'Pasien');
-		}
-		else{
-			return true;
-		}
+
 	}
 }

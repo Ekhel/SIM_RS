@@ -121,6 +121,13 @@
       font-style: normal;
       padding: 5px;
     }
+		.small-text {
+      font-family: Verdana;
+      font-size: 10px;
+      font-style: bold;
+      padding: 2px;
+			align: center;
+    }
     .profile-img{
         text-align: center;
     }
@@ -144,51 +151,64 @@
         right: 0;
         top: 0;
     }
+		.box_ticket {
+			width:200px;
+			height: 170px;
+			border-style:dashed;
+			border-color:black;
+			border-width:3px;
+			text-align: center;
+			padding: 2px;
+		}
+		.box_size{
+			width: 200px;
+	    height: 170px;
+	    float: left;
+	    margin: 20px;
+		}
 
 </style>
 
 <div class="box_export no-print"><ul><li><a href="#" id="cetak">Print</a></li></ul></div>
 <div id="container">
 	<div class="title">
-    <h4>e - Ticket | Gunting Sesuai Resep obat </h4>
-  </div>
+		<h4>e - Ticket Obat</h4>
+	</div>
   <div>
     <?php foreach($eticket as $item){?>
-    <table class="table normal-text" width="50%" align="left">
-      <thead>
-        <tr>
-          <td colspan="3" align="center">
-            <img src="<?php echo base_url()?>assets/img/logo/biak.png" width="20px"></img><br/>
-            <p>Poliklinik RSUD</p>
-          </td>
-        </tr>
-        <br/>
-        <br/>
-      </thead>
-      <br/>
-      <br/>
-      <tr>
-        <td width="10%">Nama</td>
-        <td>:</td>
-        <td><?php echo $item->nama_barang ?></td>
-      </tr>
-      <br/>
-      <tr>
-        <td width="10%">Penggunaan</td>
-        <td>:</td>
-        <td><?php echo $item->eticket ?></td>
-      </tr>
-      <br/>
-      <tr>
-        <td width="10%">Waktu</td>
-        <td>:</td>
-        <td><?php echo $item->waktu_minum ?></td>
-      </tr>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-    </table>
+    	<div class="box_size">
+				<div class="box_ticket">
+					<text class="small-text"><strong>PEMERINTAH KABUPATEN BIAK</strong></text>
+					<br/>
+					<text class="small-text"><strong>Poliklinik RSUD Biak</strong></text>
+					<hr/>
+					<table>
+						<tr>
+							<td class="small-text">Tanggal</td>
+							<td class="small-text">:</td>
+							<td class="small-text"><?php echo date('Y-m-d') ?></td>
+						</tr>
+						<tr>
+							<td class="small-text">No</td>
+							<td class="small-text">:</td>
+							<td class="small-text"></td>
+						</tr>
+						<tr>
+							<td class="small-text">Nama</td>
+							<td class="small-text">:</td>
+							<td class="small-text"></td>
+						</tr>
+						<tr>
+							<td class="small-text"><strong><?php echo $item->eticket ?></strong></td>
+						</tr>
+						<tr>
+							<td class="small-text">Sebelum</td>
+							<td> / </td>
+							<td class="small-text">Sesudah Makan</td>
+						</tr>
+					</table>
+				</div>
+    	</div>
   <?php } ?>
   </div>
 </div>
