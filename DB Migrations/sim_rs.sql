@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 03, 2019 at 09:55 AM
+-- Generation Time: Sep 09, 2019 at 10:58 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -232,7 +232,11 @@ INSERT INTO `tbl_jenis_periksalab` (`id_jenis_pasien`, `id_periksa_lab`, `id_pas
 (19, 3, 2, 3, 11, '40.59', '112 - 13.5', '2019-08-31', '-'),
 (20, 4, 6, 2, 1, '117 - 15.5', '35 - 47', '2019-09-02', '-'),
 (21, 4, 6, 2, 2, '40.59', '35 - 47', '2019-09-02', '-'),
-(22, 4, 6, 2, 3, '44.78', '117 - 15.5', '2019-09-02', '');
+(22, 4, 6, 2, 3, '44.78', '117 - 15.5', '2019-09-02', ''),
+(23, 16, 5, 2, 1, '14.5', '112 - 13.5', '2019-09-06', '-'),
+(24, 16, 5, 2, 2, '117 - 15.5', '112 - 13.5', '2019-09-06', '-'),
+(25, 16, 5, 2, 3, '44.78', '35 - 47', '2019-09-06', '-'),
+(26, 16, 5, 2, 4, '14.5', '35 - 47', '2019-09-06', '-');
 
 -- --------------------------------------------------------
 
@@ -488,7 +492,8 @@ INSERT INTO `tbl_periksa` (`id_periksa`, `id_pasien`, `tanggal`, `id_poliklinik`
 (20, 2, '2019-08-31', 5, '', 'sudah', ''),
 (21, 5, '2019-09-01', 4, '', 'belum', ''),
 (22, 6, '2019-09-03', 4, '', 'sudah', ''),
-(23, 3, '2019-09-03', 2, '', 'sudah', 'Gangguan Pernapasan disebabkan karna Batuk berdahak');
+(23, 3, '2019-09-06', 2, '', 'sudah', 'Gangguan Pernapasan disebabkan karna Batuk berdahak'),
+(24, 5, '2019-09-06', 4, '', 'sudah', '');
 
 -- --------------------------------------------------------
 
@@ -512,7 +517,9 @@ INSERT INTO `tbl_periksa_lab` (`id_periksa_lab`, `id_pasien`, `id_poliklinik`, `
 (1, 5, 6, 'LAB527082019001', '2019-08-29'),
 (2, 3, 3, 'LAB530082019002', '2019-09-01'),
 (3, 2, 4, 'LAB531082019003', '2019-09-01'),
-(4, 6, 4, 'LAB502092019004', '2019-09-02');
+(4, 6, 4, 'LAB502092019004', '2019-09-03'),
+(15, 3, 2, 'LAB504092019005', '2019-09-05'),
+(16, 5, 4, 'LAB505092019006', '2019-09-06');
 
 -- --------------------------------------------------------
 
@@ -665,6 +672,7 @@ CREATE TABLE `tbl_sub_jenis_periksa` (
   `id_jenisperiksa` int(10) NOT NULL,
   `nama_jenis` varchar(150) NOT NULL,
   `satuan` varchar(10) NOT NULL,
+  `nilai_rujukan` varchar(50) NOT NULL,
   `keterangan` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -672,19 +680,19 @@ CREATE TABLE `tbl_sub_jenis_periksa` (
 -- Dumping data for table `tbl_sub_jenis_periksa`
 --
 
-INSERT INTO `tbl_sub_jenis_periksa` (`id_sub_jenis`, `id_jenisperiksa`, `nama_jenis`, `satuan`, `keterangan`) VALUES
-(1, 2, 'Hemoglobin', 'g/dL', '-'),
-(2, 2, 'Hematrokit', '%', '-'),
-(3, 2, 'Eritrosit', '10^6uL', '-'),
-(4, 2, 'MCV', 'fL', '-'),
-(5, 2, 'MCH', 'pg', '-'),
-(6, 2, 'MCHC', 'g/dL', '-'),
-(7, 2, 'RDW-CV', '%', '-'),
-(8, 2, 'Trombosit', '10^3uL', '-'),
-(9, 2, 'Leukosit', '10^3uL', '-'),
-(10, 2, 'LED', 'mm/jam', '-'),
-(11, 3, 'Gula Darah', '%', '-'),
-(12, 3, 'Gula Normal', '%', '-');
+INSERT INTO `tbl_sub_jenis_periksa` (`id_sub_jenis`, `id_jenisperiksa`, `nama_jenis`, `satuan`, `nilai_rujukan`, `keterangan`) VALUES
+(1, 2, 'Hemoglobin', 'g/dL', '', '-'),
+(2, 2, 'Hematrokit', '%', '', '-'),
+(3, 2, 'Eritrosit', '10^6uL', '', '-'),
+(4, 2, 'MCV', 'fL', '', '-'),
+(5, 2, 'MCH', 'pg', '', '-'),
+(6, 2, 'MCHC', 'g/dL', '', '-'),
+(7, 2, 'RDW-CV', '%', '', '-'),
+(8, 2, 'Trombosit', '10^3uL', '', '-'),
+(9, 2, 'Leukosit', '10^3uL', '', '-'),
+(10, 2, 'LED', 'mm/jam', '', '-'),
+(11, 3, 'Gula Darah', '%', '', '-'),
+(12, 3, 'Gula Normal', '%', '', '-');
 
 -- --------------------------------------------------------
 
@@ -1020,7 +1028,7 @@ ALTER TABLE `tbl_jenisperiksa`
 -- AUTO_INCREMENT for table `tbl_jenis_periksalab`
 --
 ALTER TABLE `tbl_jenis_periksalab`
-  MODIFY `id_jenis_pasien` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_jenis_pasien` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `tbl_jenjang_pendidikan`
 --
@@ -1050,12 +1058,12 @@ ALTER TABLE `tbl_pasien`
 -- AUTO_INCREMENT for table `tbl_periksa`
 --
 ALTER TABLE `tbl_periksa`
-  MODIFY `id_periksa` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_periksa` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `tbl_periksa_lab`
 --
 ALTER TABLE `tbl_periksa_lab`
-  MODIFY `id_periksa_lab` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_periksa_lab` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `tbl_poliklinik`
 --
