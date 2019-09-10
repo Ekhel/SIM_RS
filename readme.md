@@ -16,6 +16,7 @@
   - Indo Tanggal (Tanggal Indonesia)
   - Template (UI Applikasi)
   - REST Controller (API)
+  - RecurseZip (Zip Extension)
 
 * Template :
   - Admin Pro + (Gradient Design)
@@ -146,3 +147,8 @@
   - Manambahkan Function Validasi Double Input pada Modul Periksa Dokter [Not Solved]
   - Menambahkan Function Validasi Double Input pada Modul Periksa Lab [Solved]
   - Memperbaiki CSS Halaman Cetak e - ticket pada modul e - resep [Solved]
+
+* Selasa 10 September 2019
+  - Menambahkan Modul Backup Database & File [Solved]
+  - Menambahkan Folder Backup_all untuk Path Modul Backup [Solved]
+  - Menambahkan Modul Restore Database [Not Solved]
