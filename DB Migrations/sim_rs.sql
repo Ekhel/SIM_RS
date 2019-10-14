@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 09, 2019 at 10:58 AM
+-- Generation Time: Oct 14, 2019 at 11:56 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -309,7 +309,8 @@ INSERT INTO `tbl_menu` (`id_menu`, `menu`, `kode_menu`, `status_menu`, `icon`) V
 (5, 'Laboratorium', '05', 'aktif', 'fa big-icon fa-bar-chart-o'),
 (6, 'Pengguna', '06', 'aktif', 'fa big-icon fa-users'),
 (7, 'Pengaturan', '07', 'aktif', 'fa big-icon fa-cogs'),
-(8, 'Laporan', '08', 'nonaktif', 'fa big-icon fa-calendar');
+(8, 'Laporan', '08', 'nonaktif', 'fa big-icon fa-calendar'),
+(9, 'Utility', '09', 'aktif', 'fa big-icon fa-exchange');
 
 -- --------------------------------------------------------
 
@@ -493,7 +494,8 @@ INSERT INTO `tbl_periksa` (`id_periksa`, `id_pasien`, `tanggal`, `id_poliklinik`
 (21, 5, '2019-09-01', 4, '', 'belum', ''),
 (22, 6, '2019-09-03', 4, '', 'sudah', ''),
 (23, 3, '2019-09-06', 2, '', 'sudah', 'Gangguan Pernapasan disebabkan karna Batuk berdahak'),
-(24, 5, '2019-09-06', 4, '', 'sudah', '');
+(24, 5, '2019-09-06', 4, '', 'sudah', ''),
+(25, 6, '2019-09-14', 5, '', 'belum', '');
 
 -- --------------------------------------------------------
 
@@ -519,7 +521,8 @@ INSERT INTO `tbl_periksa_lab` (`id_periksa_lab`, `id_pasien`, `id_poliklinik`, `
 (3, 2, 4, 'LAB531082019003', '2019-09-01'),
 (4, 6, 4, 'LAB502092019004', '2019-09-03'),
 (15, 3, 2, 'LAB504092019005', '2019-09-05'),
-(16, 5, 4, 'LAB505092019006', '2019-09-06');
+(16, 5, 4, 'LAB505092019006', '2019-09-06'),
+(17, 6, 5, 'LAB514092019007', '2019-09-14');
 
 -- --------------------------------------------------------
 
@@ -737,7 +740,9 @@ INSERT INTO `tbl_sub_menu` (`id_sub_menu`, `id_menu`, `sub_menu`, `modul`, `func
 (21, 1, 'Pegawai', 'Data_induk', 'Pegawai', '21', 'aktif'),
 (22, 5, 'Sub Pemeriksaan', 'Lab', 'sub_periksa_lab', '22', 'aktif'),
 (23, 5, 'Pasien Lab', 'Lab', 'pasien_periksa_lab', '14', 'aktif'),
-(24, 4, 'e - Resep', 'Resep', '', '23', 'aktif');
+(24, 4, 'e - Resep', 'Resep', '', '23', 'aktif'),
+(25, 9, 'Backup', 'Backup', '', '15', 'aktif'),
+(26, 9, 'Restore', 'Restore', '', '17', 'aktif');
 
 -- --------------------------------------------------------
 
@@ -1038,7 +1043,7 @@ ALTER TABLE `tbl_jenjang_pendidikan`
 -- AUTO_INCREMENT for table `tbl_menu`
 --
 ALTER TABLE `tbl_menu`
-  MODIFY `id_menu` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_menu` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `tbl_menu_level`
 --
@@ -1058,12 +1063,12 @@ ALTER TABLE `tbl_pasien`
 -- AUTO_INCREMENT for table `tbl_periksa`
 --
 ALTER TABLE `tbl_periksa`
-  MODIFY `id_periksa` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_periksa` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `tbl_periksa_lab`
 --
 ALTER TABLE `tbl_periksa_lab`
-  MODIFY `id_periksa_lab` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_periksa_lab` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `tbl_poliklinik`
 --
@@ -1098,7 +1103,7 @@ ALTER TABLE `tbl_sub_jenis_periksa`
 -- AUTO_INCREMENT for table `tbl_sub_menu`
 --
 ALTER TABLE `tbl_sub_menu`
-  MODIFY `id_sub_menu` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_sub_menu` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `tb_user`
 --

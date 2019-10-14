@@ -152,3 +152,4 @@
   - Menambahkan Modul Backup Database & File [Solved]
   - Menambahkan Folder Backup_all untuk Path Modul Backup [Solved]
   - Menambahkan Modul Restore Database [Not Solved]
+  - Backup Database
