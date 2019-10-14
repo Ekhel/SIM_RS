@@ -32,18 +32,20 @@
               <h2><strong>Backup Database Dan File Applikasi</strong></h2>
               <p>
                 Lakukan backup database secara berkala untuk membuat cadangan database yang bisa direstore kapan saja ketika dibutuhkan.
-                Silakan klik tombol "Backup" untuk memulai proses backup data.
+                Silakan klik tombol "Backup Database" untuk memulai proses backup data.
                 Setelah proses backup selesai, silakan download file backup database tersebut dan simpan di lokasi yang aman.*
               </p>
               <br/>
               <p class="alert alert-success">
-                Database Hasil Backup akan disimpan dengan Extension .Zip </br>
-                Path Penyimpanan (../sim_rs/Backup_all/db)
+                <strong>DATABASE :</strong><br/>
+                Hasil Backup akan disimpan dengan Extension .Zip </br>
+                Path Penyimpanan <strong>(../sim_rs/Backup_all/db)</strong>
               </p>
               <br/>
               <p class="alert alert-success">
-                Database Hasil Backup akan disimpan dengan Extension .Zip </br>
-                Path Penyimpanan (../sim_rs/Backup_all/files)
+                <strong>FILE :</strong><br/>
+                Hasil Backup akan disimpan dengan Extension .Zip </br>
+                Path Penyimpanan <strong>(../sim_rs/Backup_all/files)</strong>
               </p>
           </div>
           <hr/>
@@ -51,7 +53,7 @@
           <a type="button" class="btn btn-lg btn-custon-three btn-primary" href="<?php echo base_url()?>Backup/db"><i class="fa fa-database"></i> Backup Database</a>
 
           <a type="button" class="btn btn-lg btn-custon-three btn-primary" href="<?php echo base_url()?>Backup/files"><i class="fa big-icon fa-cloud-upload"></i> Backup Files</a>
-
+          
         </div>
       </div>
     </div>

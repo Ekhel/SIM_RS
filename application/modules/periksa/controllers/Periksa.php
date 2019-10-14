@@ -99,8 +99,4 @@ class Periksa extends MX_Controller{
                 </div>");
       redirect('Periksa');
 	}
-	function cek_data_hari_ini()
-	{
-
-	}
 }
