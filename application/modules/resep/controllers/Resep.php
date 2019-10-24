@@ -14,7 +14,8 @@ class Resep extends MX_Controller{
   public function index()
   {
     $data['title'] = 'Admin e - Resep';
-    $data['resep'] = $this->M_resep->eresep();
+    //$data['resep'] = $this->M_resep->eresep();
+    $data['resep'] = $this->M_resep->resep();
     $this->template->load('MasterAdmin','data-resep',$data);
   }
   function tambah_resep_proses()

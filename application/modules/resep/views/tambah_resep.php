@@ -13,7 +13,7 @@
                            <label class="login2 pull-right pull-right-pro">Nama</label>
                        </div>
                        <div class="col-lg-9">
-                           <input name="id_periksa" type="hidden" id="idperiksa" readonly="true" class="form-control" />
+                           <input name="id_periksa" type="hidden" id="idperiksax" readonly="true" class="form-control" />
                            <input name="nama_pasien" type="text" id="nama_pasien" readonly="true" class="form-control" />
                        </div>
                    </div>

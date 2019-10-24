@@ -33,6 +33,11 @@ class M_lab extends CI_Model {
     WHERE tanggal_periksa = '$tanggal_sekarang' ");
     return $query->result();
   }
+  function update_status_lab($where,$data,$table)
+  {
+    $this->db->where($where);
+    $this->db->update($table,$data);
+  }
   function hitung_pasien_hariini()
   {
     $tanggal_sekarang = date('y-m-d');

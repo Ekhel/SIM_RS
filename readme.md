@@ -153,3 +153,7 @@
   - Menambahkan Folder Backup_all untuk Path Modul Backup [Solved]
   - Menambahkan Modul Restore Database [Not Solved]
   - Backup Database
+
+* Kamis 24 Oktober 2019
+  - Menambahkan View Hasil Periksa Laboratorium pada Daftar Periksa Polik [Solved]
+  - Memperbaiki View e - Resep [Solved]

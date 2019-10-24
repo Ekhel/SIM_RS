@@ -9,6 +9,7 @@ class M_periksa extends CI_Model {
     $query = $this->db->query("SELECT * FROM tbl_periksa
     LEFT JOIN tbl_pasien on tbl_periksa.id_pasien = tbl_pasien.id_pasien
     LEFT JOIN tbl_poliklinik on tbl_periksa.id_poliklinik = tbl_poliklinik.id_poliklinik
+    LEFT JOIN tbl_periksa_lab on tbl_periksa.id_periksa = tbl_periksa_lab.id_periksa
     WHERE tanggal = '$tanggal_sekarang' ");
     return $query->result();
   }

@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class M_resep extends CI_Model {
   function eresep()
   {
-    $tanggal_sekarang = date('Y-m-d');
+    $tanggal_sekarang = date('y-m-d');
     $query = $this->db->query("SELECT
     tbl_resep.id_resep as id_resep,
     tbl_resep.id_barang as id_barang,
@@ -21,6 +21,16 @@ class M_resep extends CI_Model {
     WHERE tbl_periksa.tanggal = '$tanggal_sekarang'
     GROUP BY tbl_resep.id_periksa");
 
+    return $query->result();
+  }
+  function resep()
+  {
+    $tanggal_sekarang = date('y-m-d');
+    $query = $this->db->query("SELECT * FROM tbl_periksa
+    LEFT JOIN tbl_pasien on tbl_periksa.id_pasien = tbl_pasien.id_pasien
+    LEFT JOIN tbl_poliklinik on tbl_periksa.id_poliklinik = tbl_poliklinik.id_poliklinik
+    LEFT JOIN tbl_periksa_lab on tbl_periksa.id_periksa = tbl_periksa_lab.id_periksa
+    WHERE tanggal = '$tanggal_sekarang' AND status = 'sudah' ");
     return $query->result();
   }
   function detail_resep($id_periksa)

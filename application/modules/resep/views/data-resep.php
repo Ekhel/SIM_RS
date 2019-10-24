@@ -23,6 +23,7 @@
         </div>
     </div>
 </div>
+<?php $hari_ini = date('d-m-Y');  ?>
 <div class="data-table-area mg-b-15">
     <div class="container-fluid">
         <div class="row">
@@ -33,8 +34,12 @@
                 <div class="sparkline13-list shadow-reset">
                     <div class="sparkline13-hd">
                         <div class="main-sparkline13-hd">
-                            <h1>Data <span class="table-project-n"></span> e - Resep Hari ini</h1>
-
+                            <h1>Data <span class="table-project-n"></span> e - Resep</h1>
+                            <div class="sparkline13-outline-icon" onload="waktu()">
+                              <span><a href="<?php echo base_url()?>Resep" class="btn btn-xs btn-primary" title="Refresh Data"><i class="fa fa-refresh"></i></a></span>
+                              <span><p class="label label-primary"><strong> TANGGAL : <?php echo $hari_ini ?></strong></p></span>
+                              <span><i class="fa fa-clock"></i><text id="jam"></text> : <text id="menit"></text> : <text id="detik"></text></span>
+                            </div>
                         </div>
                     </div>
                     <div class="sparkline13-graph">
@@ -50,11 +55,9 @@
                                 <thead>
                                     <tr>
                                         <th data-field="no">No</th>
-                                        <th data-field="Nama">Nama Pasien</th>
+                                        <th data-field="nama">Nama</th>
                                         <th data-field="polik">Polik</th>
-                                        <th data-field="jumlah">Jumlah Item</th>
-                                        <th data-field="total">Total</th>
-                                        <th></th>
+                                        <th data-field="aksi">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -66,12 +69,10 @@
                                     <td><?php echo $no++ ?></td>
                                     <td><?php echo $item->nama_pasien ?></td>
                                     <td><?php echo $item->nama_poliklinik ?></td>
-                                    <td><?php echo $item->jb ?></td>
-                                    <td><?php echo number_format($item->total) ?></td>
                                     <td>
-                                      <a href="#javascript:; #modaldetailresep" data-toggle="modal" class="btn btn-xs btn-default" data-id="<?php echo $item->id_periksa ?>"><i class="fa fa-list"></i></a>
-                                      <a href="#" type="button" title="Cetak Resep" class="btn btn-custon-three btn-primary btn-xs" ><i class="fa fa-file"></i></a>
-                                      <a href="<?php echo base_url()?>Resep/cetak_eticket/<?php echo $item->id_periksa ?>" type="button" title="Cetak Ticket" class="btn btn-custon-three btn-danger btn-xs" target="_blank"><i class="fa fa-print"></i></a>
+                                      <a href="#modaldetailresep" data-toggle="modal" class="btn btn-custon-three btn-warning btn-xs" data-id="<?php echo $item->id_periksa ?>" title="Resep Dokter"><i class="fa fa-file"></i></a>
+                                      <a href="#" data-toggle="modal" class="btn btn-custon-three btn-success btn-xs" title="Cetak Resep"><i class="fa fa-print"></i></a>
+                                      <a href="<?php echo base_url()?>Resep/cetak_eticket/<?php echo $item->id_periksa ?>" target="_blank" class="btn btn-custon-three btn-primary btn-xs" title="Cetak e - Ticket"><i class="fa fa-print"></i></a>
                                     </td>
                                   </tr>
                                 <?php } ?>
@@ -86,7 +87,7 @@
 </div>
 
 <div class="modal fade" id="modaldetailresep" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
-	<div class="modal-dialog">
+	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -120,4 +121,14 @@
         });
      });
   });
+
+
+  window.setTimeout("waktu()",1000);
+  function waktu() {
+      var tanggal = new Date();
+      setTimeout("waktu()",1000);
+      document.getElementById("jam").innerHTML = tanggal.getHours();
+      document.getElementById("menit").innerHTML = tanggal.getMinutes();
+      document.getElementById("detik").innerHTML = tanggal.getSeconds();
+  }
 </script>

@@ -7,7 +7,7 @@
                 <div class="breadcome-list map-mg-t-40-gl shadow-reset">
                     <div class="row">
                         <div class="col-lg-6">
-                            
+
                         </div>
                         <div class="col-lg-6">
                             <ul class="breadcome-menu">
@@ -34,6 +34,7 @@ foreach($hitung as $j){
         <div class="row">
             <div class="col-lg-12">
               <?php echo $this->session->flashdata('simpan');?>
+              <?php echo $this->session->flashdata('update_status_lab');?>
               <?php echo $this->session->flashdata('hapus');?>
                 <div class="sparkline13-list shadow-reset">
                     <div class="sparkline13-hd">
@@ -77,12 +78,19 @@ foreach($hitung as $j){
                                     <td><?php echo $item->nama_pasien ?></td>
                                     <td><?php echo $item->golongan_darah ?></td>
                                     <td>
-                                      <a href="#modaltambahjenis" data-toggle="modal" class="btn btn-xs btn-primary" title="Tambah Jenis Pemeriksaan Lab"><i class="fa fa-plus-circle" onclick="tambah_jenis(
-                                        '<?php echo $item->id_periksa_lab ?>',
-                                        '<?php echo $item->id_pasien ?>',
-                                        '<?php echo $item->nama_pasien ?>',
-                                        )"></i></a>
-                                      <a href="#javascript:; #modaljenispemeriksaan" data-toggle="modal" class="btn btn-xs btn-primary" data-id="<?php echo $item->id_periksa_lab ?>"><i class="fa fa-cogs"></i></a>
+                                      <?php if($item->status_lab == 'belum'): ?>
+                                        <a href="#modaltambahjenis" data-toggle="modal" class="btn btn-xs btn-primary" title="Tambah Jenis Pemeriksaan Lab"><i class="fa fa-plus-circle" onclick="tambah_jenis(
+                                          '<?php echo $item->id_periksa_lab ?>',
+                                          '<?php echo $item->id_pasien ?>',
+                                          '<?php echo $item->nama_pasien ?>',
+                                          )"></i></a>
+                                        <a href="#javascript:; #modaljenispemeriksaan" data-toggle="modal" class="btn btn-xs btn-success" data-id="<?php echo $item->id_periksa_lab ?>"><i class="fa fa-cogs"></i></a>
+                                        <a href="#javascript:; #updatestatus" data-toggle="modal" title="Update Status Pemeriksaan Lab" class="btn btn-xs btn-default" onclick="update_status_lab('<?php echo $item->id_periksa_lab ?>','<?php echo $item->status_lab ?>')"><i class="fa fa-refresh"></i></a>
+                                      <?php else: ?>
+                                        <a href="#javascript:; #modaljenispemeriksaan" data-toggle="modal" class="btn btn-xs btn-success" data-id="<?php echo $item->id_periksa_lab ?>"><i class="fa fa-cogs"></i></a>
+                                        <a href="#javascript:; #updatestatus" data-toggle="modal" title="Update Status Pemeriksaan Lab" class="btn btn-xs btn-default" onclick="update_status_lab('<?php echo $item->id_periksa_lab ?>','<?php echo $item->status_lab ?>')"><i class="fa fa-refresh"></i></a>
+                                      <?php endif ?>
+
                                     </td>
                                   </tr>
                                 <?php } ?>
@@ -113,6 +121,7 @@ foreach($hitung as $j){
 	</div>
 </div>
 
+
 <div class="modal fade" id="modaljenispemeriksaan" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -132,12 +141,30 @@ foreach($hitung as $j){
 	</div>
 </div>
 
+<div class="modal fade" id="updatestatus" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body">
+        <?php $this->load->view('lab/pasien/update_status_lab'); ?>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 <script type="text/javascript">
 
   function tambah_jenis(id_periksa_lab,id_pasien,nama){
     $('#xid_periksa_lab').val(id_periksa_lab);
     $('#xid_pasien').val(id_pasien);
     $('#xnama_pasien').val(nama);
+  }
+
+  function update_status_lab(id_periksa_lab,status_lab){
+    $('#xxidperiksalab').val(id_periksa_lab);
+    $('#xxstatus_lab').val(statua_lab);
   }
 
   $('select[name="id_jenisperiksa"]').on('change', function(e) {

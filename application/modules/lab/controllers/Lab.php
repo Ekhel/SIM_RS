@@ -34,6 +34,28 @@ class Lab extends MX_Controller{
                 </div>");
       redirect('Lab');
   }
+  function update_status_lab()
+  {
+    $id_periksa_lab = $this->input->post('id_periksa_lab');
+    $status_lab = $this->input->post('status_lab');
+
+    $data = array(
+      'id_periksa_lab'    => $id_periksa_lab,
+      'status_lab'        => $status_lab
+    );
+
+    $where = array(
+      'id_periksa_lab'    => $id_periksa_lab
+    );
+
+    $this->M_lab->update_status_lab($where,$data,'tbl_periksa_lab');
+    $this->session->set_flashdata("update_status_lab","
+          <div class='alert alert-success fade in'>
+              <a href='#' class='close' data-dismiss='alert'>&times;</a>
+              <strong>Success !</strong> Berhasil Mengupdate Data!
+          </div>");
+    redirect('Lab/pasien_periksa_lab');
+  }
   function edit_jenisperiksa_proses()
   {
     $id_jenisperiksa = $this->input->post('id_jenisperiksa');
@@ -120,7 +142,7 @@ class Lab extends MX_Controller{
   }
   function tambah_periksa_lab_proses()
   {
-
+    $id_periksa = $this->input->post('id_periksa');
     $id_pasien = $this->input->post('id_pasien');
     $id_poliklinik = $this->input->post('id_poliklinik');
     $kode_pemeriksaan = $this->input->post('kode_pemeriksaan');
@@ -140,6 +162,7 @@ class Lab extends MX_Controller{
 		}
     else{
       $data = array(
+        'id_periksa'        => $id_periksa,
         'id_pasien'         => $id_pasien,
         'id_poliklinik'     => $id_poliklinik,
         'kode_pemeriksaan'  => $kode_pemeriksaan,

@@ -19,8 +19,14 @@ class Periksa extends MX_Controller{
 		$data['status'] 	= $this->M_periksa->sudah_periksa();
 		$data['hitung'] 	= $this->M_periksa->hitung_pasien_hariini();
 		$data['kode'] = $this->M_lab->kode_lab();
+		$data['jenis_periksa'] = $this->M_lab->jenis_periksa_lab($this->uri->segment(3));
 		$data['barang'] = $this->db->query("SELECT * FROM tbl_obatalkes ORDER BY kode_barang")->result();
     $this->template->load('MasterAdmin','periksa/data_periksa',$data);
+  }
+	public function jenis_pemeriksaan($id = 0)
+  {
+    $data['jenis_periksa'] = $this->M_lab->jenis_periksa_lab($this->uri->segment(3));
+    $this->load->view('lab/pasien/data-jenis-periksalab',$data);
   }
 	public function tambah_periksa_proses()
 	{
