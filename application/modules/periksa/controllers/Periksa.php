@@ -30,14 +30,17 @@ class Periksa extends MX_Controller{
   }
 	public function tambah_periksa_proses()
 	{
+		// Value Input
 		$id_pasien = $this->input->post('id_pasien');
 		$id_poliklinik = $this->input->post('id_poliklinik');
 		$tanggal = $this->input->post('tanggal');
 		$status = $this->input->post('status');
 
+		// Triger Data
 		$tanggal_hari_ini = date('Y-m-d');
-		$cek = $this->db->query("SELECT id_pasien FROM tbl_periksa WHERE tanggal = '$tanggal_hari_ini' ")->result();
+		$cek = $this->db->query("SELECT id_pasien FROM tbl_periksa WHERE tanggal = '$tanggal_hari_ini' AND id_pasien = '$id_pasien' ")->result();
 
+		// Cek Data Pada table apakah Sudah Tersedia
 		if(count($cek) >= 1){
 			$this->session->set_flashdata("validate_periksa","
 					<div class='alert alert-danger fade in'>
@@ -46,6 +49,8 @@ class Periksa extends MX_Controller{
 					</div>");
 				redirect('Pasien');
 		}
+
+		// Jika Kondisi Tidak Tersedia
 		else{
 			$data = array(
 				'id_pasien'			=> $id_pasien,
@@ -54,13 +59,14 @@ class Periksa extends MX_Controller{
 				'status'				=> $status
 			);
 
+			// Simpan Data Pada Table Periksa
 			$this->M_periksa->simpan_periksa($data);
 			$this->session->set_flashdata("simpan_periksa","
 	                <div class='alert alert-success fade in'>
 	                    <a href='#' class='close' data-dismiss='alert'>&times;</a>
 	                    <strong>Berhasil !</strong> Berhasil Menyimpan Data! Silahkan Cek pada Menu Periksa.
 	                </div>");
-	      redirect('Pasien');
+	    redirect('Pasien');
 		}
 	}
 	public function edit_status_proses()

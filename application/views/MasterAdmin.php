@@ -297,15 +297,10 @@
     <script src="<?php echo base_url()?>assets/js/counterup/jquery.counterup.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/counterup/waypoints.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/counterup/counterup-active.js"></script>
-    <script src="<?php echo base_url()?>assets/js/jvectormap/jquery-jvectormap-2.0.2.min.js"></script>
-    <script src="<?php echo base_url()?>assets/js/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="<?php echo base_url()?>assets/js/jvectormap/jvectormap-active.js"></script>
     <script src="<?php echo base_url()?>assets/js/peity/jquery.peity.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/peity/peity-active.js"></script>
     <script src="<?php echo base_url()?>assets/js/sparkline/jquery.sparkline.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/sparkline/sparkline-active.js"></script>
-    <script src="<?php echo base_url()?>assets/js/flot/Chart.min.js"></script>
-    <script src="<?php echo base_url()?>assets/js/flot/dashtwo-flot-active.js"></script>
 
     <script src="<?php echo base_url()?>assets/js/data-table/bootstrap-table.js"></script>
     <script src="<?php echo base_url()?>assets/js/data-table/tableExport.js"></script>

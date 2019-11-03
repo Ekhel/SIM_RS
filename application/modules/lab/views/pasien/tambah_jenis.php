@@ -62,7 +62,7 @@
                         <label class="login2 pull-right pull-right-pro">Nilai Rujukan</label>
                     </div>
                     <div class="col-lg-9">
-                      <input type="text" name="nilai_rujukan" class="form-control">
+                      <input type="text" name="nr" class="form-control">
                     </div>
                 </div>
               </div>

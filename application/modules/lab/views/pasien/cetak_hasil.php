@@ -250,7 +250,7 @@
             <td><?php echo $result->nama_jenis ?></td>
             <td><?php echo $result->hasil ?></td>
             <td><?php echo $result->satuan ?></td>
-            <td><?php echo $result->nilai_rujukan ?></td>
+            <td><?php echo $result->nr ?></td>
             <td><?php echo $result->hasil_ket ?></td>
           </tr>
         <?php } ?>

@@ -150,13 +150,13 @@ class Lab extends MX_Controller{
 
     $tanggal_hari_ini = date('Y-m-d');
 
-    $cek = $this->db->query("SELECT id_pasien FROM tbl_periksa_lab WHERE tanggal_periksa = '$tanggal_hari_ini' ")->result();
+    $cek = $this->db->query("SELECT id_pasien FROM tbl_periksa_lab WHERE tanggal_periksa = '$tanggal_hari_ini' AND id_pasien = '$id_pasien' ")->result();
 
     if(count($cek) >= 1){
 			$this->session->set_flashdata("validate_lab","
 					<div class='alert alert-danger fade in'>
 					<a href='#' class='close' data-dismiss='alert'>&times;</a>
-					<strong>Gagal !</strong> Data Yang anda Input sudah tersedia Silahkan Cek pada Table Periksa.
+					<strong>Gagal !</strong> Data Yang anda Input sudah tersedia Silahkan Cek pada Table Periksa Lab.
 					</div>");
 				redirect('Periksa');
 		}
@@ -186,7 +186,7 @@ class Lab extends MX_Controller{
     $data['id_jenisperiksa'] = $this->input->post('id_jenisperiksa');
     $data['id_sub_jenis'] = $this->input->post('id_sub_jenis');
     $data['hasil'] = $this->input->post('hasil');
-    $data['nilai_rujukan'] = $this->input->post('nilai_rujukan');
+    $data['nr'] = $this->input->post('nr');
     $data['tanggal'] = $this->input->post('tanggal');
     $data['hasil_ket'] = $this->input->post('hasil_ket');
 
