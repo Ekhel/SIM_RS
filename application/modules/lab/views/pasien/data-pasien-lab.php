@@ -41,6 +41,7 @@ foreach($hitung as $j){
                         <div class="main-sparkline13-hd">
                             <h1>Data <span class="table-project-n"></span> Pasien Periksa Laboratorium</h1>
                             <div class="sparkline13-outline-icon" onload="waktu()">
+                              <span><a href="<?php echo base_url()?>lab/pasien_periksa_lab" class="btn btn-xs btn-warning" title="Refresh Data"><i class="fa fa-refresh"></i></a></span>
                               <span><p class="label label-primary"><strong> TANGGAL : <?php echo $hari_ini ?></strong></p></span>
                               <span><text><strong>Jumlah Pendaftar Lab : </strong></text> <label class="label label-primary"> <?php echo $total ?> Pasien</label></span>
                               <span><i class="fa fa-clock"></i><text id="jam"></text> : <text id="menit"></text> : <text id="detik"></text></span>

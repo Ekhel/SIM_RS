@@ -3,6 +3,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_menu extends CI_Model {
   // Start MENU
+  function menu_level_akses()
+  {
+    $level = $this->session->userdata('level');
+
+    $query = $this->db->query("SELECT * FROM tbl_menu_level
+    LEFT JOIN tbl_sub_menu ON tbl_menu_level.id_sub_menu = tbl_sub_menu.id_sub_menu
+    LEFT JOIN tb_user_level ON tbl_menu_level.id_level = tb_user_level.id_level
+    LEFT JOIN tbl_menu ON tbl_sub_menu.id_menu = tbl_menu.id_menu
+    WHERE tbl_sub_menu.status_sub = 'aktif' AND tbl_menu_level.id_level = '$level'
+    GROUP BY tbl_sub_menu.id_menu
+    ORDER BY tbl_menu.kode_menu ASC ");
+
+    return $query->result();
+  }
+  function sub_menu_level_akses()
+  {
+    $level = $this->session->userdata('level');
+
+    $query = $this->db->query("SELECT * FROM tbl_menu_level
+    LEFT JOIN tbl_sub_menu ON tbl_menu_level.id_sub_menu = tbl_sub_menu.id_sub_menu
+    LEFT JOIN tb_user_level ON tbl_menu_level.id_level = tb_user_level.id_level
+    LEFT JOIN tbl_menu ON tbl_sub_menu.id_menu = tbl_menu.id_menu
+    WHERE tbl_sub_menu.status_sub = 'aktif' AND tbl_menu_level.id_level = '$level'");
+
+    return $query->result();
+  }
   function menu()
   {
     $query = $this->db->query("SELECT * FROM tbl_menu
@@ -74,5 +100,18 @@ class M_menu extends CI_Model {
   {
     $menu = $this->getsubmenu($param);
     $this->db->delete('tbl_sub_menu', array('id_sub_menu' => $param));
+  }
+  function create_menu_level($data)
+  {
+    $this->db->insert('tbl_menu_level',$data);
+  }
+  function menu_level()
+  {
+    $query = $this->db->query("SELECT * FROM tbl_menu_level
+    LEFT JOIN tb_user_level ON tbl_menu_level.id_level = tb_user_level.id_level
+    LEFT JOIN tbl_sub_menu ON tbl_menu_level.id_sub_menu = tbl_sub_menu.id_sub_menu
+    LEFT JOIN tbl_menu ON tbl_sub_menu.id_menu = tbl_menu.id_menu");
+
+    return $query->result();
   }
 }

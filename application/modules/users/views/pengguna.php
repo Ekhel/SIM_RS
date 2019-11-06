@@ -5,7 +5,7 @@
                 <div class="breadcome-list map-mg-t-40-gl shadow-reset">
                     <div class="row">
                         <div class="col-lg-6">
-                            
+
                         </div>
                         <div class="col-lg-6">
                             <ul class="breadcome-menu">
@@ -54,6 +54,7 @@
                                         <th data-field="level">Level</th>
                                         <th data-field="user">User</th>
                                         <th data-field="status">Status</th>
+                                        <th data-field="action">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -64,9 +65,20 @@
                                   <tr>
                                     <td><?php echo $no++ ?></td>
                                     <td><?php echo $item->nik ?></td>
-                                    <td><?php echo $item->level ?></td>
+                                    <td>
+                                      <?php if($item->id_level == '3'){
+                                        echo $item->level. " <span><label class='label label-success'>" .$item->nama_poliklinik. "</label></span>";
+                                      }
+                                      else{
+                                        echo $item->level;
+                                      }?>
+                                    </td>
                                     <td><?php echo $item->nama ?></td>
                                     <td><?php echo $item->status ?></td>
+                                    <td>
+                                      <a class="btn btn-xs btn-primary" href="<?php echo base_url()?>users/edit_users/<?php echo $item->id_user ?>" title="Edit"><i class="fa fa-edit"></i></a>
+                                      <a class="btn btn-xs btn-danger" href="<?php echo base_url()?>users/delete_users/<?php echo $item->id_user ?>" title="Hapus"><i class="fa fa-trash"></i></a>
+                                    </td>
                                   </tr>
                                 <?php } ?>
                                 </tbody>

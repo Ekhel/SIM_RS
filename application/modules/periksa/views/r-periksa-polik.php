@@ -42,7 +42,7 @@ foreach($hitung as $j){
                         <div class="main-sparkline13-hd">
                             <h1>Data <span class="table-project-n"></span> Pasien Periksa Dokter</h1>
                             <div class="sparkline13-outline-icon" onload="waktu()">
-                              <span><a href="<?php echo base_url()?>Periksa" class="btn btn-xs btn-warning" title="Refresh Data"><i class="fa fa-refresh"></i></a></span>
+                              <span><a href="<?php echo base_url()?>Periksa/poliklinik" class="btn btn-xs btn-warning" title="Refresh Data"><i class="fa fa-refresh"></i></a></span>
                               <span><p class="label label-primary"><strong> TANGGAL : <?php echo $hari_ini ?></strong></p></span>
                               <span><text><strong>Jumlah Pendaftar : </strong></text> <label class="label label-primary"> <?php echo $total ?> Pasien</label></span>
                               <span><text><strong>Sudah Diperiksa : </strong></text> <label class="label label-success"> <?php echo $sudah ?> Pasien</label></span>

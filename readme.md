@@ -157,3 +157,7 @@
 * Kamis 24 Oktober 2019
   - Menambahkan View Hasil Periksa Laboratorium pada Daftar Periksa Polik [Solved]
   - Memperbaiki View e - Resep [Solved]
+
+* Rabu 7 November 2019
+  - Menambahkan View Level Akses Polik & Laboratorium modul users [Solved]
+  - Meperbaiki View pengguna pada modul users [Solved]

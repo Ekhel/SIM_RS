@@ -5,7 +5,8 @@ class M_users extends CI_Model {
   function users()
   {
     $query = $this->db->query("SELECT * FROM tb_user
-    LEFT JOIN tb_user_level ON tb_user.level = tb_user_level.id_level");
+    LEFT JOIN tb_user_level ON tb_user.level = tb_user_level.id_level
+    LEFT JOIN tbl_poliklinik ON tb_user.id_poliklinik = tbl_poliklinik.id_poliklinik ");
 
     return $query->result();
   }
@@ -41,5 +42,14 @@ class M_users extends CI_Model {
   function tambah_pengguna($data)
   {
     $this->db->insert('tb_user',$data);
+  }
+  function edit_users($where,$data,$table)
+  {
+    $this->db->where($where);
+    $this->db->update($table,$data);
+  }
+  function delete_users($id_user = 0)
+  {
+    $this->db->delete('tb_user', array('id_user' => $id_user));
   }
 }

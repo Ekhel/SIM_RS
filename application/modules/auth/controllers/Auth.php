@@ -20,10 +20,11 @@ class Auth extends MX_Controller{
 		if (isset($nip, $sandi)) {
 			if($this->M_auth->cek($nip, $sandi) == TRUE){
 				$admin = $this->M_auth->getAdmin($nip, $sandi);
-				$data['nik'] = $nik;
+				$data['nik'] = $nip;
 				$data['sandi'] = $sandi;
-				$data['id_admin'] = $admin->id_admin;
+				//$data['id_admin'] = $admin->id_admin;
 				$data['level'] = $admin->level;
+        $data['id_poliklinik'] = $admin->id_poliklinik;
 				$data['nama'] = $admin->nama;
 				$data['login'] = TRUE;
 				$this->session->set_userdata($data);
@@ -32,11 +33,15 @@ class Auth extends MX_Controller{
 			  }
   			elseif ($this->session->userdata('level')=='2'){
           //helper_log("login", "Login ke applikasi");
+  		  redirect('Periksa/poliklinik');
+  			}
+        elseif ($this->session->userdata('level')=='3'){
+          //helper_log("login", "Login ke applikasi");
   		  redirect('Home/beranda/1');
   			}
         elseif ($this->session->userdata('level')=='4'){
           //helper_log("login", "Login ke applikasi");
-  		  redirect('Home/beranda/1');
+  		  redirect('lab');
   			}
 			}
 			else {
