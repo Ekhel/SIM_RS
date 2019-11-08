@@ -101,6 +101,9 @@ class M_menu extends CI_Model {
     $menu = $this->getsubmenu($param);
     $this->db->delete('tbl_sub_menu', array('id_sub_menu' => $param));
   }
+  // End Sub Menu
+
+  // Start Menu Level
   function create_menu_level($data)
   {
     $this->db->insert('tbl_menu_level',$data);
@@ -114,4 +117,14 @@ class M_menu extends CI_Model {
 
     return $query->result();
   }
+  function update_menu_level($where,$data,$table)
+  {
+    $this->db->where($where);
+    $this->db->update($table,$data);
+  }
+  function hapus_menu_level($param = 0)
+  {
+    $this->db->delete('tbl_menu_level', array('id_menu_level' => $param));
+  }
+  // End Menu Level
 }

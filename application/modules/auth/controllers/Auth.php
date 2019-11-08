@@ -33,15 +33,19 @@ class Auth extends MX_Controller{
 			  }
   			elseif ($this->session->userdata('level')=='2'){
           //helper_log("login", "Login ke applikasi");
-  		  redirect('Periksa/poliklinik');
+  		  redirect('Home/beranda/1');
   			}
         elseif ($this->session->userdata('level')=='3'){
           //helper_log("login", "Login ke applikasi");
-  		  redirect('Home/beranda/1');
+  		  redirect('Periksa/poliklinik');
   			}
         elseif ($this->session->userdata('level')=='4'){
           //helper_log("login", "Login ke applikasi");
   		  redirect('lab');
+  			}
+        elseif ($this->session->userdata('level')=='5'){
+          //helper_log("login", "Login ke applikasi");
+  		  redirect('Resep');
   			}
 			}
 			else {

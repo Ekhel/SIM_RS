@@ -161,3 +161,7 @@
 * Rabu 7 November 2019
   - Menambahkan View Level Akses Polik & Laboratorium modul users [Solved]
   - Meperbaiki View pengguna pada modul users [Solved]
+
+* Jumat 8 November 2019
+  - Menambahkan View Level Akses [Solved]
+  - Menambahkan CRUD Menu Level Akses [Solved]

@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="all-form-element-inner">
-                <form action="<?php echo base_url()?>Menu/Menu_level/update_level_menu_proses" method="post">
+                <form action="<?php echo base_url()?>Menu/Menu_level/update_menu_level_proses" method="post">
                   <div class="form-group-inner">
                      <div class="row">
                          <div class="col-lg-2">

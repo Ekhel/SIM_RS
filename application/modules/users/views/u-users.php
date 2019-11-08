@@ -1,3 +1,4 @@
+<script src="<?php echo base_url()?>assets/js/jquery-1.11.3.min.js"></script>
 <div class="breadcome-area mg-b-30 small-dn">
     <div class="container-fluid">
         <div class="row">
@@ -84,7 +85,7 @@
                                            <label class="login2 pull-right pull-right-pro">Level</label>
                                        </div>
                                        <div class="col-lg-9">
-                                         <select name="level" class="form-control">
+                                         <select name="level" class="form-control" id="level">
                                            <option value="<?php echo $detail['level'] ?>">Selected</option>
                                               <?php
                                               foreach($level as $p => $val)
@@ -94,6 +95,24 @@
                                               }?>
                                          </select>
                                        </div>
+                                   </div>
+                                 </div>
+                                 <div class="form-group-inner" id="poliklinik" hidden="true">
+                                   <div class="row">
+                                     <div class="col-lg-2">
+                                       <label class="login2 pull-right pull-right-pro" id="poliklinik">Poliklinik</label>
+                                     </div>
+                                     <div class="col-lg-6">
+                                       <select class="form-control" name="id_poliklinik">
+                                         <option value="">-- Pilih --</option>
+                                            <?php
+                                            foreach($polik as $p => $val)
+                                            {?>
+                                            <option value="<?php echo $val->id_poliklinik;?>"><?php echo $val->nama_poliklinik; ?></option>
+                                            <?php
+                                            }?>
+                                       </select>
+                                     </div>
                                    </div>
                                  </div>
                                  <div class="form-group-inner">
@@ -208,4 +227,9 @@
     $("#xnama").val(nama);
     $("#xnama_lengkap").val(nama_lengkap);
   }
+
+  $('#level').change(function() {
+    var level = $(this).val();
+    $('#poliklinik').prop('hidden', level != 3);
+  })
 </script>

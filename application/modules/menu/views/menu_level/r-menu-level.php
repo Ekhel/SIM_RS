@@ -54,7 +54,7 @@
                                         <th data-field="level">Level</th>
                                         <th data-field="menu">Menu</th>
                                         <th data-field="subs">Sub Menu</th>
-                                        
+
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -75,7 +75,7 @@
                                         '<?php echo $item->id_menu ?>',
                                         '<?php echo $item->id_sub_menu ?>'
                                       )"><i class="fa fa-edit"></i></a>
-                                      <a href="<?php echo base_url()?>Menu/Menu_level/delete_menu_level/<?php echo $item->id_sub_menu ?>" type="button" title="Hapus" onclick="return confirm('Hapus item ini Dari Database ?')" class="btn btn-custon-three btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+                                      <a href="<?php echo base_url()?>Menu/Menu_level/hapus_menu_level/<?php echo $item->id_menu_level ?>" type="button" title="Hapus" onclick="return confirm('Hapus item ini Dari Database ?')" class="btn btn-custon-three btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                                     </td>
                                   </tr>
                                 <?php } ?>

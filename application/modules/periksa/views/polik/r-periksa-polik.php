@@ -136,7 +136,7 @@ foreach($hitung as $j){
 		<div class="modal-content">
 
 			<div class="modal-body">
-        <?php $this->load->view('Periksa/update_status'); ?>
+        <?php $this->load->view('Periksa/polik/u-status'); ?>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
@@ -153,7 +153,7 @@ foreach($hitung as $j){
 				<h4 class="modal-title" id=""><i class="fa fa-edit"></i> Catatan Diagnosa Dokter</h4>
 			</div>
 			<div class="modal-body">
-        <?php $this->load->view('Periksa/update_diagnosa'); ?>
+        <?php $this->load->view('Periksa/polik/u-diagnosa'); ?>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
@@ -170,7 +170,7 @@ foreach($hitung as $j){
 				<h4 class="modal-title" id=""><i class="fa fa-plus-circle"></i> Form Tambah Data Pemeriksaan Laboratorium</h4>
 			</div>
 			<div class="modal-body">
-        <?php $this->load->view('lab/pasien/tambah_lab'); ?>
+        <?php $this->load->view('lab/polik/c-pasien-lab'); ?>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
@@ -184,10 +184,10 @@ foreach($hitung as $j){
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id=""><i class="fa fa-plus-circle"></i> Form Tambah Data Periksa</h4>
+				<h4 class="modal-title" id=""><i class="fa fa-plus-circle"></i> Form Tambah e - Resep</h4>
 			</div>
 			<div class="modal-body">
-        <?php $this->load->view('resep/tambah_resep'); ?>
+        <?php $this->load->view('resep/polik/c-resep'); ?>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>

@@ -55,4 +55,42 @@ class Menu_level extends MX_Controller{
       redirect('Menu/Menu_level');
     }
   }
+  function update_menu_level_proses()
+  {
+    $id_menu_level = $this->input->post('id_menu_level');
+    $id_level = $this->input->post('id_level');
+    $id_menu = $this->input->post('id_menu');
+    $id_sub_menu = $this->input->post('id_sub_menu');
+
+    $data = array(
+      'id_menu_level'     => $id_menu_level,
+      'id_level'          => $id_level,
+      'id_menu'           => $id_menu,
+      'id_sub_menu'       => $id_sub_menu
+    );
+
+    $where = array(
+      'id_menu_level'     => $id_menu_level
+    );
+
+    $this->M_menu->update_menu_level($where,$data,'tbl_menu_level');
+    $this->session->set_flashdata(
+      "update",
+      "<div class='alert alert-success fade in'>
+          <a href='#' class='close' data-dismiss='alert'>&times;</a>
+          <strong>Success!</strong> Berhasil Menambahkan Data.
+      </div>"
+    );
+    redirect('Menu/Menu_level');
+  }
+  function hapus_menu_level($param = 0)
+	{
+		$this->M_menu->hapus_menu_level($param);
+    $this->session->set_flashdata("hapus","
+							<div class='alert alert-success fade in'>
+									<a href='#' class='close' data-dismiss='alert'>&times;</a>
+									<strong>Success !</strong> Item sudah di Hapus!
+							</div>");
+    redirect('Menu/Menu_level');
+	}
 }

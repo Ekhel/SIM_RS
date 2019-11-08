@@ -23,17 +23,20 @@ class Periksa extends MX_Controller{
 		$data['barang'] = $this->db->query("SELECT * FROM tbl_obatalkes ORDER BY kode_barang")->result();
     $this->template->load('MasterAdmin','periksa/data_periksa',$data);
   }
+
+	// Level Akses Polik
 	public function poliklinik()
 	{
 		$data['title'] 		= 'Admin | Daftar Pasien Control';
 		$data['periksa'] 	= $this->M_periksa->periksa_user_polik();
 		$data['status'] 	= $this->M_periksa->sudah_periksa();
-		$data['hitung'] 	= $this->M_periksa->hitung_pasien_hariini();
+		$data['hitung'] 	= $this->M_periksa->hitung_pasien_hariini_polik();
 		$data['kode'] = $this->M_lab->kode_lab();
 		$data['jenis_periksa'] = $this->M_lab->jenis_periksa_lab($this->uri->segment(3));
 		$data['barang'] = $this->db->query("SELECT * FROM tbl_obatalkes ORDER BY kode_barang")->result();
-    $this->template->load('MasterAdmin','periksa/r-periksa-polik',$data);
+    $this->template->load('MasterAdmin','periksa/polik/r-periksa-polik',$data);
 	}
+
 	public function jenis_pemeriksaan($id = 0)
   {
     $data['jenis_periksa'] = $this->M_lab->jenis_periksa_lab($this->uri->segment(3));
@@ -80,6 +83,32 @@ class Periksa extends MX_Controller{
 	    redirect('Pasien');
 		}
 	}
+
+	// Edit Status Pasien Dari Level Akses Polik
+	public function edit_status_polik_proses()
+	{
+		$id_periksa = $this->input->post('id_periksa');
+		$status = $this->input->post('status');
+
+		$data = array(
+			'id_periksa'		=> $id_periksa,
+			'status'				=> $status,
+		);
+
+		$where = array(
+			'id_periksa'  	=> $id_periksa
+		);
+		$this->M_periksa->update_status($where,$data,'tbl_periksa');
+		$this->session->set_flashdata(
+			"update_status",
+      "<div class='alert alert-success fade in'>
+          <a href='#' class='close' data-dismiss='alert'>&times;</a>
+          <strong>Success !</strong> Berhasil Mengupdate !!
+      </div>");
+    redirect('Periksa/Poliklinik');
+	}
+
+	// Edit Status Pasien Dari Level Akses Admin
 	public function edit_status_proses()
 	{
 		$id_periksa = $this->input->post('id_periksa');
@@ -94,13 +123,16 @@ class Periksa extends MX_Controller{
 			'id_periksa'  	=> $id_periksa
 		);
 		$this->M_periksa->update_status($where,$data,'tbl_periksa');
-		$this->session->set_flashdata("update_status","
-                <div class='alert alert-success fade in'>
-                    <a href='#' class='close' data-dismiss='alert'>&times;</a>
-                    <strong>Success !</strong> Berhasil Mengupdate !!
-                </div>");
-      redirect('Periksa');
+		$this->session->set_flashdata(
+			"update_status",
+      "<div class='alert alert-success fade in'>
+          <a href='#' class='close' data-dismiss='alert'>&times;</a>
+          <strong>Success !</strong> Berhasil Mengupdate !!
+      </div>");
+    redirect('Periksa');
 	}
+
+	// Update Dari Level Administrator
 	public function update_diagnosa_proses()
 	{
 		$id_periksa = $this->input->post('id_periksa');
@@ -121,5 +153,28 @@ class Periksa extends MX_Controller{
                     <strong>Success !</strong> Berhasil Mengupdate !!
                 </div>");
       redirect('Periksa');
+	}
+
+	// Update dari Level Polik
+	public function update_diagnosa_polik_proses()
+	{
+		$id_periksa = $this->input->post('id_periksa');
+		$diagnosa = $this->input->post('diagnosa');
+
+		$data = array(
+			'id_periksa'		=> $id_periksa,
+			'diagnosa'			=> $diagnosa,
+		);
+
+		$where = array(
+			'id_periksa'  => $id_periksa
+		);
+		$this->M_periksa->update_diagnosa($where,$data,'tbl_periksa');
+		$this->session->set_flashdata("update_status","
+                <div class='alert alert-success fade in'>
+                    <a href='#' class='close' data-dismiss='alert'>&times;</a>
+                    <strong>Success !</strong> Berhasil Mengupdate !!
+                </div>");
+      redirect('Periksa/poliklinik');
 	}
 }

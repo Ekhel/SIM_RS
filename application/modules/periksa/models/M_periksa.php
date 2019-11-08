@@ -58,6 +58,17 @@ class M_periksa extends CI_Model {
       WHERE tanggal = '$tanggal_sekarang' ");
     return $query->result();
   }
+  function hitung_pasien_hariini_polik()
+  {
+    $tanggal_sekarang = date('y-m-d');
+    $user_poliklinik = $this->session->userdata('id_poliklinik');
+    $query = $this->db->query("SELECT
+      count(id_periksa) as jumlah_pasien,
+      count(Distinct CASE WHEN status = 'sudah' THEN id_pasien END) as sudah
+      FROM tbl_periksa
+      WHERE tanggal = '$tanggal_sekarang' AND id_poliklinik = '$user_poliklinik' ");
+    return $query->result();
+  }
   function sudah_periksa()
   {
     $tanggal_sekarang = date('y-m-d');

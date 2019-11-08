@@ -18,6 +18,8 @@ class Resep extends MX_Controller{
     $data['resep'] = $this->M_resep->resep();
     $this->template->load('MasterAdmin','data-resep',$data);
   }
+
+  // Tambah e - Resep dari Level Akses Admin
   function tambah_resep_proses()
   {
     $data['id_resep'] = $this->input->post('id_resep');
@@ -32,6 +34,23 @@ class Resep extends MX_Controller{
                     <strong>Success !</strong> Berhasil Menyimpan Data!
                 </div>");
       redirect('Periksa');
+  }
+
+  // Tambah e - Resep dari Level Akses Polik
+  function tambah_resep_polik_proses()
+  {
+    $data['id_resep'] = $this->input->post('id_resep');
+    $data['id_periksa'] = $this->input->post('id_periksa');
+    $data['id_barang']  = $this->input->post('id_barang');
+    $data['eticket'] = $this->input->post('eticket');
+
+    $this->M_resep->tambah_resep($data);
+    $this->session->set_flashdata("simpan_resep","
+                <div class='alert alert-success fade in'>
+                    <a href='#' class='close' data-dismiss='alert'>&times;</a>
+                    <strong>Success !</strong> Berhasil Menyimpan Data!
+                </div>");
+      redirect('Periksa/poliklinik');
   }
   public function item_resep($id_periksa)
   {

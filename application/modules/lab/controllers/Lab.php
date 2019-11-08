@@ -140,6 +140,8 @@ class Lab extends MX_Controller{
 
     $this->load->view('lab/pasien/cetak_detail',$data);
   }
+
+  // Tambah Pasien Lab Dari Level Akses Admin
   function tambah_periksa_lab_proses()
   {
     $id_periksa = $this->input->post('id_periksa');
@@ -176,6 +178,47 @@ class Lab extends MX_Controller{
                       <strong>Success !</strong> Berhasil Menyimpan Data!
                   </div>");
       redirect('Periksa');
+    }
+
+  }
+
+  // Tambah Periksa Lab dari Level Akses Polik
+  function tambah_periksa_lab_polik_proses()
+  {
+    $id_periksa = $this->input->post('id_periksa');
+    $id_pasien = $this->input->post('id_pasien');
+    $id_poliklinik = $this->input->post('id_poliklinik');
+    $kode_pemeriksaan = $this->input->post('kode_pemeriksaan');
+    $tanggal_periksa = $this->input->post('tanggal_periksa');
+
+    $tanggal_hari_ini = date('Y-m-d');
+
+    $cek = $this->db->query("SELECT id_pasien FROM tbl_periksa_lab WHERE tanggal_periksa = '$tanggal_hari_ini' AND id_pasien = '$id_pasien' ")->result();
+
+    if(count($cek) >= 1){
+			$this->session->set_flashdata("validate_lab","
+					<div class='alert alert-danger fade in'>
+					<a href='#' class='close' data-dismiss='alert'>&times;</a>
+					<strong>Gagal !</strong> Data Yang anda Input sudah tersedia Silahkan Cek pada Table Periksa Lab.
+					</div>");
+				redirect('Periksa');
+		}
+    else{
+      $data = array(
+        'id_periksa'        => $id_periksa,
+        'id_pasien'         => $id_pasien,
+        'id_poliklinik'     => $id_poliklinik,
+        'kode_pemeriksaan'  => $kode_pemeriksaan,
+        'tanggal_periksa'   => $tanggal_periksa
+      );
+
+      $this->M_lab->tambah_periksa_lab($data);
+      $this->session->set_flashdata("simpan_lab","
+                  <div class='alert alert-success fade in'>
+                      <a href='#' class='close' data-dismiss='alert'>&times;</a>
+                      <strong>Success !</strong> Berhasil Menyimpan Data!
+                  </div>");
+      redirect('Periksa/poliklinik');
     }
 
   }
