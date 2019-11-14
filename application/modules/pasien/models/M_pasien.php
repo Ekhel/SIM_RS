@@ -18,10 +18,11 @@ class M_pasien extends CI_Model {
     tbl_pasien.petugas as petugas,
     jumlah_periksa
     FROM tbl_pasien
-    LEFT JOIN(SELECT id_pasien, COUNT(Distinct CASE WHEN status = 'sudah' THEN id_periksa END) as jumlah_periksa
+    LEFT JOIN(SELECT id_pasien, COUNT(Distinct id_periksa) as jumlah_periksa
               FROM tbl_periksa
               GROUP BY id_pasien) a using (id_pasien)
-    WHERE id_pasien");
+    WHERE id_pasien
+    ");
     return $query->result();
   }
   function simpan_pasien($data)
